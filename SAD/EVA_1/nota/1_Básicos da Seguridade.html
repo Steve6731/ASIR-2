@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Compo&ntilde;entes Clave da Seguridade Inform&aacute;tica</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <hr>
+<h1 id="1--principios-básicos-da-seguridade-informática"><strong>(1)</strong>  <strong>Principios Básicos da Seguridade Informática</strong></h1>
+<blockquote>
+<ul>
+<li>Confidencialidade, Integridade, Dispoñibilidade e Non Repudio</li>
+<li>Seguridade Física e Seguridade Lóxica</li>
+<li>Vulnerabilidades, Ameazas e Ataques</li>
+</ul>
+</blockquote>
+<hr>
+<center style="background-color:#FFF;">
+ <font color="black" >
+  ⇓ pagina 1 ⇓
+ </font>
+</center>
+<hr>
+<p>Podemos decir que un sistema informático é seguro si garante completamente:</p>
+<ul>
+<li><strong>A Confidencialidade:</strong>  A información so debe ser accesible por quen teña autorización, polo que é preciso protexer os datos sensibles de accesos non autorizados, normalmente mediante o control de acceso, a autenticación, a autorización e o cifrado.</li>
+<li><strong>A Integridade:</strong> Debe garantizarse que a información non sufre modificacións non autorizadas ou accidentais, mantendo a súa exactitude e confiabilidade.</li>
+<li><strong>A Dispoñibilidade:</strong> Debe garantirse que os datos están accesibles polos usuarios autorizados sempre que se necesiten.</li>
+<li><strong>Non Repudio en Orixe:</strong> O autor da información recibida é coñecido cun 100% de seguridade.</li>
+<li><strong>Non Repudio en Destiño:</strong> O autor da información ten probas de que a información foi entregada ao receptor.</li>
+</ul>
+<p>A <strong>seguridade informática</strong> é o conxunto de prácticas, procesos, tecnoloxías e políticas deseñadas para protexer os sistemas de información e os datos contra ameazas, ataque, danos ou accesos non autorizados. O obxectivo principal da seguridade informática é garantir a confidencialidade, integridade e dispoñibilidade da informaciń e dos sistemas, que forman o que se coñece como tríada CIA  (Confidentiality, Integrity, Availability).</p>
+<hr>
+<h1 id="compoñentes-clave-da-seguridade-informática">Compoñentes Clave da Seguridade Informática</h1>
+<h2 id="1-seguridade-das-redes">1. Seguridade das Redes</h2>
+<p><strong>La seguridade das redes</strong> implica a protección da infraestrutura de rede para evitar o acceso no autorizado, o mal uso ou a modificación de datos durante a súa transmisión. Para iso empréganse diferentes medios entre os que destacan:</p>
+<ul>
+<li><strong>Cortalumes ou devasas (firewalls)</strong>:Dispositivos ou software que filtra o tráfico de rede, permitindo soamente tráfico lexítimo e bloqueando o non autorizado.</li>
+<li><strong>Sistemas de detección e prevención de intrusiones (IDS/IPS)</strong>: Monitorean a rede en busca de actividades sospeitosas ou maliciosas e toman medidas para prever ataques.</li>
+<li><strong>Segmentación da rede</strong>: Dividir a rede en segmentos máis pequenos para aillar os activos críticos e limitar o alcance dun posible ataque.</li>
+</ul>
+<h2 id="2-seguridad-de-sistemas-y-dispositivos">2. Seguridad de Sistemas y Dispositivos</h2>
+<p>Podemos distinguir entre:</p>
+<ul>
+<li><strong>seguridade física</strong> que se centra en protexer as persoas, as infraestruturas físicas e os   recursos materiais fronte a ameazas físicas, como intrusións, roubos, vandalismo, desastres naturais e outras situacións que poidan poñer en perigo a integridade dos activos físicos. Este tipo de seguridade inclúe tanto o uso de dispositivos e sistemas como cámaras de vixilancia, alarmas, gardas de seguridade, controis de acceso, portas reforzadas e barreiras físicas (protección de acceso físico), como sistemas de respaldo de enerxía (UPS / SAI), sistemas de detección de incendios ou plans de evacuación (protección contra desastres).</li>
+<li><strong>seguridade lóxica</strong> que se centra en protexer os sistemas informáticos, datos e redes fronte a ameazas dixitais como accesos non autorizados, ataques cibernéticos, modificacións non autorizadas e perda de información. A seguridade lóxica está enfocada en garantir a integridade, confidencialidade e dispoñibilidade dos recursos informáticos, salvagardando a información de usuarios, empresas ou institucións.</li>
+</ul>
+<p>Importantes medidas nestes ámbitos son:</p>
+<ul>
+<li><strong>Parches y actualizaciones</strong>: Mantener los sistemas actualizados con las últimas correcciones de seguridad para prevenir la explotación de vulnerabilidades conocidas.</li>
+<li><strong>Antivirus y antimalware</strong>: Utilizar software para detectar y eliminar programas maliciosos como virus, ransomware y spyware.</li>
+<li><strong>End-point security</strong>: Proteger dispositivos individuales como laptops, teléfonos móviles y estaciones de trabajo mediante soluciones como cifrado de disco y autenticación multifactor.</li>
+<li><strong>Uso de CPD</strong> (Centros de Procesos de Datos, ou Datacenters) que  establecen de xeito eficiente a seguridade física dos sistemas</li>
+</ul>
+<hr>
+<center style="background-color:#FFF;">
+ <font color="black" >
+  ⇓ pagina 2 ⇓
+ </font>
+</center>
+<hr>
+<h2 id="11confiencialidade"><strong><font color="yellow">1.1</font>Confiencialidade</strong></h2>
+<p>A confidencialidade informática é un dos principios fundamentais da seguridade da información e consiste en protexer os datos de maneira que só as persoas ou entidades autorizadas poidan acceder a eles. O obxectivo da confidencialidade é previr o acceso non autorizado á información, garantindo que non se divulgue a partes non desexadas ou non autorizadas.</p>
+<h1 id="principios-da-confidencialidade-informática">Principios da Confidencialidade Informática</h1>
+<ul>
+<li><strong>Acceso restrinxido</strong>: Só as persoas ou sistemas autorizados deben ter acceso á información sensible.</li>
+<li><strong>Prevención da divulgación</strong>: A información non debe ser exposta a partes non autorizadas durante o seu almacenamento, procesamento ou transmisión.</li>
+<li><strong>Protección de datos sensibles</strong>: Datos como información persoal, financeira ou empresarial deben estar adecuadamente protexidos.</li>
+</ul>
+<h1 id="medios-para-garantir-a-confidencialidade">Medios para Garantir a Confidencialidade</h1>
+<p>Existen varias técnicas e ferramentas que se poden empregar para garantir a confidencialidade da información nun contorno informático. A continuación, explícanse as máis comúns:</p>
+<h2 id="1-criptografía"><strong>1. Criptografía</strong></h2>
+<p>A criptografía é o medio máis efectivo para asegurar a confidencialidade dos datos. A transformación dos datos a un formato ilexible (texto cifrado), que só se pode reverter utilizando a chave correcta, coñécese como cifrado.</p>
+<p>Os datos cÍfranse para que só poidan ser lidos ou interpretados por quen posúa a clave de descifrado correspondente.</p>
+<ul>
+<li>
+<p>Cifrado simétrico: Utiliza a mesma chave tanto para cifrar como para descifrar os datos. Exemplos de algoritmos son AES (Advanced Encryption Standard) e DES (Data Encryption Standard).</p>
+<ul>
+<li>Exemplo: Unha base de datos cifrada con AES-256 só pode ser descifrada por persoas que teñan a clave secreta correspondente.</li>
+</ul>
+</li>
+<li>
+<p>Cifrado asimétrico: Emprega un par de chaves, unha pública e unha privada. A clave pública cifra os datos, mentres que a clave privada os descifra. A chave privada debe manterse en absoluto segredo, mentres que a chave pública se da a coñecer a todo o mundo. Entre máis coñecida sexa, mellor. Un exemplo disto é o algoritmo RSA. O principal problema deste sistema e asegurar que a identidade do propietario da chave pública é lexítimo, para o que se utilizan as entidades certificadoras (X509) ou cadeas de confianza (PGP).
+Un certificado é un conxunto de información sobre o emisor dunha información xunto coa súa chave pública asinada dixitalmente por un terceiro, que pode ser unha autoridade certificadora (X509), ou un terceiro de confianza (PGP).</p>
+</li>
+</ul>
+<h2 id="11-cifrado-e-sinadura-dixital">1.1. Cifrado e Sinadura Dixital</h2>
+<p>O uso principal da criptografía é o <strong>cifrado de datos</strong> e a <strong>sinadura dixital</strong>.</p>
+<p>O cifrado de datos usa <u><strong>cifrado simétrico</strong></u>, que é moi efectivo para cifrar grandes cantidades de información, pero presenta o problema de dar a coñecer  ós destinatarios a chave necesaria para o descifrado  (durante a comunicación da mesma existe un risco serio de interceptación da mesma, compromentendo a seguridade)</p>
+<p>O <u><strong>cifrado asimétrico</strong></u> soluciona este problema, xa que para cifrar a información basta con empregar a chave pública do destinatario  (que é o único que está en posesión da chave privada correspondente). Previamente debemos asegurarnos de que esa chave pública efectivamente corresponde co destinatario correcto .</p>
+<p>O problema neste caso é que os algoritmos de cifrado de chave asimétrica non son eficientes a hora de cifrar volúmenes grandes de información, sendo apropiados soamente para cifrar información moi breve.</p>
+<p>A solución consiste en xerar unha chave de cifrado simétrica aleatoria, cifrar o documento coa chave xerada mediante a chave pública do destinatario e adxuntar ó documento resultante ao documento cifrado (a chave de cifrado e unha información breve facil de cifrar con cifrado asimétrico).</p>
+<p>O cifrado asimétrico tamén nos permite asegurar a integridade e autoría dos documentos mediante un procedemento coñecido como <strong>Sinadura ou Firma Dixital</strong>. Este procedemento consiste en calcular un HASH (un número único) a partir da información do documento, cifrar ese hash coa chave privada e adxuntar o resultado ao documento. O receptor pode comprobar a identidade do remitente (a chave pública do remitente descifra o hash) e a integridade do documento (si se recalcula o hash do documento recibido, debe coincidir co hash descifrado).</p>
+<h2 id="12-protocolos-de-comunicación-seguros">1.2. Protocolos de Comunicación Seguros</h2>
+<p>Os protocolos de comunicación seguros garanten tanto a autenticidade do orixe da información (non repudio en orixe), a confidencialidade da información transimitida (cifrado) como a integridade da información recibida (o que se transmite é recibido sin ningún tipo de alteración).</p>
+<p>E básico que toda a transmisión de información a través de redes públicas faga uso de protocolos seguros. Entre estes protocolos destacan:</p>
+<ul>
+<li>SSH (Secure Shell): Ou secure shell, emprega cifrado asimétrico para establecer comunicacións seguras de terminal remoto, permitindo xestionar un sistema remoto con total seguridade. Posee varios subsistemas de interés como os túneis ssh, o sftp ou sshfs.</li>
+<li>VPN: As VPN (Virtual Private Networks) permite a conexión de un equipo a unha rede remota de xeito seguro.</li>
+<li>HTTPS: A comunicación HTTPS e a base da comunicación na world wide web. O uso de https resulta imprescindible, sendo o protocolo http altamente inseguro sendo susceptible tanto ao phising como a ataque MiM ou a interceptación de información, xa que toda a comunicación HTTP se realiza en texto en claro. O funcionamento do HTTPS é o seguinte:
+<ol>
+<li>O cliente indica ao servidor que desexa iniciar unha comunicación HTTPS para unha páxina concreta
+2 .O Servidor envía o seu certificado, que contén a chave pública e a información relevante sobre o site que está a visitar o cliente xunto coa súa chave pública asinada por unha entidade certificadora.</li>
+<li>O cliente recibe o certificado e comproba a sinadura dixital utilizando as chaves públicas das entidades certificadoras existentes na súa base de datos (das que se fía). Si a sinadura non corresponde con ningunha delas amosa unha mensaxe para que o cliente decida si quere correr o risco de establecer a comunicación, sabendo que non existe ningunha garantía de que o site visitado sexa o site lexítimo. Si a sinadura coincide, se comproba a validez do certificado (si non foi anulado ou está caducado) e se descifra a chave pública do site.</li>
+<li>O cliente crea unha chave de cifrado simétrico longa, a cifra coa chave pública do site e a envía.</li>
+<li>O site recibe a chave de cifrado para a comunicación, a descifra coa súa chave privada e envía o contido cifrado.</li>
+<li>O cliente recibe o contido e o descifra coa chave de cifrado.</li>
+</ol>
+<ul>
+<li>A partir dese momento todo intercambio de información será cifrado mediante a chave de cifrado que xa teñen as dúas partes. Este esquema e similar en todos os protocolos seguros.:</li>
+</ul>
+</li>
+</ul>
+<h2 id="13-seguridade-na-nube">1.3. Seguridade na Nube</h2>
+<p>A confidencialidade en contornos de computación na nube require medidas adicionais para protexer os datos almacenados en servizos externos, xa que &quot;a nube&quot; non é mais que unha rede de sistemas que pertence a un terceiro que ten pleno control sobre a mesma. Se debe:</p>
+<ul>
+<li>Establecer Cifrado de datos en repouso e en tránsito: Os datos cifranse tanto cando están almacenados na nube como cando se transmiten entre o usuario e o provedor do servizo na nube.</li>
+<li>Xestión de chaves: É fundamental que as chaves criptográficas utilizadas para cifrar os datos na nube estean baixo control do cliente, asegurando que só os usuarios autorizados poidan descifrar os datos.</li>
+</ul>
+<h2 id="2-control-de-acceso"><strong>2. Control de Acceso</strong></h2>
+<p>O control de acceso refírese á implementación de medidas que aseguran que só as persoas autorizadas poidan acceder aos sistemas e á información. O control de acceso trata varios aspectos:</p>
+<ul>
+<li>
+<p><strong>Identificación e Autenticación</strong>: Consiste en establecer a identidade dun usuario e verificar a súa autenticidade. Isto pode incluír contrasinais, autenticación multifactor (2FA ou superiores) ou biometría.</p>
+</li>
+<li>
+<p><strong>Autorización</strong>: Define os permisos dun usuario despois de ser autenticado, asegurando que só poidan realizar accións para as que están autorizados.</p>
+</li>
+</ul>
+<h2 id="3-políticas-de-seguridade"><strong>3. Políticas de Seguridade</strong></h2>
+<p>O establecemento de políticas de seguridade axuda a controlar quen ten acceso á información e como se manexa esta información dentro dunha organización. Para establecer políticas de seguridade eficientes é necesario:</p>
+<ul>
+<li>
+<p><strong>Clasificación da información</strong>: A información clasifícase segundo o seu nivel de sensibilidade (confidencial, interna, pública), e aplícanse diferentes controis de acceso en función desta clasificación.</p>
+</li>
+<li>
+<p><strong>Capacitación</strong>: Asegurar que os empregados comprendan as políticas de confidencialidade e como implementar medidas de seguridade adecuadas.cos de phishing.</p>
+</li>
+</ul>
+<h2 id="4-destrución-segura-de-datos"><strong>4. Destrución Segura de Datos</strong></h2>
+<p>Cando os datos xa non son necesarios, deben eliminarse de maneira segura para garantir que non poidan ser recuperados por persoas non autorizadas.</p>
+<ul>
+<li><strong>Borrado seguro</strong>: Os datos sobrescríbense varias veces antes de que o dispositivo ou os ficheiros sexan eliminados, de xeito que non sexa posible físicamente a recuperación dos datos.</li>
+<li><strong>Cifrado de ficheiros antes da súa eliminación</strong>: En certos casos, os ficheiros cifranse antes de ser eliminados para que, incluso se se recuperan, non poidan ser lidos sen a clave de descifrado.</li>
+</ul>
+<hr>
+<center style="background-color:#FFF;">
+ <font color="black" >
+  ⇓ pagina 3 ⇓
+ </font>
+</center>
+<hr>
+<h2 id="12-integridade"><strong><font color="yellow">1.2</font> Integridade</strong></h2>
+<p>A Integridade se refire a garantía de que a información elaborada polo emisor chega sin ningún cambio ao receptor.</p>
+<p>Para ofrecer esta garantía habitualmente se recurre a sistemas de cifrado de dirección única, na que a  partir da información se xenera un identificador único (hash) que pode ser comprobado na recepción contra a información recibida.</p>
+<p>Este tipo de sistemas se empregan de xeito extensivo na instalación de software ou nos sistemas de control de integridade establecidos para a información almacenada.</p>
+<h2 id="121-os-hash"><strong>1.2.1. Os HASH</strong></h2>
+<p>Un <strong>hash</strong> é un proceso mediante o cal unha entrada de datos, de lonxitude arbitraria, é transformada mediante unha función nunha cadea de caracteres de lonxitude fixa, que se denomina <strong>valor hash</strong>, código hash ou simplemente <strong>hash</strong>. Esta transformación é irreversible, o que significa que non se pode reconstruír a entrada orixinal a partir do hash resultante. As funcións hash son fundamentais en moitos ámbitos da informática, sobre todo en seguridade, criptografía, bases de datos e estruturas de datos como as táboas hash.</p>
+<h3 id="características-principais-dos-hash">Características principais dos HASH</h3>
+<ol>
+<li><strong>Determinismo</strong>: A mesma entrada sempre xerará o mesmo valor hash.</li>
+<li><strong>Irreversibilidade</strong>: Non é posible calcular a entrada orixinal a partir do hash, o que o fai útil para seguridade.</li>
+<li><strong>Lonxitude fixa</strong>: A saída dunha función hash sempre ten unha lonxitude fixa, independentemente do tamaño da entrada. Por exemplo, o algoritmo SHA-256 sempre produce un valor hash de 256 bits (32 bytes).</li>
+<li><strong>Difusión (Avalancha)</strong>: Un pequeno cambio na entrada produce un cambio drástico no valor hash.</li>
+<li><strong>Non colisións</strong>: Idealmente, non debería ser posible que dúas entradas diferentes xeren o mesmo hash. Cando isto ocorre, chámaselle <strong>colisión</strong>.</li>
+</ol>
+<h2 id="uso-habitual-dos-hash">Uso habitual dos HASH</h2>
+<ol>
+<li>
+<p><strong>Integridade de datos</strong>:
+Os hashes utilízanse para comprobar se os datos foron alterados. Por exemplo, cando se descarga un ficheiro de Internet, moitas veces publícase o seu hash para que o usuario poida calcular o hash do ficheiro descargado e comparalo co publicado. Se coinciden, os datos non foron alterados.</p>
+</li>
+<li>
+<p><strong>Autenticación e contrasinais</strong>:
+En lugar de almacenar contrasinais en texto plano nunha base de datos, almacénanse os seus hashes. Cando un usuario introduce o seu contrasinal, a aplicación calcula o hash dese contrasinal e compárao co que está almacenado. Deste modo, mesmo se a base de datos é comprometida, os contrasinais non serán facilmente accesibles.</p>
+</li>
+<li>
+<p><strong>Criptografía</strong>:
+En criptografía, as funcións hash criptográficas úsanse para xerar sinaturas dixitais, que permiten verificar a autenticidade e a integridade dunha mensaxe ou documento.</p>
+</li>
+<li>
+<p><strong>Táboas hash</strong>:
+As táboas hash son estruturas de datos que permiten buscar información rapidamente. Un hash calcúlase para cada elemento e o valor resultante utilízase como un índice nunha táboa ou array, facilitando así a localización rápida dun elemento.</p>
+</li>
+<li>
+<p><strong>Blockchain</strong>:
+Nunha blockchain, os hashes utilízanse para ligar os bloques entre si e garantir a integridade dos datos. Cada bloque contén o hash do bloque anterior, o que fai case imposible alterar os datos dunha blockchain sen ser detectado.</p>
+</li>
+</ol>
+<h2 id="tipos-de-hash"><strong>Tipos de HASH</strong></h2>
+<ol>
+<li>
+<p><strong>Funcións hash criptográficas</strong>: Estas funcións están deseñadas para ser seguras e difíciles de inverter ou provocar colisións, polo que son amplamente usadas en criptografía e seguridade. Algúns exemplos son:</p>
+<ul>
+<li><strong>MD5 (Message Digest 5)</strong>: Unha función hash popular nos anos 90, que produce un hash de 128 bits (16 bytes). Actualmente considérase insegura debido ás colisións coñecidas.</li>
+<li><strong>SHA-1 (Secure Hash Algorithm 1)</strong>: Función que produce un hash de 160 bits. Foi amplamente utilizada pero tamén se demostrou insegura, polo que a súa utilización está a ser substituída.</li>
+<li><strong>SHA-2</strong> (incluíndo <strong>SHA-256</strong>, <strong>SHA-512</strong>, etc.): Versións máis seguras que producen valores hash máis longos (256 bits ou 512 bits). SHA-256 é amplamente utilizado en criptografía, por exemplo, en blockchain.</li>
+<li><strong>SHA-3</strong>: Unha versión mellorada e máis moderna da familia SHA, que ofrece maior seguridade e flexibilidade.</li>
+</ul>
+</li>
+<li>
+<p><strong>Funcións hash non criptográficas</strong>: Estas funcións están deseñadas para ser rápidas e eficientes, pero non para aplicacións que requiren seguridade, xa que non teñen as mesmas propiedades criptográficas. Úsanse en estruturas de datos como táboas hash, algoritmos de busca e indexación. Exemplos:</p>
+<ul>
+<li><strong>MurmurHash</strong>: Función hash rápida deseñada para uso xeral, con boas propiedades de difusión e eficiencia.</li>
+<li><strong>CRC32 (Cyclic Redundancy Check):</strong> Un hash utilizado para verificar a integridade de datos en transmisións, pero non criptográficamente seguro.</li>
+<li><strong>FNV (Fowler-Noll-Vo)</strong>: Unha función hash sinxela e rápida deseñada para táboas hash.</li>
+</ul>
+</li>
+<li>
+<p><strong>Funcións hash para contrasinais</strong>: Estas funcións están deseñadas especificamente para almacenar contrasinais de maneira segura. O obxectivo principal é protexer contrasinais en caso de que se comprometan as bases de datos, polo que inclúen técnicas para dificultar ataques de forza bruta</p>
+<ul>
+<li><strong>bcrypt</strong>: Unha función hash que inclúe un factor de traballo para aumentar a dificultade de cálculo do hash, facéndoo resistente aos ataques de forza bruta.</li>
+<li><strong>scrypt</strong>: Deseñada para ser difícil de acelerar mediante hardware especializado, e polo tanto, máis segura contra ataques masivos.</li>
+<li><strong>Argon2</strong>: Unha das funcións hash máis modernas e seguras para contrasinais, gañadora do concurso de contrasinais de 2015.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<center style="background-color:#FFF;">
+ <font color="black" >
+  ⇓ pagina 4 ⇓
+ </font>
+</center>
+<hr>
+<h2 id="13-dispoñibildade"><strong><font color="yellow">1.3</font> Dispoñibildade</strong></h2>
+<p>A dispoñibilidade refírese á garantía de que un usuario poderá acceder á información sempre que a precise.</p>
+<p>Para garantir a dispoñibilidade da información recórrese habitualmente á redundancia:</p>
+<ul>
+<li>Redundancia nos sistemas de alimentación eléctrica e uso de SAI/UPS.</li>
+<li>Redundancia no acceso á rede: bonding de tarxetas de rede (LACP), rutas duplicadas.</li>
+<li>Redundancia na información almacenada: Uso de RAID.</li>
+<li>Redundancia na capacidade de procesamento: Uso de Clustering e balanceo de carga.</li>
+</ul>
+<p>A dispoñibilidade informática é un principio clave da seguridade da información que garante que os sistemas, servizos e datos estean accesibles e operativos para os usuarios autorizados cando o necesiten. Noutras palabras, a dispoñibilidade asegura que os recursos informáticos estean dispoñibles de forma continua, sen interrupcións indebidas.</p>
+<h2 id="principios-da-dispoñibilidade-informática"><strong>Principios da dispoñibilidade informática</strong>:</h2>
+<ul>
+<li><strong>Accesibilidade</strong>: Os usuarios autorizados deben poder acceder á información e aos recursos en calquera momento que o necesiten.</li>
+<li><strong>Continuidade do servizo</strong>: Os servizos deben permanecer operativos, mesmo en condicións adversas, como fallos de hardware, ataques ou desastres.</li>
+<li><strong>Redución dos tempos de inactividade</strong>: Minimizar o tempo que os sistemas están fóra de servizo, sexa por mantemento ou por incidentes inesperados.</li>
+</ul>
+<h2 id="medidas-para-garantir-a-dispoñibilidade-informática"><strong>Medidas para garantir a dispoñibilidade informática</strong>:</h2>
+<p>A dispoñibilidade require medidas técnicas, organizativas e físicas para previr fallos e reducir os tempos de inactividade. As máis comúns son:</p>
+<ol>
+<li>
+<p><strong>Redundancia</strong>
+A redundancia implica ter compoñentes duplicados ou alternativos que poidan asumir as funcións en caso de fallo.</p>
+<ul>
+<li><strong>Redundancia de hardware</strong>: Utilizar hardware redundante, como servidores, discos duros e fontes de alimentación. Se un compoñente falla, outro idéntico toma o control automaticamente.
+Exemplo: Un servidor de base de datos que usa discos en RAID asegura que os datos sigan sendo accesibles aínda que un dos discos falle.</li>
+<li><strong>Redundancia de rede</strong>: Ter conexións de rede redundantes para manter a conectividade mesmo se un enlace ou dispositivo de rede falla.
+Exemplo: Unha empresa ten dous provedores de Internet; se un presenta problemas, o outro toma o control sen interromper o servizo.</li>
+</ul>
+</li>
+<li>
+<p><strong>Balanceo de carga</strong>
+Distribúe as solicitudes entrantes entre varios servidores para evitar a sobrecarga dun só servidor, mellorar o rendemento e asegurar que, se un servidor falla, os outros poidan asumir o tráfico.</p>
+</li>
+</ol>
+<ul>
+<li>Exemplo: Un sitio de comercio electrónico con moito tráfico usa balanceo de carga para distribuír as solicitudes entre varios servidores web. Se un falla, as solicitudes rediríxense automaticamente a outros.</li>
+</ul>
+<ol start="3">
+<li><strong>Sistemas de respaldo e recuperación</strong></li>
+</ol>
+<p>Realizar copias de seguridade periódicas dos datos críticos e contar cun plan de recuperación ante desastres.</p>
+<ul>
+<li>Exemplo: Unha empresa fai copias de seguridade diarias da súa base de datos en nubes seguras. Se o servidor falla, os datos restáuranse desde a nube.</li>
+</ul>
+<ol start="4">
+<li><strong>Mantenimiento preventivo</strong>
+Actualizar regularmente o software e os compoñentes de hardware para previr fallos antes de que ocorran.</li>
+</ol>
+<ul>
+<li>Exemplo: Cambiar os discos duros dun servidor antes de fallen para evitar perdas de datos prestando atención a información SMART e aos fallos dos RAID</li>
+</ul>
+<ol start="5">
+<li>
+<p><strong>Sistemas de monitoreo</strong>
+Monitorización continua dos sistemas para detectar problemas de rendemento ou fallos inminentes.</p>
+<ul>
+<li>Exemplo: Un sistema de monitoreo alerta ao equipo de TI cando un dos routers presenta latencia elevada, permitindo actuar antes de que afecte os usuarios.</li>
+</ul>
+</li>
+<li>
+<p><strong>Clústeres de alta dispoñibilidade</strong>
+Un conxunto de servidores que traballan xuntos para manter operativos os servizos, aínda que un ou máis fallen.</p>
+</li>
+</ol>
+<ul>
+<li>Exemplo: Un sistema de bases de datos críticas usa un clúster de alta dispoñibilidade; se o servidor principal falla, outro asume o control automaticamente.</li>
+</ul>
+<ol start="7">
+<li><strong>Protección contra ataques DDoS</strong>
+Implementar medidas para mitigar ataques de denegación de servizo distribuído (DDoS).</li>
+</ol>
+<ul>
+<li>Exemplo: Un provedor de servizos en nube ofrece protección DDoS, filtrando solicitudes maliciosas antes de que cheguen aos servidores.</li>
+</ul>
+<ol start="8">
+<li><strong>Centros de datos distribuídos (georeplicación)</strong>
+Ter copias dos servizos en varias localizacións xeográficas para que, se unha ubicación falla, os servizos sigan funcionando desde outra.</li>
+</ol>
+<ul>
+<li>Exemplo: Unha plataforma de streaming como Netflix usa georeplicación para asegurar a dispoñibilidade mundial do servizo.</li>
+</ul>
+<ol start="9">
+<li>
+<p><strong>Políticas de escalabilidade</strong>
+A capacidade dun sistema para escalar automaticamente en función da demanda.</p>
+<ul>
+<li>Exemplo: Durante o Black Friday, as tendas en liña escalan automaticamente os servidores para manexar o aumento de tráfico.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<center style="background-color:#FFF;">
+ <font color="black" >
+  ⇓ pagina 5 ⇓
+ </font>
+</center>
+<hr>
+<h2 id="14-non-repudio"><strong><font color="yellow">1.4</font> Non Repudio</strong></h2>
+<p>O repudio refírese á negación dunha acción ou dun evento por parte dun participante nun proceso. No contexto da seguridade informática, o repudio ten que ver coa posibilidade de que un usuario ou entidade negue ter realizado algunha acción, como o envío dun mensaxe, a recepción de información ou a participación nunha transacción.</p>
+<h2 id="tipos-de-repudio"><strong>Tipos de Repudio</strong></h2>
+<p><strong>Repudio da orixe (ou do remitente)</strong>:
+Ocorre cando unha entidade nega ter enviado unha mensaxe ou iniciado unha acción. Por exemplo, un usuario podería negar ter enviado un correo electrónico ou realizado unha transacción financeira.</p>
+<p><strong>Repudio do receptor (ou do destinatario)</strong>:
+Ocorre cando unha entidade nega ter recibido unha mensaxe ou certa información. Neste caso, un usuario podería afirmar que nunca recibiu un correo ou un documento importante.</p>
+<h2 id="garantindo-o-non-repudio"><strong>Garantindo o Non Repudio</strong></h2>
+<p>Para evitar o repudio e asegurar que unha entidade non poida negar ter realizado ou recibido unha acción, utilízanse varias técnicas criptográficas e legais. Aquí están os métodos máis comúns:</p>
+<ol>
+<li>
+<p><strong>Sinaturas dixitais</strong>:<br>
+As sinaturas dixitais garanten que unha mensaxe foi enviada por un remitente específico e que non foi alterada. Funcionan mediante o uso de criptografía de chave pública.<br>
+Cando unha persoa envía unha mensaxe, asina o contido usando a súa chave privada. O destinatario pode verificar esta sinatura coa chave pública do remitente.
+Isto garante que a mensaxe provén do remitente e non pode ser repudiada.</p>
+<ul>
+<li>Exemplo: Unha persoa asina un contrato dixitalmente; a sinatura asegura que non poderá negar a súa participación na creación ou aceptación do documento.</li>
+</ul>
+</li>
+<li>
+<p><strong>Marcas de tempo (timestamps)</strong>:<br>
+Unha marca de tempo utilízase para rexistrar o momento exacto no que ocorreu unha transacción ou se enviou unha mensaxe. Estas marcas adoitan estar asinadas por unha autoridade de certificación confiable.<br>
+As marcas de tempo garanten que unha transacción ou mensaxe se enviou ou recibiu nun momento específico e evitan que un remitente ou receptor negue a temporalidade dun evento.</p>
+<ul>
+<li>Exemplo: Un servizo de transaccións financeiras inclúe unha marca de tempo asinada para garantir que unha transacción se realizou a unha hora e data específicas.</li>
+</ul>
+</li>
+<li>
+<p><strong>Selos dixitais</strong>:<br>
+Un selo dixital é unha técnica usada para garantir a autenticidade dun documento e para asegurar que non foi alterado dende a súa creación ou aprobación.
+Ao selar dixitalmente un documento, pódese garantir tanto a autenticidade do emisor como a integridade do contido, evitando así que o emisor negue ter enviado o documento ou modificado o seu contido.</p>
+<ul>
+<li>Exemplo: Un servizo de correo electrónico que aplica un selo dixital aos correos enviados para garantir que non foron alterados e que realmente foron enviados polo emisor lexítimo.</li>
+</ul>
+</li>
+<li>
+<p><strong>Autoridades de Certificación (CAs)</strong>:<br>
+As autoridades de certificación emiten certificados dixitais que validan a identidade das partes nunha comunicación.
+Nun sistema de chave pública, unha CA garante que unha chave pública pertence a unha persoa ou entidade específica. Se alguén tenta negar ter asinado unha mensaxe, a CA pode proporcionar evidencia en forma dun certificado dixital.</p>
+<ul>
+<li>Exemplo: Cando se asina un contrato en liña, a CA valida que o asinante é efectivamente quen di ser, o que evita que este poida negar a súa participación.</li>
+</ul>
+</li>
+<li>
+<p><strong>Rexistros de auditoría (logs)</strong>:<br>
+Os rexistros de auditoría son unha ferramenta útil para proporcionar probas en caso de repudio. Estes rexistros documentan cada paso ou transacción realizada nun sistema, o que permite rastrexar a actividade do usuario.
+Estes rexistros poden estar protexidos contra manipulacións mediante selos dixitais e poden servir como probas en caso de disputa.</p>
+<ul>
+<li>Exemplo: Un sistema de banca en liña garda un rexistro de todas as transaccións realizadas, con marcas de tempo e direccións IP, para evitar que un usuario negue ter realizado unha transferencia.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<center style="background-color:#FFF;">
+ <font color="black" >
+  ⇓ pagina 6 ⇓
+ </font>
+</center>
+<hr>
+<h1 id="seguridade-física-e-seguridade-lóxica"><strong>Seguridade Física e Seguridade Lóxica</strong></h1>
+<h2 id="21-seguridade-física"><strong><font color="yellow">2.1</font> Seguridade Física</strong></h2>
+<p>A seguridade física é fundamental para garantir a protección dos activos tecnolóxicos e humanos contra ameazas como desastres naturais, roubo, vandalismo e ataques. Nos entornos tecnolóxicos actuais, como os <strong>Centros de Procesamento de Datos (CPD)</strong>, a seguridade física é especialmente crucial para preservar a continuidade das operacións e a integridade dos datos. Ademais, os <strong>Sistemas de Alimentación Ininterrompida (UPS/SAI)</strong> xogan un papel clave para evitar fallos de subministración eléctrica que poderían provocar interrupcións graves.</p>
+<p>A <strong>seguridade física</strong> refírese ás accións tomadas para protexer as instalacións e os recursos materiais contra danos ou accesos non autorizados. Inclúe tanto medidas preventivas como dispositivos de protección que buscan minimizar os riscos asociados á infraestrutura física onde se almacenan e procesan datos importantes.</p>
+<p><strong>Principais Medidas de Seguridade Física</strong>:</p>
+<ol>
+<li>
+<p><strong>Control de acceso</strong>: Emprego de tarxetas de acceso, controis biométricos (pegadas dixitais, recoñecemento facial) ou códigos para limitar a entrada a áreas restrinxidas.</p>
+</li>
+<li>
+<p><strong>Vixilancia</strong>: Cámaras de seguridade, alarmas e sensores de movemento que permiten monitorizar continuamente as instalacións, especialmente en zonas críticas como os CPD.</p>
+</li>
+<li>
+<p><strong>Barreiras físicas</strong>: Portas reforzadas, ventás con protección antiintrusión, cercados ou muros que restrinxen o acceso non autorizado ás instalacións.</p>
+</li>
+<li>
+<p><strong>Controis ambientais</strong>: Inclúen sistemas de detección e extinción de incendios, sistemas de climatización para regular a temperatura, e sistemas contra inundacións que protexen os equipos contra fenómenos ambientais adversos.</p>
+</li>
+</ol>
+<p>Os <strong>Centros de Procesamento de Datos (CPD)</strong> son instalacións que albergan equipos críticos, como servidores e sistemas de almacenamento de datos, que permiten o procesamento e o almacenamento de información a gran escala. Estas instalacións son o corazón de moitas operacións tecnolóxicas, xa que soportan desde o funcionamento de sitios web ata aplicacións empresariais e bases de datos. O uso de CPD permite:</p>
+<ol>
+<li>
+<p><strong>Garantir a dispoñibilidade dos datos</strong>: Un CPD debe manter os sistemas en funcionamento de forma continua, evitando interrupcións que poidan afectar aos servizos dependentes.</p>
+</li>
+<li>
+<p><strong>Protección de datos críticos</strong>: Os CPD almacenan grandes volumes de datos sensibles que deben estar protexidos tanto contra ataques físicos como contra desastres naturais ou fallos de enerxía.</p>
+</li>
+<li>
+<p><strong>Redundancia e recuperación</strong>: Moitos CPD implementan sistemas redundantes que garanten a continuidade operativa en caso de fallo dalgún compoñente. Ademais, están preparados para permitir a recuperación rápida dos datos en caso de desastre.</p>
+</li>
+<li>
+<p><strong>Xestión de grandes volumes de tráfico e datos</strong>: Os CPD están deseñados para xestionar volumes masivos de datos de maneira eficiente e segura, cunha infraestrutura que soporta o rendemento necesario.</p>
+</li>
+</ol>
+<h2 id="redundancia-na-alimentación-eléctrica-saiups"><strong>Redundancia na alimentación eléctrica (SAI/UPS)</strong></h2>
+<p>Os sistemas <strong>UPS/SAI (Sistema de Alimentación Ininterrompida)</strong> son un compoñente vital nos CPD e outras instalacións críticas, xa que proporcionan enerxía temporal durante cortes ou fluctuacións de corrente, garantindo que os sistemas non sufran danos nin perdas de datos.</p>
+<p>Un <strong>UPS/SAI</strong> é un dispositivo que actúa como unha fonte de enerxía de emerxencia. Almacena enerxía en baterías e actívase cando se produce un corte de subministración eléctrica, mantendo operativos os equipos conectados ata que se restaure a enerxía ou ata que se poida realizar un apagado controlado dos sistemas.</p>
+<h2 id="compoñentes-dun-upssai"><strong>Compoñentes dun UPS/SAI</strong></h2>
+<ul>
+<li>Batería: Almacena enerxía para alimentar os dispositivos en caso de fallo de subministración.</li>
+<li>Rectificador: Converte a corrente alterna (CA) en corrente continua (CC) para cargar as baterías.</li>
+<li>Inversor: Converte a corrente continua (CC) das baterías de novo en corrente alterna (CA) para ser utilizada polos dispositivos conectados.</li>
+<li>Bypass: Permite que a corrente pase directamente aos dispositivos no caso de que o sistema UPS teña un problema.</li>
+</ul>
+<h2 id="tipos-de-upssai"><strong>Tipos de UPS/SAI</strong></h2>
+<ol>
+<li>
+<p>UPS Standby (Off-line): Proporciona enerxía de emerxencia só cando detecta un fallo de subministración eléctrica. Útil para equipos menos críticos.</p>
+</li>
+<li>
+<p>UPS Line-Interactive: Pode axustar as variacións de tensión sen utilizar a batería, proporcionando unha protección extra contra flutuacións.</p>
+</li>
+<li>
+<p>UPS On-line (Dobre Conversión): O máis avanzado, sempre filtra e estabiliza a corrente antes de entregala aos equipos. Ideal para CPD e instalacións críticas.</p>
+</li>
+</ol>
+<h2 id="vantaxes-dun-upssai"><strong>Vantaxes dun UPS/SAI</strong></h2>
+<ul>
+<li>Evita a perda de datos: O UPS garante que, en caso de corte, haxa tempo suficiente para salvar datos e realizar un apagado controlado.</li>
+<li>Prevención de danos: Protexe os equipos contra sobrevoltaxes ou variacións que poderían danalos.</li>
+<li>Minimiza o tempo de inactividade: Os sistemas críticos seguen funcionando ata que se restaure a enerxía ou se utilicen outras fontes de enerxía de emerxencia (como xeradores).</li>
+</ul>
+<h2 id="selección-dun-upssai-para-un-cpd"><strong>Selección dun UPS/SAI para un CPD</strong></h2>
+<p>Ao seleccionar un UPS/SAI para un CPD, hai varios factores clave que considerar:</p>
+<ul>
+<li><strong>Capacidade</strong>: O valor nominal de volt-amperios (VA) debe ser superior á carga que soportarán os equipos conectados.</li>
+<li><strong>Tempo de autonomía</strong>: O tempo que o UPS pode alimentar os equipos despois dun corte debe ser suficiente para asegurar o funcionamento ata que se active o xerador ou se realice un apagado seguro.</li>
+<li><strong>Compatibilidade</strong>: Debe ser compatible cos equipos e ofrecer funcionalidades avanzadas, como a monitorización remota.</li>
+</ul>
+<p>Os sistemas UPS/SAI forman parte dunha estratexia global de seguridade física nun CPD. Algúns outros compoñentes vitais inclúen:</p>
+<ul>
+<li><strong>Xeradores de respaldo</strong>: Para cortes prolongados, un UPS pode proporcionar enerxía temporal, pero un xerador de respaldo garante o funcionamento continuo a longo prazo.</li>
+<li><strong>Sistemas de climatización</strong>: Os servidores e equipos de alto rendemento producen unha gran cantidade de calor. Un sistema de climatización eficiente evita o sobrequecemento e os danos aos equipos.</li>
+<li><strong>Sistemas de extinción de incendios</strong>: O uso de sistemas automáticos de detección e extinción de incendios evita a destrución de equipos e perda de datos.</li>
+<li><strong>Protección contra inundacións</strong>: A localización e deseño do CPD deben minimizar o risco de inundacións, especialmente en áreas con alto risco de desastres naturais.</li>
+</ul>
+<p>A seguridade física é especialmente importante en ambientes críticos como os <strong>Centros de Procesamento de Datos</strong>, xa que calquera interrupción, acceso non autorizado ou dano pode provocar fallos masivos nos sistemas que dependen destes datos. Ademais de protexer os equipos e datos, a seguridade física tamén garante a continuidade operativa das organizacións que dependen destes servizos.</p>
+<h2 id="22-seguridade-lóxica"><strong><font color="yellow">2.2</font> Seguridade Lóxica</strong></h2>
+<p>A <strong>seguridade lóxica</strong> refírese ao conxunto de medidas, ferramentas e procedementos empregados para protexer os sistemas de información e os seus activos dixitais fronte a accesos non autorizados, modificacións, roubos ou ataques que comprometan a súa integridade, confidencialidade e dispoñibilidade. Mentres a seguridade física se ocupa da protección dos compoñentes físicos (servidores, dispositivos de rede, centros de datos), a seguridade lóxica enfócase na protección dos recursos dixitais a través de medidas de control e protección a nivel de software e datos.</p>
+<h2 id="compoñentes-da-seguridade-lóxica"><strong>Compoñentes da Seguridade Lóxica</strong></h2>
+<h3 id="221-control-de-acceso">2.2.1 <strong>Control de acceso</strong>:</h3>
+<ul>
+<li>
+<p>O control de acceso refírese á capacidade de restrinxir quen pode ver, modificar ou interactuar con sistemas e datos específicos. Isto inclúe tanto o acceso físico (aos dispositivos) como o acceso a nivel de software.</p>
+</li>
+<li>
+<p>Existen diferentes tipos de control de acceso:</p>
+<ul>
+<li><strong>Autenticación</strong>: Verificación da identidade dun usuario ou sistema. Isto inclúe contrasinais, tarxetas intelixentes, tokens de hardware, ou métodos biométricos (impresións dixitais, recoñecemento facial).</li>
+<li><strong>Autorización</strong>: Definición dos permisos que se outorgan a usuarios ou sistemas unha vez autenticados. Pódese implementar a través de mecanismos como listas de control de acceso (ACLs), políticas baseadas en roles (RBAC), ou políticas baseadas en atributos (ABAC).</li>
+<li><strong>Auditoría e rexistro de eventos</strong>: Os sistemas rexistran eventos importantes, como accesos ou modificacións de datos, para analizar posibles problemas de seguridade, identificar comportamentos sospeitosos ou investigar incidentes.</li>
+</ul>
+</li>
+</ul>
+<h3 id="222-cifrado-de-datos">2.2.2 <strong>Cifrado de datos</strong>:</h3>
+<ul>
+<li>O cifrado é unha técnica clave da seguridade lóxica que garante que os datos sexan ilegibles para calquera que non teña as credenciais correctas para descifralos. Este proceso pódese aplicar tanto aos datos almacenados como aos datos en tránsito.
+<ul>
+<li><strong>Cifrado de datos en tránsito</strong>: Protexe os datos que se están transmitindo entre dispositivos a través de redes. Protocolos como TLS (Transport Layer Security) e VPNs (Virtual Private Networks) son comúns neste ámbito.</li>
+<li><strong>Cifrado de datos en repouso</strong>: Protexe os datos almacenados en discos duros, bases de datos ou sistemas de almacenamento en nube. Un exemplo sería o uso de cifrado AES (Advanced Encryption Standard) en bases de datos.</li>
+</ul>
+</li>
+</ul>
+<h3 id="223-autenticación-multifactor-mfa">2.2.3 <strong>Autenticación multifactor (MFA)</strong>:</h3>
+<ul>
+<li>A MFA é unha medida de seguridade lóxica que require que o usuario proporcione varias formas de identificación para acceder a un sistema ou servizo. Adoita combinar algo que o usuario sabe (como un contrasinal), algo que ten (como un token ou código xerado por unha aplicación), e algo que é (como unha característica biométrica).</li>
+<li>O MFA engade unha capa adicional de seguridade fronte ao roubo de credenciais, xa que o atacante necesitaría acceder a múltiples factores para comprometer o sistema.</li>
+</ul>
+<h3 id="224-firewall-e-sistemas-de-control-de-tráfico">2.2.4 <strong>Firewall e sistemas de control de tráfico</strong>:</h3>
+<ul>
+<li>Un <strong>firewall</strong> é un mecanismo que controla o tráfico de rede entrante e saínte, baseándose nun conxunto de regras de seguridade predeterminadas. Estes sistemas poden ser hardware, software ou unha combinación de ambos.
+<ul>
+<li><strong>Firewall de rede</strong>: Controla o acceso a nivel de rede, protexendo contra ataques externos.</li>
+<li><strong>Firewall de aplicación</strong>: Específico para a protección de aplicacións web ou outras aplicacións de usuario, filtrando solicitudes maliciosas como SQL injection ou cross-site scripting.</li>
+<li><strong>WAF (Web Application Firewall)</strong>: Firewall especializado que protexe aplicacións web contra ataques como SQL injection ou cross-site scripting (XSS).</li>
+</ul>
+</li>
+</ul>
+<h3 id="225-sistemas-de-detección-e-prevención-de-intrusións-idsips">2.2.5 <strong>Sistemas de detección e prevención de intrusións (IDS/IPS)</strong>:</h3>
+<ul>
+<li>Os <strong>IDS (Intrusion Detection Systems)</strong> son sistemas que monitorizan o tráfico de rede ou actividades de sistemas para detectar comportamentos anómalos ou ataques coñecidos, xerando alertas cando se detectan.</li>
+<li>Os <strong>IPS (Intrusion Prevention Systems)</strong> van un paso máis aló, xa que non só detectan intrusións senón que tamén actúan para bloquealas en tempo real.</li>
+</ul>
+<h3 id="226-sistemas-de-xestión-de-seguridade-da-información-siem">2.2.6 <strong>Sistemas de xestión de seguridade da información (SIEM)</strong>:</h3>
+<ul>
+<li>Un <strong>SIEM (Security Information and Event Management)</strong> é unha ferramenta que agrega, analiza e correlaciona os eventos de seguridade rexistrados por varios sistemas da rede, como firewalls, IDS/IPS e servidores. Permite a análise en tempo real e a detección de ameazas, proporcionando unha visión xeral do estado da seguridade na organización.</li>
+</ul>
+<h3 id="227-actualizacións-e-parches-de-software">2.2.7 <strong>Actualizacións e parches de software</strong>:</h3>
+<ul>
+<li>Unha parte crítica da seguridade lóxica consiste en manter os sistemas actualizados. As vulnerabilidades son descubertas de maneira continua, e os desenvolvedores lanzan parches para corrixilas. Non aplicar estes parches deixa os sistemas vulnerables a exploits coñecidos.</li>
+</ul>
+<h3 id="228-xestión-de-identidades-e-accesos-iam">2.2.8 <strong>Xestión de identidades e accesos (IAM)</strong>:</h3>
+<ul>
+<li>O <strong>IAM (Identity and Access Management)</strong> refírese a políticas, procedementos e ferramentas utilizadas para xestionar as identidades dixitais dos usuarios e garantir que só teñan acceso aos recursos que precisan.
+<ul>
+<li>Funcións clave inclúen a creación de contas de usuario, asignación de roles, autenticación e control de acceso en función do nivel de privilexio.</li>
+</ul>
+</li>
+</ul>
+<h3 id="229-prevención-contra-malware">2.2.9 <strong>Prevención contra malware</strong>:</h3>
+<ul>
+<li>O malware é unha das ameazas máis comúns á seguridade lóxica. As solucións anti-malware monitorizan os sistemas en busca de software malicioso, como virus, troianos ou ransomware. Estas ferramentas están deseñadas para detectar, bloquear e eliminar malware, protexendo os sistemas contra comprometementos.</li>
+</ul>
+<h3 id="2210-respaldo-e-recuperación-de-datos">2.2.10 <strong>Respaldo e recuperación de datos</strong>:</h3>
+<ul>
+<li>A seguridade lóxica tamén abarca a protección dos datos mediante copias de seguridade periódicas, que garanten a continuidade do negocio en caso de ataque ou fallo. Ademais, os plans de recuperación ante desastres (DRP) son esenciais para asegurar que os sistemas poidan recuperarse rápidamente tras un ataque ou incidente de seguridade.</li>
+</ul>
+<hr>
+<center style="background-color:#FFF;">
+ <font color="black" >
+  ⇓ pagina 7 ⇓
+ </font>
+</center>
+<hr>
+<h1 id="ameazas-ataques-e-vulnerabilidades"><strong>Ameazas, Ataques e Vulnerabilidades</strong></h1>
+<hr>
+<h2 id="31-ameaza"><strong><font color="yellow">3.1</font> Ameaza</strong></h2>
+<p>Unha <strong>ameaza</strong> é calquera posible evento, entidade ou circunstancia que poida explotar unha vulnerabilidade nun sistema ou activo de información, causando dano ou comprometendo a súa seguridade. As ameazas poden ser naturais, humanas ou tecnolóxicas. Algunhas son intencionadas (como un ataque informático) e outras poden ser accidentais ou de carácter natural.</p>
+<h3 id="311-definición-de-ameaza"><strong>3.1.1 Definición de Ameaza</strong></h3>
+<p>Unha <strong>ameaza</strong> é calquera evento, acción ou entidade que poida explotar unha vulnerabilidade e provocar danos nun sistema. As ameazas poden ser:</p>
+<ul>
+<li>
+<p><strong>Naturais</strong>: Como desastres naturais que causan fallos en infraestruturas críticas.</p>
+</li>
+<li>
+<p><strong>Humanas</strong>: Como ataques maliciosos (hackers, organizacións criminais) ou erros cometidos por usuarios e administradores.</p>
+</li>
+<li>
+<p><strong>Accidentais</strong>: Fallos técnicos ou humanos sen intención maliciosa que resultan en perda de datos ou interrupcións de servizo.</p>
+</li>
+</ul>
+<h3 id="312-tipos-de-ameazas"><strong>3.1.2 Tipos de ameazas</strong></h3>
+<ul>
+<li><strong>Naturais</strong>: Desastres naturais como inundacións, terremotos, incendios, etc., que poden danar os sistemas informáticos.</li>
+<li><strong>Humanas</strong>: Poden ser intencionadas (como ciberataques) ou accidentais (como un erro dun usuario que comprometa a seguridade).</li>
+<li><strong>Tecnolóxicas</strong>: Fallos de hardware ou software, obsolescencia tecnolóxica, entre outros.</li>
+</ul>
+<hr>
+<h2 id="32ataque"><strong><font color="yellow">3.2</font>Ataque</strong></h2>
+<p>Un <strong>ataque</strong> é unha acción deliberada e malintencionada executada por un axente (persoa, grupo ou programa) para explotar unha vulnerabilidade nun sistema, co obxectivo de danar, roubar, modificar ou destruír datos, ou comprometer a confidencialidade, integridade ou dispoñibilidade da información.</p>
+<h3 id="321-definición-e-taxonomía-de-ataques"><strong>3.2.1 Definición e Taxonomía de Ataques</strong></h3>
+<p>Os ataques son accións levadas a cabo por ameazas para explotar vulnerabilidades.</p>
+<h3 id="322-tipos-de-ataques"><strong>3.2.2 Tipos de ataques</strong></h3>
+<ul>
+<li><strong>Ataques activos</strong>: O atacante realiza cambios directos no sistema, como a modificación de datos ou a interrupción de servizos. Exemplo: Un ataque de denegación de servizo (DoS) que sobrecarga un servidor para deixalo inoperativo.</li>
+<li><strong>Ataques pasivos</strong>: O atacante intercepta datos sen alterar o sistema. Exemplo: Espiar o tráfico de rede para obter información confidencial.</li>
+</ul>
+<h3 id="323-fases-dun-ataque"><strong>3.2.3 Fases dun Ataque</strong></h3>
+<p>Os ataques adoitan seguir unha serie de fases:</p>
+<ol>
+<li>
+<p><strong>Recoñecemento</strong>: Recopilación de información sobre o obxectivo (ex: footprinting, scanning).</p>
+</li>
+<li>
+<p><strong>Escaneo</strong>: Exploración activa de portas abertas, servizos en execución e vulnerabilidades que poidan ser explotadas.</p>
+</li>
+<li>
+<p><strong>Gañar acceso</strong>: Explotar a vulnerabilidade para obter acceso a recursos ou información.</p>
+</li>
+<li>
+<p><strong>Mantemento do acceso</strong>: Usar backdoors ou outros mecanismos para manter o control do sistema.</p>
+</li>
+<li>
+<p><strong>Cubrir os rastros</strong>: Eliminar rexistros e outros trazos para evitar a detección.</p>
+</li>
+</ol>
+<h3 id="324-taxonomía-de-ataques"><strong>3.2.4 Taxonomía de Ataques</strong>:</h3>
+<ul>
+<li>
+<p><strong>Ataques pasivos</strong>: Observación ou espionaxe de comunicacións sen alteración dos datos (ex: sniffing, eavesdropping).</p>
+</li>
+<li>
+<p><strong>Ataques activos</strong>: Modificación ou interrupción de datos e servizos (ex: man-in-the-middle, SQL injection).</p>
+</li>
+<li>
+<p><strong>Ataques de negación de servizo (DoS)</strong>: Intento de sobrecargar un sistema para facelo inaccesible aos usuarios lexítimos.</p>
+</li>
+<li>
+<p><strong>Ataques internos</strong>: Cando o atacante é un empregado ou usuario con acceso autorizado que utiliza ese acceso para comprometer o sistema.</p>
+</li>
+</ul>
+<hr>
+<h2 id="33vulnerabilidade"><strong><font color="yellow">3.3</font>Vulnerabilidade</strong></h2>
+<p>Unha vulnerabilidade é unha debilidade ou falla nun sistema, no deseño, implementación ou configuración de software ou hardware que pode ser explotada por unha ameaza para causar dano ou comprometer a seguridade dos activos de información. As vulnerabilidades deben identificarse e corrixirse antes de que poidan ser explotadas por un atacante.</p>
+<h3 id="331-taxonomía-de-vulnerabilidades"><strong>3.3.1 Taxonomía de Vulnerabilidades</strong></h3>
+<p>As vulnerabilidades clasifícanse en función de factores como:</p>
+<ul>
+<li>
+<p><strong>Software</strong>: Erros no código ou na lóxica de aplicacións, sistemas operativos e servizos que permiten a explotación por parte de atacantes. Exemplos: buffer overflow, fallos de autenticación, SQL injection, XSS.</p>
+</li>
+<li>
+<p><strong>Hardware</strong>: Fallos no deseño ou na fabricación de compoñentes físicos que poidan ser explotados, como as vulnerabilidades en procesadores (Meltdown, Spectre).</p>
+</li>
+<li>
+<p><strong>Redes</strong>: Configuracións incorrectas en dispositivos de rede, protocolos de comunicación inseguros ou falta de cifrado, que permiten escoitar comunicacións ou realizar ataques de Man-in-the-Middle (MitM).</p>
+</li>
+<li>
+<p><strong>Humanas</strong>: Erros cometidos por usuarios ou administradores, como a configuración inadecuada de sistemas ou a divulgación de credenciais sensibles.</p>
+</li>
+<li>
+<p><strong>De Configuración</strong>: Configuracións incorrectas dun sistema que deixan portas abertas para os atacantes, como contrasinais por defecto sen cambiar ou portas non seguras abertas.</p>
+</li>
+<li>
+<p><strong>Fsicas</strong>: Aquelas que permiten o acceso físico non autorizado a sistemas ou dispositivos.</p>
+</li>
+</ul>
+<h3 id="332-clasificación-das-vulnerabilidades"><strong>3.3.2 Clasificación das Vulnerabilidades</strong></h3>
+<p>As vulnerabilidades pódense clasificar por:</p>
+<h4 id="gravidade"><strong>Gravidade</strong>:</h4>
+<ul>
+<li><strong>Críticas</strong>: Fallas que permiten a execución remota de código ou acceso completo sen autorización. Exemplo: execución remota en servizos sen parches.</li>
+<li><strong>Altas</strong>: Vulnerabilidades que poden ser explotadas con certas condicións pero que levan a un acceso significativo ou interrupcións.</li>
+<li><strong>Medias/Baixas</strong>: Poden non levar directamente a un impacto severo, pero aínda así expoñen o sistema a riscos menores ou actúan como puntos de entrada para ataques máis complexos.</li>
+</ul>
+<h4 id="categoría-técnica"><strong>Categoría técnica</strong>:</h4>
+<ul>
+<li><strong>Erro de autorización</strong>: Falta de control sobre os permisos dos usuarios.</li>
+<li><strong>Erros de configuración</strong>: Configuracións incorrectas que expoñen recursos de maneira innecesaria (ex: bases de datos abertas a Internet sen control de acceso).</li>
+<li><strong>Erro de autenticación</strong>: Fallos nos mecanismos de autenticación que permiten acceso non autorizado.</li>
+</ul>
+<h4 id="por-orixe"><strong>Por orixe:</strong></h4>
+<ul>
+<li><strong>Erro humano</strong>: Falta de actualización, erro na configuración de seguridade.</li>
+<li><strong>Erros de deseño ou implementación</strong>: Fallos no código ou arquitecturas inseguras.</li>
+</ul>
+<h4 id="por-tipo-de-sistema"><strong>Por tipo de sistema</strong>:</h4>
+<ul>
+<li><strong>Sistemas operativos</strong>: Vulnerabilidades nos sistemas que controlan o hardware.</li>
+<li><strong>Aplicacións web</strong>: Como SQL injection ou Cross-Site Scripting (XSS).</li>
+<li><strong>Infraestrutura de rede</strong>: Configuracións de router inseguras ou protocolos mal implementados.</li>
+</ul>
+<h3 id="333-os-exploits-ou-probas-de-concepto"><strong>3.3.3 Os Exploits ou Probas de Concepto</strong></h3>
+<ul>
+<li><strong>Exploit</strong>: Un <strong>exploit</strong> é unha ferramenta ou software que aproveita unha vulnerabilidade. Os exploits poden ser utilizados para probar sistemas de forma lexítima, ou con intención maliciosa para realizar un ataque.
+<ul>
+<li><strong>Exploits zero-day</strong>: Son os que explotan vulnerabilidades descoñecidas polo público ou o fabricante, sendo especialmente perigosos.</li>
+</ul>
+</li>
+<li><strong>Proba de Concepto (PoC)</strong>: Un PoC é unha demostración que mostra como pode ser explotada unha vulnerabilidade. Moitas veces úsase para fins de investigación, para alertar aos desenvolvedores sen danar sistemas reais.</li>
+</ul>
+<h3 id="334-divulgación-das-vulnerabilidades"><strong>3.3.4 Divulgación das Vulnerabilidades</strong></h3>
+<p>A <strong>divulgación de vulnerabilidades</strong> é o proceso de comunicar a existencia dunha falla de seguridade. Pode ser:</p>
+<ul>
+<li>
+<p><strong>Divulgación responsable</strong>: O investigador informa aos fabricantes ou desenvolvedores, permitindo que teñan tempo para resolver o problema antes de facelo público.</p>
+</li>
+<li>
+<p><strong>Divulgación pública</strong>: A vulnerabilidade faise pública inmediatamente, sen dar tempo ao fabricante de corrixir o problema, o que pode poñer en perigo aos usuarios.</p>
+</li>
+<li>
+<p><strong>Divulgación coordinada</strong>: Cando as vulnerabilidades se comunican a múltiples partes interesadas para garantir unha solución oportuna.</p>
+</li>
+<li>
+<p><strong>Non divulgación</strong>: A vulnerabilidade se mantén en segredo, sen comunicar a ningunha parte constituindo unha Zero Day.</p>
+</li>
+</ul>
+<h3 id="335-bases-de-datos-de-vulnerabilidades"><strong>3.3.5 Bases de Datos de Vulnerabilidades</strong></h3>
+<p>As bases de datos de vulnerabilidades son recursos que catalogan e fan un seguimento das vulnerabilidades coñecidas. Exemplos principais:</p>
+<ul>
+<li>
+<p><strong>CVE (Common Vulnerabilities and Exposures)</strong>: Unha base de datos que asigna un identificador único a cada vulnerabilidade coñecida.</p>
+</li>
+<li>
+<p><strong>NVD (National Vulnerability Database)</strong>: Unha extensión de CVE, que proporciona información detallada sobre as vulnerabilidades e clasifica a súa severidade mediante métricas como o <strong>CVSS (Common Vulnerability Scoring System)</strong>.</p>
+</li>
+</ul>
+<h2 id="34-risco-e-impacto"><strong><font color="yellow">3.4</font> Risco e Impacto</strong></h2>
+<h3 id="341-risco"><strong>3.4.1 Risco</strong></h3>
+<p>O <strong>risco</strong> na seguridade informática refírese á probabilidade de que unha ameaza explote unha vulnerabilidade, e ás consecuencias dese evento sobre os activos ou sistemas afectados. A xestión de riscos é unha parte esencial na seguridade, que inclúe avaliar as vulnerabilidades, valorar o impacto potencial e implementar medidas para reducir ou eliminar o risco.</p>
+<h3 id="342-impacto"><strong>3.4.2 Impacto</strong></h3>
+<p>O <strong>impacto</strong> refírese ao efecto que a explotación dunha vulnerabilidade pode ter nun sistema ou organización. O impacto inclúe:</p>
+<ul>
+<li><strong>Perda de datos sensibles</strong>: Datos persoais, financeiros ou comerciais comprometidos.</li>
+<li><strong>Interrupción dos servizos</strong>: Caída de sistemas ou aplicacións críticas, afectando a operación.</li>
+<li><strong>Perda financeira</strong>: Custos asociados á reparación de danos ou recuperación de datos.</li>
+<li><strong>Danos reputacionais</strong>: Perda de confianza dos clientes e socios comerciais debido a incidentes de seguridade.</li>
+</ul>
+
+            
+            
+        </body>
+        </html>
