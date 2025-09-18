@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>CONSULTAR EL CAT&Aacute;LOGO&comma; TABLESPACES Y DATAFILES</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h2 id="consultar-el-catálogo-tablespaces-y-datafiles">CONSULTAR EL CATÁLOGO, TABLESPACES Y DATAFILES</h2>
+<p>Los tablespaces son la unidad lógica en la que se engloban los objetos de la base de
+datos y que se corresponde con al menos un datafile (que es un fichero físico de la base
+de datos que se encuentra en el oradata). Existe un tablespace especial que es el
+temporal que no tiene asociado un datafile sinó un tempfile. Una vista para obtener
+información de los ficheros de datos es V$DATAFILE</p>
+<p><font size="5" color = "red">No olvida poner &quot;<font size="8"><b>;</b></font>&quot;</font></p>
+<ol>
+<li>
+<p>Conéctate con sys as sysdba al contenedor (XE) y consulta los tablespaces
+SQL&gt;connect sys@XE as sysdba
+SQL&gt;select tablespace_name from dba_tablespaces</p>
+</li>
+<li>
+<p>Consulta los datafiles, como las columnas pueden ser muy largas vamos a formatearlas
+SQL&gt; set linesize 190
+SQL&gt; column file_name format a60
+SQL&gt; select file_name, tablespace_name from dba_data_files;</p>
+</li>
+<li>
+<p>Conéctate ahora a la pluggable database y haz lo mismo. Mira las diferencias</p>
+</li>
+<li>
+<p>Consulta ahora las vistas dba_temp_files</p>
+</li>
+</ol>
+<h2 id="crear-esquema-hr">CREAR ESQUEMA HR</h2>
+<ol>
+<li>Vete a <a herf="https://github.com/oracle-samples/db-sample-schemas/releases/tag/v23.2">este site </a>y bájate el zip de la última versión de los esquemas</li>
+<li>Descomprime el zip</li>
+<li>Desde el terminal vete al directorio human_resources, verás un archivo llamado
+hr_install.sql este archivo es el que tienes que correr en Oracle.</li>
+<li>Lógate en Oracle usando el sqlplus con el usuario system o sys en la pluggable
+database (ya que el usuario HR será un usuario solo de esa pluggable.
+SQL&gt; connect system@XEPDB1
+SQL&gt; @hr_install.sql
+Te preguntará por la password de hr (ponle por ejemplo oracle), el tablespace (puedes
+darle a enter y se crearán las tablas en el tablespace USERS que es el que tiene por
+defecto.
+Una vez haya terminado saldrá del sqlplus. Prueba a entrar con el usuario hr y lista sus
+tablas.
+Fíjate que no podrás entrar con connect hr/oracle porque eso intenta conectarse a XE,
+tienes que poner la pluggable database</li>
+</ol>
+<pre><code class="language-sql">C:\Users\Administrador<span class="hljs-operator">&gt;</span>sqlplus <span class="hljs-operator">/</span>nolog
+
+<span class="hljs-keyword">SQL</span><span class="hljs-operator">*</span>Plus: <span class="hljs-keyword">Release</span> <span class="hljs-number">21.0</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span> <span class="hljs-operator">-</span> Production <span class="hljs-keyword">on</span> Jue Sep <span class="hljs-number">18</span> <span class="hljs-number">11</span>:<span class="hljs-number">42</span>:<span class="hljs-number">08</span> <span class="hljs-number">2025</span>
+Version <span class="hljs-number">21.3</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span>
+
+Copyright (c) <span class="hljs-number">1982</span>, <span class="hljs-number">2021</span>, Oracle.  <span class="hljs-keyword">All</span> rights reserved.
+
+<span class="hljs-keyword">SQL</span><span class="hljs-operator">&gt;</span> <span class="hljs-keyword">connect</span> <span class="hljs-keyword">system</span><span class="hljs-variable">@XEPDB1</span>
+Introduzca la contrase±a:
+Conectado.
+<span class="hljs-keyword">SQL</span><span class="hljs-operator">&gt;</span> <span class="hljs-variable">@C</span>:\Users\Administrador\Desktop\db<span class="hljs-operator">-</span>sample<span class="hljs-operator">-</span>schemas<span class="hljs-operator">-</span>main\human_resources\hr_install.sql
+
+Thank you <span class="hljs-keyword">for</span> installing the Oracle Human Resources Sample Schema.
+This installation script will automatically exit your database session
+<span class="hljs-keyword">at</span> the <span class="hljs-keyword">end</span> <span class="hljs-keyword">of</span> the installation <span class="hljs-keyword">or</span> if <span class="hljs-keyword">any</span> error <span class="hljs-keyword">is</span> encountered.
+The entire installation will be logged <span class="hljs-keyword">into</span> the <span class="hljs-string">&#x27;hr_install.log&#x27;</span> log file.
+
+Enter a password <span class="hljs-keyword">for</span> the <span class="hljs-keyword">user</span> HR:
+
+
+Enter a tablespace <span class="hljs-keyword">for</span> HR [USERS]:
+Do you want <span class="hljs-keyword">to</span> overwrite the schema, if it already <span class="hljs-keyword">exists</span>? [YES<span class="hljs-operator">|</span><span class="hljs-keyword">no</span>]:
+<span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span>  Creating REGIONS <span class="hljs-keyword">table</span> ....
+</code></pre>
+<h4 id="probar-y-entrar">probar y entrar</h4>
+<pre><code class="language-sql">C:\Users\Administrador<span class="hljs-operator">&gt;</span>sqlplus hr<span class="hljs-operator">/</span>oracle<span class="hljs-variable">@xepdb1</span>
+
+<span class="hljs-keyword">SQL</span><span class="hljs-operator">*</span>Plus: <span class="hljs-keyword">Release</span> <span class="hljs-number">21.0</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span> <span class="hljs-operator">-</span> Production <span class="hljs-keyword">on</span> Jue Sep <span class="hljs-number">18</span> <span class="hljs-number">11</span>:<span class="hljs-number">48</span>:<span class="hljs-number">11</span> <span class="hljs-number">2025</span>
+Version <span class="hljs-number">21.3</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span>
+
+Copyright (c) <span class="hljs-number">1982</span>, <span class="hljs-number">2021</span>, Oracle.  <span class="hljs-keyword">All</span> rights reserved.
+
+
+Conectado a:
+Oracle Database <span class="hljs-number">21</span>c Express Edition <span class="hljs-keyword">Release</span> <span class="hljs-number">21.0</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span> <span class="hljs-operator">-</span> Production
+Version <span class="hljs-number">21.3</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span>
+
+<span class="hljs-keyword">SQL</span><span class="hljs-operator">&gt;</span>
+</code></pre>
+<h2 id="pratica-de-spool">pratica de spool</h2>
+<pre><code class="language-sql">
+<span class="hljs-keyword">SQL</span><span class="hljs-operator">&gt;</span> spool c:\oradata\salida.txt
+<span class="hljs-keyword">SQL</span><span class="hljs-operator">&gt;</span> spool c:\oradata\salida.txt append
+<span class="hljs-keyword">SQL</span><span class="hljs-operator">&gt;</span> <span class="hljs-keyword">select</span> table_name,tablespace_name <span class="hljs-keyword">from</span> user_tables;
+
+TABLE_NAME                     TABLESPACE_NAME
+<span class="hljs-comment">------------------------------ ------------------------------</span>
+REGIONS                        USERS
+LOCATIONS                      USERS
+DEPARTMENTS                    USERS
+JOBS                           USERS
+EMPLOYEES                      USERS
+JOB_HISTORY                    USERS
+COUNTRIES
+
+<span class="hljs-number">7</span> filas seleccionadas.
+
+<span class="hljs-keyword">SQL</span><span class="hljs-operator">&gt;</span> spool c:\oradata\salida.txt <span class="hljs-keyword">on</span>
+SP2<span class="hljs-number">-0768</span>: Comando SPOOL <span class="hljs-keyword">no</span> vßlido
+Sintaxis: SPOOL { <span class="hljs-operator">&lt;</span>archivo<span class="hljs-operator">&gt;</span> <span class="hljs-operator">|</span> OFF <span class="hljs-operator">|</span> <span class="hljs-keyword">OUT</span> }
+donde <span class="hljs-operator">&lt;</span>archivo<span class="hljs-operator">&gt;</span> es nombre_archivo[.ext] [CRE[ATE]<span class="hljs-operator">|</span>REP[LACE]<span class="hljs-operator">|</span>APP[<span class="hljs-keyword">END</span>]]
+<span class="hljs-keyword">SQL</span><span class="hljs-operator">&gt;</span> spool <span class="hljs-keyword">on</span>
+<span class="hljs-keyword">SQL</span><span class="hljs-operator">&gt;</span>
+</code></pre>
+<h3 id="en-coradatasalidatxt">en c:/oradata\salida.txt</h3>
+<pre><code class="language-sql"><span class="hljs-keyword">SQL</span><span class="hljs-operator">&gt;</span> spool c:\oradata\salida.txt append
+<span class="hljs-keyword">SQL</span><span class="hljs-operator">&gt;</span> <span class="hljs-keyword">select</span> table_name,tablespace_name <span class="hljs-keyword">from</span> user_tables;
+
+TABLE_NAME                     TABLESPACE_NAME                                  
+<span class="hljs-comment">------------------------------ ------------------------------                   </span>
+REGIONS                        USERS                                            
+LOCATIONS                      USERS                                            
+DEPARTMENTS                    USERS                                            
+JOBS                           USERS                                            
+EMPLOYEES                      USERS                                            
+JOB_HISTORY                    USERS                                            
+COUNTRIES                                                                       
+
+<span class="hljs-number">7</span> filas seleccionadas.
+
+<span class="hljs-keyword">SQL</span><span class="hljs-operator">&gt;</span> spool c:\oradata\salida.txt <span class="hljs-keyword">on</span>
+SP2<span class="hljs-number">-0768</span>: Comando SPOOL <span class="hljs-keyword">no</span> válido
+Sintaxis: SPOOL { <span class="hljs-operator">&lt;</span>archivo<span class="hljs-operator">&gt;</span> <span class="hljs-operator">|</span> OFF <span class="hljs-operator">|</span> <span class="hljs-keyword">OUT</span> }
+donde <span class="hljs-operator">&lt;</span>archivo<span class="hljs-operator">&gt;</span> es nombre_archivo[.ext] [CRE[ATE]<span class="hljs-operator">|</span>REP[LACE]<span class="hljs-operator">|</span>APP[<span class="hljs-keyword">END</span>]]
+<span class="hljs-keyword">SQL</span><span class="hljs-operator">&gt;</span> spool <span class="hljs-keyword">on</span>
+
+</code></pre>
+
+            <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+            
+        </body>
+        </html>

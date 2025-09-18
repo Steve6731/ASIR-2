@@ -176,18 +176,17 @@ SQL>
 ```
 
 ### Archivos
-[oracle]/oradata/XE/control01.ctl => documento de control
-[oracle]/oradata/XE/redo01.log => Redo log files
-[oracle]/oradata/XE/sysaux01.DBF => de systema oracle nunca menter cosa
-[oracle]/oradata/XE/system01.DBF => de systema oracle nunca menter cosa
-[oracle]/oradata/XE/temp01.DBF => datos temporal
-[oracle]/oradata/XE/undotbs01.DBF => datos antiguo
-[oracle]/oradata/XE/xxxx.DBF => donde guarda datos de usuarios
-[oracle]/oradata/XE/[nombreDePlugable] => los archivo de cada pulugable
-[oracle]/oradata/XE/pdbseed/ => el plantilla de nuevo pulugable
-
-[oracle]/database/spfilexe.ora => Parameter file
-[oracle]/database/PWDXE.ora => password file
+[oracle]/oradata/XE/control01.ctl => documento de control  
+[oracle]/oradata/XE/redo01.log => Redo log files  
+[oracle]/oradata/XE/sysaux01.DBF => de systema oracle nunca menter cosa  
+[oracle]/oradata/XE/system01.DBF => de systema oracle nunca menter cosa  
+[oracle]/oradata/XE/temp01.DBF => datos temporal  
+[oracle]/oradata/XE/undotbs01.DBF => datos antiguo  
+[oracle]/oradata/XE/xxxx.DBF => donde guarda datos de usuarios  
+[oracle]/oradata/XE/[nombreDePlugable] => los archivo de cada pulugable  
+[oracle]/oradata/XE/pdbseed/ => el plantilla de nuevo pulugable  
+[oracle]/database/spfilexe.ora => Parameter file  
+[oracle]/database/PWDXE.ora => password file  
 
 ```sql
 SQL> show pdbs
@@ -207,3 +206,14 @@ Well-know prefijo
 unos 
 user_ all_ dba_ v$
 
+vistas Estaticas
+- USER_
+- ALL_
+- DBA_
+- CDB_
+
+VISTA DINAMICAS: V$[cosasDeOracle]
+- v$datefilo
+- v$controlfile
+- v$log
+- v%logfile
