@@ -603,3 +603,211 @@ O **impacto** refírese ao efecto que a explotación dunha vulnerabilidade pode 
 - **Interrupción dos servizos**: Caída de sistemas ou aplicacións críticas, afectando a operación.
 - **Perda financeira**: Custos asociados á reparación de danos ou recuperación de datos.
 - **Danos reputacionais**: Perda de confianza dos clientes e socios comerciais debido a incidentes de seguridade.
+
+----------------------------------
+<center style="background-color:#FFF;">
+ <font color="black" >
+  ⇓ pagina 8 ⇓
+ </font>
+</center>
+
+----------------------------------
+> - Concepto de Seguridade Activa
+>   - Tecnoloxías: Firewalls, IDS/IDPS, SIEM, Antimalware, Actualizacións, Autenticación
+> - Concepto de Seguridade Pasiva
+>   - Tecnoloxías: Cifrado, Backups, Controis de acceso físico, Segmentación da rede, Políticas de >Contrasinais, "hardening" de sistemas (bastión)
+
+## 1. Seguridade Activa e Pasiva
+A seguridade activa e a seguridade pasiva son dous enfoques complementarios para protexer os sistemas de información e redes informáticas dunha organización. Aínda que ambos buscan reducir riscos e protexer os activos, diferéncianse no seu modo de actuar fronte ás ameazas e nas ferramentas que empregan.
+
+### Seguridade Activa
+A seguridade activa refírese ás medidas e accións que se toman de forma proactiva para previr, detectar e responder ás ameazas de seguridade en tempo real. Este tipo de seguridade está orientada a actuar de forma inmediata cando ocorre un incidente ou para mitigar un ataque antes de que cause un dano significativo.
+
+### Principais características da seguridade activa:
+
+- **Monitorización constante**: Sistemas que están en vixilancia continua para detectar actividades anómalas ou sospeitosas.
+-** Resposta inmediata**: Implica accións correctivas ou defensivas inmediatas ante un ataque ou intento de intrusión.
+-** Detección temperá**: Empregan tecnoloxías para identificar ameazas antes de que estas causen danos.
+
+### Medidas de seguridade activa:
+
+1. **Firewalls**: Dispositivos ou software que controlan o tráfico de rede entrante e saínte segundo regras de seguridade predefinidas, bloqueando o acceso non autorizado.
+2. **Sistemas de detección e prevención de intrusións (IDS/IPS)**:
+   - **IDS (Intrusion Detection System)**: Detecta actividades maliciosas ou anomalías na rede ou no sistema, alertando os administradores.
+   - **IPS (Intrusion Prevention System)**: Vai un paso máis alá ao bloquear ou mitigar automaticamente os ataques en tempo real.
+3. Antivirus e antimalware: Programas que analizan arquivos e o tráfico de rede na procura de malware, virus ou outras ameazas, elíminandoos ou illándoos inmediatamente.
+4. Sistemas de monitorización de rede: Ferramentas que supervisan a actividade da rede para identificar comportamentos inusuais, como intentos de escaneo de portos, accesos non autorizados ou tráfico anómalo.
+5. Parcheo e actualizacións: Instalación constante de actualizacións de software e parches de seguridade para evitar vulnerabilidades coñecidas que poidan ser explotadas.
+6. Autenticación multifactor (MFA): Require múltiples formas de verificación (como contrasinais, tokens ou biometría) para garantir que só usuarios autorizados accedan aos sistemas.
+  
+### Seguridade Pasiva
+A seguridade pasiva refírese ás medidas que se implementan para minimizar o impacto dun incidente de seguridade unha vez que este ocorreu ou para resistir os efectos dun ataque. Este tipo de seguridade non tenta previr o ataque en tempo real, senón que se centra na protección, redución de danos e recuperación.
+
+### Principais características da seguridade pasiva:
+
+- **Protección preventiva**: Evita que un ataque cause danos graves, pero non responde directamente aos incidentes en tempo real.
+- **Resiliencia**: Aumenta a capacidade dos sistemas para soportar e recuperarse dun incidente.
+- **Mitigación do impacto**: Enfócase en reducir as consecuencias negativas dun ataque ou fallo.
+
+### Medidas de seguridade pasiva:
+
+1. **Cifrado de datos**: Protexe os datos en tránsito e en repouso mediante técnicas de cifrado, de modo que, aínda que sexan interceptados ou roubados, non poidan ser lidos sen as chaves de desencriptación.
+2. **Backups (copias de seguridade)**: Realización de copias periódicas de datos críticos, almacenadas en localizacións seguras, que permiten restaurar a información en caso de perda ou ataque (como un ransomware).
+3. **Controis de acceso físicos**: Medidas como pechaduras, cámaras de seguridade, e acceso restrinxido ás instalacións onde se aloxan servidores e equipos críticos para evitar o acceso non autorizado.
+4. **Segmentación de rede**: Dividir a rede en subredes ou zonas separadas para que un posible ataque só afecte unha parte do sistema, limitando a súa propagación.
+5. **Políticas de contrasinais robustas**: Definir políticas que requiran o uso de contrasinais seguras e actualizalas regularmente para previr accesos non autorizados.
+6. **Hardening de sistemas**: Redución da superficie de ataque desactivando servizos innecesarios, pechando portos non usados e eliminando software non esencial para minimizar posibles puntos de entrada.
+
+### Diferenzas clave entre seguridade activa e pasiva:
+
+| **Aspecto**               | **Seguridade Activa**                                            | **Seguridade Pasiva**                                                |
+| ------------------------- | ---------------------------------------------------------------- | -------------------------------------------------------------------- |
+| **Obxectivo principal**   | Detectar, previr e responder a ataques en tempo real.            | Minimizar o dano e aumentar a capacidade de recuperación.            |
+| **Enfoque**               | Proactivo (actúa antes ou durante o ataque).                     | Reactivo (protección fronte a ataques ou mitigación tras un ataque). |
+| **Resposta ante ameazas** | Actúa inmediatamente para bloquear, eliminar ou mitigar ameazas. | Protexe os datos e sistemas para reducir o impacto dun ataque.       |
+| **Exemplos de medidas**   | Firewalls, IPS/IDS, antivirus, monitorización de rede.           | Cifrado, backups, segmentación de rede, hardening de sistemas.       |
+		
+----------------------------------
+<center style="background-color:#FFF;">
+ <font color="black" >
+  ⇓ pagina 9 ⇓
+ </font>
+</center>
+
+----------------------------------
+> - Definicións:
+>   - Informe Pericial
+>   - Evidencia Dixital
+>   - Análise Forense
+> - Metodoloxía e Boas Prácticas
+>   - Plan de Adquisición
+>   - Cadea de Custodia
+>   - Documentación
+> - Requisitos da evidencia dixital
+> - Normativa
+
+## 1. Conceptos Básicos
+O obxectivo principal do análise forense é a preservación e análise das evidencias dixitais de forma que estas sexan admisibles en procedementos legais, asegurando a súa integridade e autenticidade. Busca tamén identificar as causas dun incidente e os responsables.
+
+- **Análise Forense**: É o proceso de investigación mediante técnicas científicas e analíticas especializadas que permiten identificar, preservar, extraer, analizar e documentar datos válidos (evidencias dixitais) que expliquen determinados sucesos que poderán ser utilizadas en procedementos legais. Inclúe a análise de sistemas informáticos, dispositivos de almacenamento e redes, co obxectivo de reconstruír accións, identificar infraccións ou delitos dixitais.
+
+- **Informe Pericial**: Documento elaborado por un perito en informática forense que detalla o proceso de investigación, describe as evidencias atopadas e presenta as súas conclusións. Este informe é clave no contexto xudicial, xa que serve como proba pericial nun xuízo.
+
+- **Informática Forense**: Rama da informática dedicada á investigación de incidentes relacionados coa ciberseguridade, como ataques, roubos de datos, fraudes ou accesos non autorizados. Inclúe a adquisición, análise e preservación de evidencias para usarse en procedementos legais.
+
+- **Evidencia Dixital**: Calquera información ou dato almacenado ou transmitido electrónicamente que poida ser utilizado como proba nunha investigación. A evidencia dixital pode incluír correos electrónicos, rexistros de sistema, arquivos de audio ou vídeo, etc.
+  
+## 2. Metodoloxía e Boas Prácticas
+- **Plan de Adquisición**: Antes de comezar a investigación, debe elaborarse un plan claro que detalle os dispositivos e datos que se van adquirir, así como as ferramentas e técnicas que se van empregar para garantir que as evidencias sexan recollidas correctamente.
+
+- **Cadea de Custodia**: A evidencia dixital debe ser rastrexada e documentada desde o momento da súa adquisición ata a súa presentación en xuízo. Isto asegura que a evidencia non foi manipulada, garantindo a súa autenticidade.
+
+- **Rexistro de Métodos, Procedementos e Tecnoloxías**: É fundamental documentar todos os pasos realizados, ferramentas utilizadas e calquera procedemento seguido no proceso de análise. Isto proporciona transparencia e asegura que o proceso pode ser reproducido se é necesario..
+
+## 3. A Evidencia Dixital
+A evidencia dixital normalmente está oculta, e o exame forense se encarga de revelala. Pode ser danada con facilidad, e sensible ao tempo e pode cruzar fácilmente fronteiras xuridiscionais. As fontes da evidencia dixital poden ser entre outras cousas, ordenadores, dispositivos móviles, dispositivos independentes (routers, proxys), datos das compañías de telecomunicacións e compañías de servizos...
+
+**Requisitos**
+
+- **Obtida Lícitamente**: A evidencia debe ser adquirida respectando as leis e regulamentos locais e internacionais. Se non se obtén de maneira legal, pode ser inadmisible no xuízo.
+
+- **Orixe Garantido**: Debe poder demostrar que a evidencia provén do dispositivo ou lugar específico, sen dúbidas sobre a súa procedencia.
+
+- **Integridade Garantida**: A integridade da evidencia debe preservarse. Para isto, empréganse técnicas como o hashado de datos, que permite verificar que a información non foi alterada.
+
+- **Pertinente, Útil e Clara**: A evidencia presentada debe ser relevante para o caso, comprensible para o tribunal e útil para o obxectivo de clarificar os feitos investigados.
+
+Un análise forense cumprirá os seus obxectivos coando se revela a circunstancia dun incidente e as súas circunstancias, se coñece a identidade e obxectivo dos atacantes, se coñece o momento exacto do ataque e se teñen as evidencias que o demostran.
+
+## 4. Fases dun análise forense
+
+### 4.1 **Adquisición de Datos**: 
+
+A adquisición é a fase máis crítica, xa que garante que a información se recolle de forma intacta. É común utilizar ferramentas forenses que permiten clonar discos duros, capturar memoria volátil, ou analizar redes sen modificar os datos orixinais. Exemplos de ferramentas inclúen EnCase, FTK (Forensic Toolkit), e WireShark.
+
+Se debe establecer un plan de adquisición sistemáticos que indique os métodos e procedementos de recolección de datos empregados e documentalo exhaustivamente. E particularmente importante que o método de  adquisición non modifique o sistema que se está examinando, polo que a miudo se recurre a facer copias (imaxes de disco) para preservar a integridade dos datos orixinais.
+
+E necesario indicar a tecnoloxía e recursos empregados no análise, o contorno de traballo utilizado e anotar os procedementos seguidos.
+
+Se debe establecer unha cadea de custodia das evidencias obtidas con etapas ben redactadas e documentas:
+
+- Identificación, extracción e rexistro da evidencia
+- Medidas de preservación e almacenamento da evidencia
+- Traslados da evidencia
+
+Orixes típicos das evidencias dixitais son:
+
+- Contido dos discos (ficheiros, e-mails, ...)
+- Arquivos borrados (recuva, testdisk ... etc)
+- Historial de conexións a redes (logs)
+- Cachés do navegador
+- Información de configuración da rede
+- Arquivos temporais do sistema e swap
+- Contactos, axenda e mensaxería
+- Aplicacións instaladas
+- Ficheiros descargados e compartidos... etc
+
+Os procesos de adquisición son delicados, e requiren moitas veces de equipamento especial. En particular os análises en quente (co equipo en funcionamento) son os que máis información facilitan, pero son moito máis difíciles de levar a cabo con eficacia. O hardware necesario debe cumplir certos requisitos:
+
+- Debe ser compatible a nivel de conexións con gran cantidade de dispositivos para poder analizar distintos sistemas
+- Debe dispoñer de gran espazo de almacenamento para poder gardar as evidencias e facer copias de seguridade
+- Se debe valorar o uso de bolsas antiestáticas, xaulas de faraday, cámaras de fotos..
+- Se debe dispoñer de softeare de análise de datos
+
+Existen "Suites" de aplicacións especializadas que proporcionan numerosas ferramentas, entre elas Autopsy/Sleuthkit, Digital Forensics Framework, Encase...) e aplicacións de uso común de gran utilidade como dd, editores hexadecimais ... etc.
+
+A adquisición de datos que se debe realizar depende do incidente a analizar. É importante identificar o incidente e notificar aos afectados si a regulación legal o require (LOPD) garantindo a coservación das evidencias:
+
+- Os datos non se adquiren sobre o os dispositivos orixinais que deben preservarse no posible no seu estado orixinal.
+- As accións deben axustarse a un plan meditado e previsto. 
+- As actuacións son moi diferentes si os equipos están encendidos ou apagados. 
+- A actuación sobre equipos apagados se chama análise post-mortem. Nestes casos é máis fácil preservar as evidencias, pero se perde a información volátil. 
+- A actuación sobre equipos encendidos se chama análise en vivo. Nestes casos é posible moitas veces acceder a dispositivos cifrados ou ao contido da memoria RAM e os arquivos temporais, pero é moito máis complexa a preservación de evidencias polo que non sempre é posible. 
+- A adquisición de datos máis común é a adquisición estática mediante extracción de información de discos fixos, tarxetas SD, memorias USB... xerando unha imaxe que se analizará posteriormente.
+- Se debe garantizar que os datos orixinais non son modificados para o que se debe acceder a eles en modo so de lectura, incluso utilizando dispositivos hardware protectores contra escritura. 
+- No caso de captura de datos en vivo e importante que tanto o software instalado como o dispositivo destino da captura sexa externo (USB)
+
+A información típica que se recopila é:
+
+- Data e hora do sistema
+- Instantánea dos dispositivos de almacenamento e busca de arquivos borrados  (dd, FTK Imager, Caine Linux,GuyManager).
+- Portos TCP/UDP activos e aplicacións conectadas ou en espera de conexión.
+- Usuarios activos no sistema
+- Procesos en funcionamento no sistema
+- Configuración de rede (ip, rutas e caché ARP)
+- Logs do sistema
+- Análise do tráfico de rede
+- Copias de memoria: /dev/mem, LIME (lime-forensics-dkms, FTK Imager)
+
+E común o uso de harware especializado, como Clonadores de disco, bloqueadores de escritura ou  estacións forenses. ( https://ondatashop.com/equipo-forense-velociraptor-7) 
+
+E moi importante evitar a escritura no disco orixinal, para o que e imprescindible montalo en so lectura utilizando si é necesario bloqueadores de escritura hardware / Clonadoras de disco. Unha firma hash MD5 ou SHA-1 pode garantizar a integridade das imaxes obtidas.
+Implica a recolección de evidencias dixitais de forma que se manteña a integridade dos datos. Isto require o uso de ferramentas específicas para clonar discos duros, capturar a memoria RAM, rexistros de rede ou calquera outro dato relevante.
+
+### 4.2 **Análise de Datos**: 
+
+Unha vez adquiridos os datos, comeza o proceso de análise para identificar patróns, anomalías ou rastros que poidan indicar actividade maliciosa. Utilízanse técnicas de recuperación de datos, inspección de arquivos, e análises de tráfico de rede.
+
+Durante a análise, os expertos en forense dixital revisan rexistros de eventos, acceden a arquivos eliminados ou ocultos, investigan metadatos, e buscan rastros que apunten a actividades sospeitosas. Utilízanse métodos como a análise de correo electrónico, estudos de malware ou rastreo de enderezos IP. Podemos distinguir varios pasos:
+
+- Identificación de evidencias
+  - As ferramentas de análise de imaxes de disco nos proporcionan acceso ao contido aínda que fora borrado.
+  - Se deben definir os criterios de busca segundo a investigación a realizar
+  - Mediante “carving” é posible extraer información eliminada (photorec/testdisk, scalpel, foremost,WinUndelete ...)
+  - Os metadatos presentes no arquivo facilitan información importante (datas de creación, autores do documento, modificacións, procedencia...)
+- Aseguramento das evidencias
+  - Deben almacenarse en lugares de acceso restrinxido e con control ambiental 
+  - Se debe traballar con protección contra picos de corrente ou cortes de luz, nun ambiente limpo e estable.
+  - No caso de dispositivos móbiles deben usarse jaulas de Faraday e usar packs de baterías para evita que se descarguen. O dispositivo rexistrará ese feito que se debe documentar. 
+- Documentación das evidencias
+- Establecemento da cadea de custodia
+
+### 4.3 **Informe de Conclusións**: 
+Tras a análise, elabórase un informe detallado que inclúe todas as evidencias, métodos empregados, e conclusións baseadas nos achados. Este documento servirá para presentar a investigación en xuízos ou auditorías.
+
+## 5. Normativa
+A normativa en análise forense dixital inclúe tanto leis locais como estándares internacionais que rexen a recolección e presentación de evidencias. Algunhas das normativas máis comúns son:
+
+- **ISO/IEC 27037**: Recomendacións sobre a identificación, colección e preservación de evidencias dixitais.
+- **Lei de Protección de Datos**: Leis nacionais como o RGPD (Regulamento Xeral de Protección de Datos) que afectan a forma en que a información persoal pode ser utilizada nunha investigación.
+- **Chain of Custody Requirements**: Regras para manter a integridade da evidencia a través do seu ciclo de vida.
