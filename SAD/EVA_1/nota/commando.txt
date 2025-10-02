@@ -1,0 +1,6 @@
+qemu-img create -f qcow2 -F raw -b /var/lib../templates/windows11.img /var/.../images/Win11.qcow2
+mount /dev/sdb2 /var/lib/libvirt/.device
+mount -o bind /var/lib/libvirt/.device/sad /var/lib/libvirt/images
+
+usa cuando quiere aplicar configuracion de fstab
+systemctl daemon-reload

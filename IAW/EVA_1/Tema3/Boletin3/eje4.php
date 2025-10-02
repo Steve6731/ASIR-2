@@ -34,7 +34,7 @@ Escriba un programa que cada vez que se ejecute muestre la tirada de tres dados 
         }elseif($dado2 == $dado3){
             $text = "Ha sacado un trío de $dado2";
         }else{ 
-      // desde aqui ya entiendo que no tienen ningun dado igual, voy buscar dado más alto.
+            // desde aqui ya entiendo que no tienen ningun dado igual, voy buscar dado más alto.
             if ($dado1 > $dado2){
                 $numMax = $dado1;
             }else{

@@ -51,7 +51,7 @@
         $contador1 = 2;
         }
         
-      //contar cuando iguales hay el jugador 1
+      //contar cuando iguales hay el jugador 2
         if ($dado4 == $dado5){
             $contador2 = 2;
             if ($dado4 == $dado6){
