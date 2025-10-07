@@ -47,3 +47,11 @@ SQL> select * from pruebainstorage;
 SQL>
 
 ```
+
+```sql
+SQL> create TABLESPACE TiendaVirtual2 DATAFILE 'C:\datafile\TiendaVirtual2.DBF' SIZE 1M autoextend on next 5M maxsize unlimited, 'E:datafile\TiendaVirtual2.DBF' SIZE 1M autoextend on next 5M maxsize unlimited;
+
+Tablespace creado.
+
+SQL>
+```

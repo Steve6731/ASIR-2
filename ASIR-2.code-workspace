@@ -2,6 +2,12 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "C:/xampp/htdocs/Xuan"
+		},
+		{
+			"path": "../ASIR-1"
 		}
 	],
 	"settings": {}
