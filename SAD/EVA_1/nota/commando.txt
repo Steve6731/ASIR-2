@@ -4,3 +4,130 @@ mount -o bind /var/lib/libvirt/.device/sad /var/lib/libvirt/images
 
 usa cuando quiere aplicar configuracion de fstab
 systemctl daemon-reload
+
+Docker:
+docker pull
+docker create
+docker start
+docker stop
+
+docker run (incluye pull,create,start)
+
+ssh guest@192.168.122.153
+
+
+root@DockerXuan:~# apt install docker  
+Package docker is not available, but is referred to by another package.
+This may mean that the package is missing, has been obsoleted, or
+is only available from another source
+However the following packages replace it:
+  wmdocker
+
+
+Error: Package 'docker' has no installation candidate
+root@DockerXuan:~# apt install dedocker
+Error: Unable to locate package dedocker
+root@DockerXuan:~# apt install docker.io
+The following packages were automatically installed and are no longer required:
+  libaio1           libperl5.38t64             python3-httplib2          python3-pyparsing
+  libapt-pkg6.0t64  libpython3.11-minimal      python3-inflect           python3-pysimplesoap
+  libfuse2          libpython3.11-stdlib       python3-jaraco.context    python3-six
+  libfuse3-3        linux-image-6.12.27-amd64  python3-jaraco.functools  python3-typeguard
+  libicu72          linux-image-6.7.12-amd64   python3-more-itertools    python3-typing-extensions
+  libldap-2.5-0     perl-modules-5.36          python3-packaging         python3.11
+  libnsl2           perl-modules-5.38          python3-pkg-resources     python3.11-minimal
+  libperl5.36       python3-autocommand        python3-pycurl
+Use 'apt autoremove' to remove them.
+
+Installing:
+  docker.io
+
+Installing dependencies:
+  containerd     git-man          libmodule-find-perl        libterm-readkey-perl  runc
+  criu           libcompel1       libnet1                    needrestart           tini
+  docker-buildx  liberror-perl    libproc-processtable-perl  patch
+  docker-cli     libintl-perl     libprotobuf32t64           python3-protobuf
+  git            libintl-xs-perl  libsort-naturally-perl     python3-pycriu
+
+Suggested packages:
+  containernetworking-plugins  rootlesskit       git-email  git-mediawiki        diffutils-doc
+  docker-doc                   xfsprogs          git-gui    git-svn
+  aufs-tools                   zfs-fuse          gitk       needrestart-session
+  cgroupfs-mount               | zfsutils-linux  gitweb     | libnotify-bin
+  rinse                        git-doc           git-cvs    ed
+
+
+root@DockerXuan:~# docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+root@DockerXuan:~# docker run hello-world
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+17eec7bbc9d7: Pull complete 
+Digest: sha256:54e66cc1dd1fcb1c3c58bd8017914dbed8701e2d8c74d9262e26bd9cc1642d31
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+root@DockerXuan:~# docker ps -a
+CONTAINER ID   IMAGE         COMMAND    CREATED         STATUS                     PORTS     NAMES
+f2a51bd8113d   hello-world   "/hello"   2 minutes ago   Exited (0) 2 minutes ago             happy_galois
+root@DockerXuan:~# docker rm happy-galoi
+Error response from daemon: No such container: happy-galoi
+root@DockerXuan:~# docker rm happy-galois
+Error response from daemon: No such container: happy-galois
+root@DockerXuan:~# docker rm happy_galois
+happy_galois
+root@DockerXuan:~# docker run --name hola-mundo hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+root@DockerXuan:~# docker ps -a
+CONTAINER ID   IMAGE         COMMAND    CREATED         STATUS                     PORTS     NAMES
+8e66aaa3733e   hello-world   "/hello"   6 seconds ago   Exited (0) 6 seconds ago             hola-mundo
+
+root@DockerXuan:~# docker image list
+REPOSITORY    TAG       IMAGE ID       CREATED       SIZE
+hello-world   latest    1b44b5a3e06a   7 weeks ago   10.1kB
+root@DockerXuan:~# 
+
+// docker image rm "nombre image"
+
+

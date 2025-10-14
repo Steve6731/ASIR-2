@@ -53,5 +53,4 @@ SQL> create TABLESPACE TiendaVirtual2 DATAFILE 'C:\datafile\TiendaVirtual2.DBF' 
 
 Tablespace creado.
 
-SQL>
 ```

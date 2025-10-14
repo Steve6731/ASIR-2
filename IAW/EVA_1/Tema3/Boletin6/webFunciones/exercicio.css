@@ -1,0 +1,270 @@
+body  
+{	
+	background: #F2F5FE url("imaxes/fondo.gif") 0 0 repeat-x;
+	font: 70%/160% "verdana", sans-serif;
+	color: #192666;
+	margin:0 auto; /* centramos la ventana */
+	
+}
+
+#contenedor {
+	width:770px;
+	margin: 50px auto 0 auto;
+}
+ul, ol {
+	margin: 1em 0 1em 2em;
+	padding:0;
+}
+
+#cabecera
+{
+	height: 100px;
+	background: #233C9B url(imaxes/cabecera.jpg) no-repeat;
+}
+
+#contenido #principal, #contenido #cabecera, #contenido #pie
+{
+	
+	width:500px;
+	
+}
+#contenido #principal
+{
+	float:left;
+}
+
+
+#contenido #secundario
+{	
+	width:200px;
+	float:right;
+}
+
+#cabecera
+{
+	position:relative;
+}
+
+#menu ul
+{
+	margin: 0 10px;
+	padding: 0;
+	list-style:none;
+	
+	
+}
+	
+#menu 
+{
+	background-color:#253575;
+
+
+	
+}
+
+#menu ul li
+{
+	margin-right:5px;
+	padding:0;
+	float:left;
+}	
+	
+
+#menu ul li a
+{
+	display: block;
+	position: relative;
+	padding: 5px 15px;
+	border: 0;
+	background: #253575;
+	color: #B5C4E3;
+	font-weight: bold;
+	text-decoration: none;
+	
+}
+#menu ul li a.seleccionado
+{
+	display: block;
+	position: relative;
+	padding: 5px 15px;
+	border: 0;
+	background: white;
+	color: #FF9000;
+	font-weight: bold;
+	text-decoration: none;
+	
+}
+
+#menu ul li:hover
+{
+	background-color: #31479B;
+	
+}
+
+#menu ul li:hover a
+{
+	background-color:White;
+	color:#FF9000;
+	
+}
+
+
+
+p {
+	margin: 1em 0;
+	padding: 0;
+}
+
+.clear
+{
+	clear:both
+}
+
+#cabecera #logo {
+	position: absolute;
+	top: 35px;
+	left: 35px;
+	margin: 0;
+}
+
+#cabecera #logo a {
+	color: #FFF;
+	display: block;
+}
+
+#cabecera #buscador {
+	position: absolute;
+	top: 40px;
+	right: 20px;
+}
+
+#contenedor #cabecera .buscador
+{
+	float:right;
+}
+
+#cabecera #buscador legend {
+	display: none;
+}
+
+#cabecera #buscador fieldset {
+	border: none;
+}
+
+#contenido .articulo {
+	clear: both;
+	margin: 0;
+	padding: 20px;
+	background: url("imaxes/fondo_articulo.jpg") no-repeat;
+}
+#contenido .articulo h2 {
+	margin: 0 -20px;
+	padding: 10px;
+	background: #DEE5FD;
+	color: #192666;
+}
+#contenido .info {
+	margin: 10px 0;
+	padding-bottom: 8px;
+	border-bottom: 1px solid #DEE5FD;
+	color:#6685CC;
+}
+#contenido .info a  
+{
+	color:#6685CC; 
+}
+#contenido .info a:hover  
+{
+	color:#FF9000; 
+}
+#contenido .info span.fecha, #contenido .info span.categoria, #contenido .info
+span.autor, #contenido .info span.comentarios {
+	padding-left:15px;
+}
+
+#contenido .info span.fecha  
+{
+	background: url("imaxes/icono_fecha.gif") 0
+	50% no-repeat; 
+}
+#contenido .info span.categoria  
+{
+	background: url("imaxes/icono_categoria.gif") 0 50% no-repeat; margin-left: 8px; 
+}
+#contenido .info span.autor  
+{
+	background: url("imaxes/icono_autor.gif") 0 50% no-repeat; 
+	margin-left: 8px; }
+#contenido .info span.comentarios  
+{
+	background: url("imaxes/icono_comentarios.gif") 0 50% no-repeat; 
+	margin-left: 8px; }
+#contenido #secundario h3 {
+	padding: 10px 0 10px 10px;
+	margin-top: 20px;
+	background: #A0B9F3;
+	color: #192666;
+}
+#contenido #secundario #sobremi img {
+	float: left;
+	margin: 4px 5px 0 0;
+}
+#contenido #secundario #sobremi p {
+}
+#contenido #secundario div {
+	padding: 0 10px;
+}
+#contenido #secundario ul {
+	margin: 15px 0;
+	padding: 0;
+	list-style:none;
+}
+#contenido #secundario li {
+	margin: 0;
+	padding: 0;
+	border-bottom: 1px solid #E0E8FA;
+}
+#contenido #secundario li a {
+	display: block;
+	padding: 3px 0 3px 22px;
+	background: url("imaxes/icono_elemento.gif") 8px no-repeat;
+	text-decoration: none;
+}
+#contenido #secundario li a:hover {
+	background-color: #E0E8FA;
+	color: #192666;
+}
+#contenido #secundario li.seleccionado a {
+	background: #E0E8FA url("imaxes/icono_elemento_seleccionado.gif") 8px
+	no-repeat;
+	font-weight: bold;
+}
+#pie p {
+	margin: 0;
+	padding: 0;	
+	top: 10px;
+	left: 40px;
+}
+
+h1, h2, h3, h4, h5 {
+	margin: 1em 0;
+	padding:0;
+}
+h1 {
+	font-size: 260%;
+	font-family: "georgia", serif;
+	font-weight: normal;
+}
+h2 {
+	font-size:180%;
+	font-family: "georgia", serif;
+	font-weight:normal;
+}
+h3 {
+	font-size:120%;
+	font-weight:bold;
+}
+ul, ol {
+	margin: 1em 0 1em 2em;
+	padding:0;
+}

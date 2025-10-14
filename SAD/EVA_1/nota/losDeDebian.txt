@@ -1,0 +1,3 @@
+Web para saber configuracion NAT con command "iptables"
+https://blog.csdn.net/u013485792/article/details/75072841
+https://zhuanlan.zhihu.com/p/616986195

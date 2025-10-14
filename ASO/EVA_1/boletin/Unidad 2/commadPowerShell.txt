@@ -1,0 +1,21 @@
+New-ADUser -Name "logistica1" `
+           -GivenName "logistica1" `
+           -SamAccountName "logistica1" `
+           -UserPrincipalName "logistica1@empresa04.es" `
+           -Path "OU=Logistica,OU=empresaOUs,DC=empresa04,DC=es" `
+           -AccountPassword (ConvertTo-SecureString "Abc123.!" -AsPlainText -Force) `
+           -Enabled $true `
+           -ChangePasswordAtLogon $true
+
+$valor @{
+   Name = "logistica1" 
+   GivenName = "logistica1"
+   SamAccountName = "logistica1" 
+   UserPrincipalName = "logistica1@empresa04.es" 
+   Path = "OU=Logistica,OU=empresaOUs,DC=empresa04,DC=es" 
+   AccountPassword = (ConvertTo-SecureString "Abc123.!" -AsPlainText Force) 
+   Enabled = $true 
+   ChangePasswordAtLogon = $true
+}
+
+New-ADUser @valor
