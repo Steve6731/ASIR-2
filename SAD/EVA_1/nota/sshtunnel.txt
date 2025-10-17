@@ -1,0 +1,6 @@
+https://sshtunnel.iesrodeira.com/
+user: 2ASIR
+passwd: 2asir25#01
+grub-reboot 2
+ies.iesrodeira.com:64016
+ssh asir\xliu@ies.iesrodeira.com -p 64016

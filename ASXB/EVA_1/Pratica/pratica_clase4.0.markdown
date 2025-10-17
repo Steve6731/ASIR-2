@@ -58,6 +58,25 @@ SQL> create pluggable database xuandb2 from xuandb file_name_convert=('C:\app\Ad
 
 Base de datos de conexi¾n creada.
 
+alter pluggable database xuandb upplug into 'C:\app\Administrador\product\21c\oradata\XE\XuanDB1\xuandb.xml';
+-- copiado el pdb de compañero que es mipdb1
+
+SQL> create pluggable database DANIDB using 'C:\app\Administrador\product\21c\oradata\XE\MIPDB1\m1pdb1.xml' copy
+  2  file_name_convert=('C:\app\Administrador\product\21c\oradata\XE\MIPDB1','C:\app\Administrador\product\21c\oradata\XE\DANIDB');
+
+Base de datos de conexi¾n creada.
+
+SQL> col name forma a40
+SQL> select name,open_mode from v$pdbs;
+
+NAME                                     OPEN_MODE
+---------------------------------------- ----------
+PDB$SEED                                 READ ONLY
+XEPDB1                                   READ WRITE
+DANIDB                                   MOUNTED
+XUANDB2                                  READ WRITE
+XUANDB                                   READ WRITE
+
 --c) haz plug de la pluggable original de nuevo. 
 
 

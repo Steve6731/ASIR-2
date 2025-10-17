@@ -1,3 +1,5 @@
-Web para saber configuracion NAT con command "iptables"
-https://blog.csdn.net/u013485792/article/details/75072841
-https://zhuanlan.zhihu.com/p/616986195
+necesito configuracion para configura un bridge que se llama "lan" en "/etc/network/interface" y "brctl".
+
+auto lan
+iface lan inet static
+	

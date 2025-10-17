@@ -131,7 +131,7 @@ Fines de la empresa
     - Productividad
     - Infraestructuras
     - Patentes
-    - I+Dì
+    - I+D+ì
   - Factores juridicos
     - Normativa Laboral, mercantil y fiscal
     - Medioambiental y cualquier otra que pueda afectar a la actividad empresarial
@@ -161,7 +161,7 @@ Fines de la empresa
 ## 6. tipos de empresas
 - sector economico
   - primario: obtiene el directamente de la naturaleza.
-  - secundario: transforma las  materias primas en productos elaborados para que puedn ser usados por los consumidores.
+  - empresa pequeña. secundario: transforma las  materias primas en productos elaborados para que puedn ser usados por los consumidores.
   - terciario: presta servicios a los consumidores.
 - numeros de trabajaores y volumen de negcio(Recomendacion de la UR 2003/361/CE)
   - Microempresa: Menos de 10 trabajadors y volumen de negocio anual o balance general anual que no supere los 2 millones de eruos
@@ -244,3 +244,20 @@ Este modelo analiza principalmente cinco fuerzas competitivas que determinan la 
 5.  **Poder de negociación de los compradores / 购买者的议价能力**
     *   **ES:** Capacidad de los clientes para influir en los precios y exigir mejor calidad o servicio.
     *   **ZH:** 客户影响价格并要求更高质量或服务的能力。
+
+- debilidades: suponen una desventaja competitiva con respecto a tus competidores
+  - lista de aper 
+    - => contratar +
+    - "exclusivizas el producto"
+ 
+- amenzas: factores del entorno que pueden suponer un obstaclo para el desarrollo de tu organizacion.
+  - mejorar el producto
+  - ampliar servicio
+  - abaratar servicio
+  - innovacion constante => innova en maquinas(+€)
+- fortalezas: responden a todos los puntos fuertes internos de tu empresa.
+  - mantenerlo <= suficiente financiacion
+- oportunidades: responden a las cirunstancias enternas que no dependen de la empresa pero que  pueden afectarle.
+  - gente esta alli al barrio
+    - promocionanse
+    - subir precios
