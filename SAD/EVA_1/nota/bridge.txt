@@ -1,0 +1,29 @@
+#para activa bridge
+ip link add name lan type bridge
+ip address del 172.20.3.4/16 dev eth0
+ip link set eth0 nomaster
+ip link set dev lan up
+ip address add 172.20.3.4/16 dev lan
+ip route append default via 172.20.0.1 dev lan
+ip link set eth0 master lan
+
+# para apaga bridge
+ip link set dev lan down
+ip address del 172.20.3.4/16 dev lan
+ip address add 172.20.3.4/16 dev eth0
+ip route append default via 172.20.0.1 dev eth0
+ip link set eth0 nomaster
+ip link set dev eth0 up
+
+#activa con openvswitch
+ip link delete lan type bridge | brctl delbr lan
+ip addr del 172.20.3.4/16 dev eth0
+ovs-vsctl add-br lan
+ovs-vsctl add-port lan eth0
+ip address add 172.20.3.4/16 dev lan
+ip link set dev lan up
+ip route append default via 172.20.0.1 dev lan
+# no olvida añadir lan en "interfaces"
+
+# para lxc connecta tiene que pon <virtualport type="openvswitch" /> en xml
+
