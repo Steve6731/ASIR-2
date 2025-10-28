@@ -18,5 +18,6 @@ XE =
 ## unos Commando para comprobar
 ```sql
 sql> show con_name -- nombre de contenedor
+sql> show pdbs
 ```
 prueba los comandos de PowerShell indicados a continuacion. Con cada tarea haz una captura de pantalla y añade una breve explicacion de su funcionalidad 

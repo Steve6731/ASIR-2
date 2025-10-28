@@ -1,3 +1,4 @@
+#https://skyao.net/learning-debian/docs/network/openvswitch/soft-switch/
 #para activa bridge
 ip link add name lan type bridge
 ip address del 172.20.3.4/16 dev eth0
