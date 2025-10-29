@@ -28,3 +28,23 @@ ip route append default via 172.20.0.1 dev lan
 
 # para lxc connecta tiene que pon <virtualport type="openvswitch" /> en xml
 
+
+configuracion de /etc/network/interface
+
+auto lan
+allow-ovs lan
+iface lan inet static
+        address 172.20.3.4
+        netmask 255.255.0.0
+        gateway 172.20.0.1
+        ovs_type OVSBridge
+        ovs_ports eth0
+
+
+auto eth0
+iface eth0 inet manual
+        ovs_bridge lan
+        ovs_type OVSPort
+        post-up /sbin/ethtool -s $IFACE wol g
+        post-down /sbin/ethtool -s $IFACE wol g
+
