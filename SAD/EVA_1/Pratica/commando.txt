@@ -13,49 +13,17 @@ docker stop
 
 docker run (incluye pull,create,start)
 
+docker image rm "nombre image"
+
 ssh guest@192.168.122.153
 
 
 root@DockerXuan:~# apt install docker  
-Package docker is not available, but is referred to by another package.
-This may mean that the package is missing, has been obsoleted, or
-is only available from another source
-However the following packages replace it:
-  wmdocker
-
-
-Error: Package 'docker' has no installation candidate
-root@DockerXuan:~# apt install dedocker
-Error: Unable to locate package dedocker
 root@DockerXuan:~# apt install docker.io
-The following packages were automatically installed and are no longer required:
-  libaio1           libperl5.38t64             python3-httplib2          python3-pyparsing
-  libapt-pkg6.0t64  libpython3.11-minimal      python3-inflect           python3-pysimplesoap
-  libfuse2          libpython3.11-stdlib       python3-jaraco.context    python3-six
-  libfuse3-3        linux-image-6.12.27-amd64  python3-jaraco.functools  python3-typeguard
-  libicu72          linux-image-6.7.12-amd64   python3-more-itertools    python3-typing-extensions
-  libldap-2.5-0     perl-modules-5.36          python3-packaging         python3.11
-  libnsl2           perl-modules-5.38          python3-pkg-resources     python3.11-minimal
-  libperl5.36       python3-autocommand        python3-pycurl
-Use 'apt autoremove' to remove them.
-
-Installing:
-  docker.io
-
-Installing dependencies:
-  containerd     git-man          libmodule-find-perl        libterm-readkey-perl  runc
-  criu           libcompel1       libnet1                    needrestart           tini
-  docker-buildx  liberror-perl    libproc-processtable-perl  patch
-  docker-cli     libintl-perl     libprotobuf32t64           python3-protobuf
-  git            libintl-xs-perl  libsort-naturally-perl     python3-pycriu
-
-Suggested packages:
-  containernetworking-plugins  rootlesskit       git-email  git-mediawiki        diffutils-doc
-  docker-doc                   xfsprogs          git-gui    git-svn
-  aufs-tools                   zfs-fuse          gitk       needrestart-session
-  cgroupfs-mount               | zfsutils-linux  gitweb     | libnotify-bin
-  rinse                        git-doc           git-cvs    ed
-
+root@DockerXuan:~# docker run hello-world
+root@DockerXuan:~# docker ps -a
+root@DockerXuan:~# docker run --name hola-mundo hello-world
+root@DockerXuan:~# docker image list
 
 root@DockerXuan:~# docker ps
 CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
@@ -90,10 +58,6 @@ For more examples and ideas, visit:
 root@DockerXuan:~# docker ps -a
 CONTAINER ID   IMAGE         COMMAND    CREATED         STATUS                     PORTS     NAMES
 f2a51bd8113d   hello-world   "/hello"   2 minutes ago   Exited (0) 2 minutes ago             happy_galois
-root@DockerXuan:~# docker rm happy-galoi
-Error response from daemon: No such container: happy-galoi
-root@DockerXuan:~# docker rm happy-galois
-Error response from daemon: No such container: happy-galois
 root@DockerXuan:~# docker rm happy_galois
 happy_galois
 root@DockerXuan:~# docker run --name hola-mundo hello-world
@@ -128,6 +92,5 @@ REPOSITORY    TAG       IMAGE ID       CREATED       SIZE
 hello-world   latest    1b44b5a3e06a   7 weeks ago   10.1kB
 root@DockerXuan:~# 
 
-// docker image rm "nombre image"
 
 

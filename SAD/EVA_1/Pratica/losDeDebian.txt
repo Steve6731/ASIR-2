@@ -1,5 +1,0 @@
-necesito configuracion para configura un bridge que se llama "lan" en "/etc/network/interface" y "brctl".
-
-auto lan
-iface lan inet static
-	
