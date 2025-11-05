@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>background</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: transparent;
+            color: #226e93;
+            font-family: 'Courier New', monospace;
+            overflow: hidden;
+            height: 100vh;
+            position: relative;
+        }
+        
+        .matrix-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .code-stream {
+            position: absolute;
+            top: -50px;
+            color: #226e93;
+            font-size: 18px;
+            text-shadow: 0 0 5px #226e93;
+            white-space: nowrap;
+            opacity: 0.7;
+            animation: fall linear infinite;
+        }
+        
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+        
+        .content {
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: transparent;
+            border-radius: 5px;
+            margin-top: 50px;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #0f5048;
+        }
+        
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="matrix-container" id="matrix"></div>
+    
+    <div class="content">
+        <h1>Algo sobre mi</h1>
+    </div>
+
+    <script>
+        // 生成随机字符
+        function getRandomChar() {
+            const chars = "01ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+-=[]{}|;:,.<>?/";
+            return chars[Math.floor(Math.random() * chars.length)];
+        }
+        
+        // 创建代码流
+        function createCodeStream() {
+            const container = document.getElementById('matrix');
+            const stream = document.createElement('div');
+            stream.className = 'code-stream';
+            
+            // 随机位置
+            const left = Math.random() * 100;
+            stream.style.left = `${left}%`;
+            
+            // 随机速度
+            const duration = 5 + Math.random() * 10;
+            stream.style.animationDuration = `${duration}s`;
+            
+            // 随机字符数量
+            const charCount = 10 + Math.floor(Math.random() * 20);
+            
+            // 初始字符
+            let content = '';
+            for (let i = 0; i < charCount; i++) {
+                content += getRandomChar();
+            }
+            
+            stream.textContent = content;
+            container.appendChild(stream);
+            
+            // 移除元素当动画完成时
+            setTimeout(() => {
+                if (stream.parentNode) {
+                    stream.parentNode.removeChild(stream);
+                }
+            }, duration * 1000);
+            
+            // 定期更新字符
+            const updateInterval = setInterval(() => {
+                if (!stream.parentNode) {
+                    clearInterval(updateInterval);
+                    return;
+                }
+                
+                // 随机改变一些字符
+                let newContent = '';
+                for (let i = 0; i < charCount; i++) {
+                    if (Math.random() > 0.9) {
+                        newContent += getRandomChar();
+                    } else {
+                        newContent += stream.textContent[i] || getRandomChar();
+                    }
+                }
+                stream.textContent = newContent;
+            }, 200);
+        }
+        
+        // 定期创建新的代码流
+        function generateStreams() {
+            createCodeStream();
+            setTimeout(generateStreams, 100 + Math.random() * 400);
+        }
+        
+        // 初始化
+        window.onload = function() {
+            generateStreams();
+        };
+    </script>
+</body>
+</html>
