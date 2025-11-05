@@ -1,3 +1,4 @@
+# copia de vidio texto
 ```sh
 root@demo-system:~# apt update  
   
@@ -299,7 +300,7 @@ default via 192.168.122.1 dev enp1s0
 ```
   
 ⚙️  Tamén podemos observar que ten NAT habilitado  
-```sh  
+```s  
 root@demo-system:~# nft list table nat  
   
 # Warning: table ip nat is managed by iptables-nft, do not touch!    
