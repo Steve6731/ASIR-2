@@ -1,0 +1,1 @@
+solo parte que los conocimiento basico estudio y pratica en boletin.

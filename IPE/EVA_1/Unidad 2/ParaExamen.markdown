@@ -107,14 +107,7 @@ Un conjunto de actividades de corta duración para incrementar las ventas.
   - Imagen del local/persona = imagen de la empresa.
 - Productividad
   - Mínimos recursos y máxima eficacia.
-  - Siepre: CALIDAD.- Publicidad
-- RR. Públicas
-- Merchandising
-- Promoción en ventas
-- Fidelización
-- Servicio postventa
-- Mensajes SMS o e-mail
-- Publicidad viral
+  - Simpre: CALIDAD.
 
 # Marketing Online
 - Personalización: trato exclusivo a cada usuario
