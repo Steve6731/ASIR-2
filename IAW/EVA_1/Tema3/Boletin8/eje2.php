@@ -177,7 +177,7 @@ function recoge($key, $type = "")
    //puede poner texto por defecto
    $termina=False;
    $textInput="";
-   $textOutput="";
+   $textOutput="Ahora no hay nada";
 ?>
 
 <?php
