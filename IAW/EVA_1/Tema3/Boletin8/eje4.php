@@ -21,6 +21,11 @@
          padding: 0px 10px;
       }
 
+      .imagen{
+         display: flex;
+         justify-content: center;
+      }
+
       .areaInput {
          background: #fd4d4d;
          padding: 0px 10px 7px;
@@ -29,7 +34,7 @@
       }
 
       .areaOutput {
-         background: #00befd;
+         background: #ffcc00;
          padding: 0px 10px 7px;
          margin:0 auto;
          width: 75%;
@@ -62,7 +67,8 @@
          padding: 3px 0px;
          font-size: 1.1rem;
          line-height: 1.6;
-         background-color: #7fdfff;
+         background-color: #F1D81C;
+         text-align: center;
       }
 
       .areaBotton{
@@ -99,9 +105,10 @@
    <!-- Pregunta --->
    <h1>Boletín 8. Programas en PHP</h1>
    <h2> 
-   2. Escribe un programa que calcule la media de un conjunto de números positivos introducidos
-por teclado. A priori, el programa no sabe cuántos números se introducirán. El usuario
-indicará que ha terminado de introducir los datos cuando meta un número negativo.
+   4. Realiza el control de acceso a una caja fuerte. La combinación será un número de 4 cifras. 
+El programa nos pedirá la combinación para abrirla. Si no acertamos, se nos mostrará el 
+mensaje “Lo siento, esa no es la combinación” y si acertamos se nos dirá “La caja fuerte se 
+ha abierto satisfactoriamente”. Tendremos cuatro oportunidades para abrir la caja fuerte.
    </h2>
 
 
@@ -109,8 +116,14 @@ indicará que ha terminado de introducir los datos cuando meta un número negati
 <?php
 // session
 session_start();
-if (!isset($_SESSION['listaNumero'])) {
-    $_SESSION['listaNumero'] = [];
+if (!isset($_SESSION['oportunidad'])) {
+    $_SESSION['oportunidad'] = 4;
+}
+if (!isset($_SESSION['password'])) {
+   $_SESSION['password'] = rand(1000,9999);
+}
+if (!isset($_SESSION['estadoCaja'])) {
+   $_SESSION['estadoCaja'] = "cerrado";
 }
 ?>
 
@@ -138,18 +151,17 @@ function recoge($key, $type = "")
 }
 ?>
 
-
 <?php function mostrar($termina,$textInput,$textOutput){
    // aqui empieza función
 ?>
 <form method="POST">
-   <h1>Calcula Medio</h1>
+   <h1>UNA CAJA FUERTE</h1>
 
    <!-- input --->
    <div class="areaInput">
       <h3>Input</h3>
       <div class = "textInput">
-         <textarea id="textInput" name="textInput" placeholder="Pon un numro positivo" ></textarea>
+         <textarea id="textInput" name="textInput" placeholder="Pon la contraseña ej: 1234" ></textarea>
       </div>
    </div>
    
@@ -158,6 +170,7 @@ function recoge($key, $type = "")
       <h3>Output</h3>
       <div class = "textOutput">
          <p><?php print $textOutput;?></p>
+         <div class="imagen"><img src=".\img\<?php echo $_SESSION['estadoCaja']?>.png"></div>
       </div>
    </div>
    
@@ -177,7 +190,7 @@ function recoge($key, $type = "")
    //puede poner texto por defecto
    $termina=False;
    $textInput="";
-   $textOutput="Ahora no hay nada";
+   $textOutput="Está cerrado";
 ?>
 
 <?php
@@ -187,34 +200,42 @@ if(empty($_REQUEST)){
    //obtener datos
    $textInput = recoge("textInput");
    $textOutput = "";
+   
    //limpiar seesion
    if (isset($_POST['clear'])) {
-      $_SESSION['listaNumero'] = [];
+      $_SESSION['oportunidad'] = 4;
+      $_SESSION['password'] = rand(1000,9999);
+      $_SESSION['estadoCaja'] = "cerrado";
+      $termina=False;
       $textInput = "";
-   }
-   //Procesamiento de datos
-   //si es numero positivo
-   if (preg_match("/^[1-9][0-9]*$/",$textInput)){
-      $_SESSION['listaNumero'][] = $textInput;
-      $textOutput = implode(",",$_SESSION['listaNumero'])."<br/>Puede poner un numero negativo para terminar.";
-   //si es numero negativo
-   }elseif (preg_match("/^-[1-9][0-9]*$/",$textInput)){
-      $termina = True;
-      $medio = round(array_sum($_SESSION['listaNumero'])/count($_SESSION['listaNumero']),2);
-      $textOutput = 
-         implode(",",$_SESSION['listaNumero'])."
-         <br/>El medio de todo numero es: $medio
-         <br/>El programa está terminado.
-         <br/>Puede teclear botón \"limpiar lista\"";
-   //si lista es vacio
-      }elseif(!isset($_SESSION['listaNumero'][0])){
-      $textOutput="Ahora no hay nada";
-   //si es algo raro.
-   }else{
-      "No puedes añadir algo fuera de numero";
+      $textOutput="Está cerrado";
    }
 
-   //enseña la resulta
+   //cuando falla
+   if ($_SESSION['oportunidad'] == 0){
+      $termina=True;
+      $textInput = "";
+      $textOutput = "Has fallado";
+   }
+
+   //comprobar nuemro
+   if ($textInput == $_SESSION['password']){
+      $textOutput = "La contraseña es correcta";
+      $_SESSION['estadoCaja'] = "abierdo";
+      $termina=True;
+   }elseif($textInput != ""){
+      $_SESSION['oportunidad']--;
+      $textOutput = "La contraseña es falsa, queda ".$_SESSION['oportunidad']." oportunidades";
+   }elseif($termina==False){
+      $textOutput = "No puedes quedar vacio <br/> Oportunidad queda igual";
+   }
+
+   //Avisa que puede repetir
+   if ($termina==True){
+     $textOutput .= "<br/>Haz clic en \"Limpia Lista\" para volver a intentarlo.";
+   }
+
+   //enseña
    mostrar($termina,$textInput,$textOutput);
 }
 ?>
