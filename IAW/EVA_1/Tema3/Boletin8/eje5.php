@@ -21,6 +21,11 @@
          padding: 0px 10px;
       }
 
+      .imagen{
+         display: flex;
+         justify-content: center;
+      }
+
       .areaInput {
          background: #fd4d4d;
          padding: 0px 10px 7px;
@@ -63,6 +68,7 @@
          font-size: 1.1rem;
          line-height: 1.6;
          background-color: #7fdfff;
+         text-align: center;
       }
 
       .areaBotton{
@@ -99,10 +105,9 @@
    <!-- Pregunta --->
    <h1>Boletín 8. Programas en PHP</h1>
    <h2> 
-   3. Realiza un programa que vaya pidiendo números hasta que se introduzca un número 
-negativo y nos diga cuantos números se han introducido, la media de los impares y el mayor 
-de los pares. El número negativo sólo se utiliza para indicar el final de la introducción de 
-datos pero no se incluye en el cómputo
+   5. Adivina un número. Realiza un script en php que te permita adivinar un número aleatorio 
+entre 1 y 100 en un máximo de 5 intentos. Cada vez que el usuario introduce un número, el 
+programa debe darle una pista de si el número que tiene que adivinar es mayor o menor.
    </h2>
 
 
@@ -110,11 +115,11 @@ datos pero no se incluye en el cómputo
 <?php
 // session
 session_start();
-if (!isset($_SESSION['listaNumeroPares'])) {
-    $_SESSION['listaNumero'] = [];
+if (!isset($_SESSION['oportunidad'])) {
+    $_SESSION['oportunidad'] = 5;
 }
-if (!isset($_SESSION['listaNumeroImpares'])) {
-   $_SESSION['listaNumero'] = [];
+if (!isset($_SESSION['numero'])) {
+   $_SESSION['numero'] = rand(1,100);
 }
 ?>
 
@@ -142,18 +147,17 @@ function recoge($key, $type = "")
 }
 ?>
 
-
 <?php function mostrar($termina,$textInput,$textOutput){
    // aqui empieza función
 ?>
 <form method="POST">
-   <h1>Lista de numeros</h1>
+   <h1>UNA CAJA FUERTE</h1>
 
    <!-- input --->
    <div class="areaInput">
       <h3>Input</h3>
       <div class = "textInput">
-         <textarea id="textInput" name="textInput" placeholder="Pon un numro positivo" ></textarea>
+         <textarea id="textInput" name="textInput" placeholder="Pon un numero ej: 12" ></textarea>
       </div>
    </div>
    
@@ -170,7 +174,7 @@ function recoge($key, $type = "")
       <button class="botton" type="submit" name="clear" value="1">limpiar lista</button>
       <?php if (!$termina){ //va ocultar el botón cuando termina programa?>
          <button class="botton" type="submit">Submit</button>
-      <?php } //para contror ?>
+      <?php } //para oculta boton ?>
    </div>
    
 </form>
@@ -181,7 +185,7 @@ function recoge($key, $type = "")
    //puede poner texto por defecto
    $termina=False;
    $textInput="";
-   $textOutput="Ahora no hay nada";
+   $textOutput="Pon un numero entre 1 a 100.<br/>Tienes un máximo de 5 intentos.";
 ?>
 
 <?php
@@ -191,75 +195,45 @@ if(empty($_REQUEST)){
    //obtener datos
    $textInput = recoge("textInput");
    $textOutput = "";
+
    //limpiar seesion
    if (isset($_POST['clear'])) {
-      $_SESSION['listaNumeroPares'] = [];
-      $_SESSION['listaNumeroImpares'] = [];
+      $_SESSION['oportunidad'] = 5;
+      $_SESSION['numero'] = rand(1,100);
+      $termina=False;
       $textInput = "";
+      $textOutput="Pon un numero entre 1 a 100.<br/>Tienes un máximo de 5 intentos.";
    }
 
-   //Comienza el procesamiento de datos
-   //si recibe un numero positivo
-   if (preg_match("/^[1-9][0-9]*$/",$textInput)){
-      //guardar datos en session
-      if ($textInput%2 == 1){
-         $_SESSION['listaNumeroImpares'][] = $textInput;
+   //cuando falla
+   if ($_SESSION['oportunidad'] == 0){
+      $termina=True;
+      $textInput = "";
+      $textOutput = "Has fallado";
+   }
+
+   //comprobar nuemro
+   if ($textInput == $_SESSION['numero']){
+      $textOutput = "🤓¡Correcta \"".$_SESSION['numero']."\" es el numero aleatorio.!🤓";
+      $termina=True;
+   }elseif($textInput != ""){
+      $_SESSION['oportunidad']--;
+      if ($textInput > $_SESSION['numero']){
+         $textOutput = "El numero aleatorio es más pequeño. ";
       }else{
-         $_SESSION['listaNumeroPares'][] = $textInput;
+         $textOutput = "El numero aleatorio es más grante. ";
       }
-   //si es numero negativo
-   }elseif (preg_match("/^-[1-9][0-9]*$/",$textInput)){
-      //termina programa
-      $termina = True;
-   //si pone algo raro
-   }elseif ($textInput!=""){
-      $textOutput .= "No puedes añadir algo fuera de numero<br/>";
+      $textOutput .="<br/>Quedas ".$_SESSION['oportunidad']." oportunidades";
+   }elseif($termina==False){
+      $textOutput = "No puedes quedar vacio <br/> Oportunidad queda igual";
    }
 
-   //desde aqui empieza genera resulta que va enseñar
-   //primero calcura numero necesario
-   $countNumeroPares = count($_SESSION['listaNumeroPares']);
-   $countNumeroImpares = count($_SESSION['listaNumeroImpares']);
-   $countNumero = $countNumeroPares + $countNumeroImpares;
-
-   if($countNumero==0){
-      $textOutput .="Ahora no hay nada";
-   }else{
-      $textOutput .= "Resulta del programa:";
-      //busca Maximo de numeros Pares
-      if($countNumeroPares!=0){
-         $maxPares = $_SESSION['listaNumeroPares'][0];
-         foreach ($_SESSION['listaNumeroPares'] as $numeroPares){
-            if ($numeroPares > $maxPares){
-               $maxPares = $numeroPares;
-            }
-         }
-         $textOutput .= 
-            "<br/>Lista de nuemro pares: "
-            .implode(", ",$_SESSION['listaNumeroPares'])
-            ."<br/>Maximo de numero pares: $maxPares ";   
-      }
-
-      //calcula Medio de numeros Impares
-      if($countNumeroImpares!=0){
-      $medioImpares = round(array_sum($_SESSION['listaNumeroImpares'])/$countNumeroImpares,2);;
-      $textOutput .= 
-         "<br/>Lista de nuemro Impares: "
-         .implode(", ",$_SESSION['listaNumeroImpares'])
-         ."<br/>Medio de numeros pares:  $medioImpares";
-      }
-
-      //enseña $countNumero
-      $textOutput.="<br/>Cuantos números se han introducido: $countNumero";
-
-      //aviso que puede termina con numero negativo.
-      if(!$termina){
-         $textOutput.= "<br/>Puede poner un numero negativo para terminar.";
-      }else{
-         $textOutput.= "<br/>Pulsa \"limpia lista\" para hacer otra vez.";
-      }
+   //Avisa que puede repetir
+   if ($termina==True){
+     $textOutput .= "<br/>Haz clic en \"Limpia Lista\" para volver a intentarlo.";
    }
-   
+
+   //enseña
    mostrar($termina,$textInput,$textOutput);
 }
 ?>

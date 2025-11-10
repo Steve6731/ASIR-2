@@ -21,11 +21,6 @@
          padding: 0px 10px;
       }
 
-      .imagen{
-         display: flex;
-         justify-content: center;
-      }
-
       .areaInput {
          background: #fd4d4d;
          padding: 0px 10px 7px;
@@ -34,7 +29,7 @@
       }
 
       .areaOutput {
-         background: #ffcc00;
+         background: #00befd;
          padding: 0px 10px 7px;
          margin:0 auto;
          width: 75%;
@@ -67,8 +62,7 @@
          padding: 3px 0px;
          font-size: 1.1rem;
          line-height: 1.6;
-         background-color: #F1D81C;
-         text-align: center;
+         background-color: #7fdfff;
       }
 
       .areaBotton{
@@ -105,10 +99,10 @@
    <!-- Pregunta --->
    <h1>Boletín 8. Programas en PHP</h1>
    <h2> 
-   4. Realiza el control de acceso a una caja fuerte. La combinación será un número de 4 cifras. 
-El programa nos pedirá la combinación para abrirla. Si no acertamos, se nos mostrará el 
-mensaje “Lo siento, esa no es la combinación” y si acertamos se nos dirá “La caja fuerte se 
-ha abierto satisfactoriamente”. Tendremos cuatro oportunidades para abrir la caja fuerte.
+   3. Realiza un programa que vaya pidiendo números hasta que se introduzca un número 
+negativo y nos diga cuantos números se han introducido, la media de los impares y el mayor 
+de los pares. El número negativo sólo se utiliza para indicar el final de la introducción de 
+datos pero no se incluye en el cómputo
    </h2>
 
 
@@ -116,11 +110,11 @@ ha abierto satisfactoriamente”. Tendremos cuatro oportunidades para abrir la c
 <?php
 // session
 session_start();
-if (!isset($_SESSION['oportunidad'])) {
-    $_SESSION['Oportunidad'] = 4;
+if (!isset($_SESSION['listaNumeroPares'])) {
+    $_SESSION['listaNumero'] = [];
 }
-if (!isset($_SESSION['estadoCaja'])) {
-   $_SESSION['estadoCaja'] = "cerrado";
+if (!isset($_SESSION['listaNumeroImpares'])) {
+   $_SESSION['listaNumero'] = [];
 }
 ?>
 
@@ -153,13 +147,13 @@ function recoge($key, $type = "")
    // aqui empieza función
 ?>
 <form method="POST">
-   <h1>UNA CAJA FUERTE</h1>
+   <h1>Lista de numeros</h1>
 
    <!-- input --->
    <div class="areaInput">
       <h3>Input</h3>
       <div class = "textInput">
-         <textarea id="textInput" name="textInput" placeholder="Pon la contraseña ej: 1234" ></textarea>
+         <textarea id="textInput" name="textInput" placeholder="Pon un numro positivo" ></textarea>
       </div>
    </div>
    
@@ -168,7 +162,6 @@ function recoge($key, $type = "")
       <h3>Output</h3>
       <div class = "textOutput">
          <p><?php print $textOutput;?></p>
-         <div class="imagen"><img src=".\img\cerrado.png"></div>
       </div>
    </div>
    
@@ -177,7 +170,7 @@ function recoge($key, $type = "")
       <button class="botton" type="submit" name="clear" value="1">limpiar lista</button>
       <?php if (!$termina){ //va ocultar el botón cuando termina programa?>
          <button class="botton" type="submit">Submit</button>
-      <?php } //para contror ?>
+      <?php } //para oculta boton  ?>
    </div>
    
 </form>
@@ -188,7 +181,7 @@ function recoge($key, $type = "")
    //puede poner texto por defecto
    $termina=False;
    $textInput="";
-   $textOutput="Está cerrado";
+   $textOutput="Ahora no hay nada";
 ?>
 
 <?php
@@ -200,12 +193,71 @@ if(empty($_REQUEST)){
    $textOutput = "";
    //limpiar seesion
    if (isset($_POST['clear'])) {
-      $_SESSION['oportunidad'] = 4;
+      $_SESSION['listaNumeroPares'] = [];
+      $_SESSION['listaNumeroImpares'] = [];
       $textInput = "";
    }
 
-   if ($_SESSION['Oportunidad'] == 0){
-      $termina=True;
+   //Comienza el procesamiento de datos
+   //si recibe un numero positivo
+   if (preg_match("/^[1-9][0-9]*$/",$textInput)){
+      //guardar datos en session
+      if ($textInput%2 == 1){
+         $_SESSION['listaNumeroImpares'][] = $textInput;
+      }else{
+         $_SESSION['listaNumeroPares'][] = $textInput;
+      }
+   //si es numero negativo
+   }elseif (preg_match("/^-[1-9][0-9]*$/",$textInput)){
+      //termina programa
+      $termina = True;
+   //si pone algo raro
+   }elseif ($textInput!=""){
+      $textOutput .= "No puedes añadir algo fuera de numero<br/>";
+   }
+
+   //desde aqui empieza genera resulta que va enseñar
+   //primero calcura numero necesario
+   $countNumeroPares = count($_SESSION['listaNumeroPares']);
+   $countNumeroImpares = count($_SESSION['listaNumeroImpares']);
+   $countNumero = $countNumeroPares + $countNumeroImpares;
+
+   if($countNumero==0){
+      $textOutput .="Ahora no hay nada";
+   }else{
+      $textOutput .= "Resulta del programa:";
+      //busca Maximo de numeros Pares
+      if($countNumeroPares!=0){
+         $maxPares = $_SESSION['listaNumeroPares'][0];
+         foreach ($_SESSION['listaNumeroPares'] as $numeroPares){
+            if ($numeroPares > $maxPares){
+               $maxPares = $numeroPares;
+            }
+         }
+         $textOutput .= 
+            "<br/>Lista de nuemro pares: "
+            .implode(", ",$_SESSION['listaNumeroPares'])
+            ."<br/>Maximo de numero pares: $maxPares ";   
+      }
+
+      //calcula Medio de numeros Impares
+      if($countNumeroImpares!=0){
+      $medioImpares = round(array_sum($_SESSION['listaNumeroImpares'])/$countNumeroImpares,2);;
+      $textOutput .= 
+         "<br/>Lista de nuemro Impares: "
+         .implode(", ",$_SESSION['listaNumeroImpares'])
+         ."<br/>Medio de numeros pares:  $medioImpares";
+      }
+
+      //enseña $countNumero
+      $textOutput.="<br/>Cuantos números se han introducido: $countNumero";
+
+      //aviso que puede termina con numero negativo.
+      if(!$termina){
+         $textOutput.= "<br/>Puede poner un numero negativo para terminar.";
+      }else{
+         $textOutput.= "<br/>Pulsa \"limpia lista\" para hacer otra vez.";
+      }
    }
    
    mostrar($termina,$textInput,$textOutput);

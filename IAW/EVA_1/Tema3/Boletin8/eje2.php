@@ -166,7 +166,7 @@ function recoge($key, $type = "")
       <button class="botton" type="submit" name="clear" value="1">limpiar lista</button>
       <?php if (!$termina){ //va ocultar el botón cuando termina programa?>
          <button class="botton" type="submit">Submit</button>
-      <?php } //para contror ?>
+      <?php } //para oculta boton ?>
    </div>
    
 </form>
