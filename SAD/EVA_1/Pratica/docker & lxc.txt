@@ -1,0 +1,81 @@
+#en maquina real
+ovs-vsctl add-br 2asir lan 100
+## configura "interface"
+## abrir Virtual Machine Manager
+## añadir nueva tarjeta red configuracion xml:
+```xml
+<interface type="bridge">
+  <mac address="52:54:00:f1:22:a1"/>
+  <source bridge="2asir"/>
+  <vlan>
+    <tag id="100"/>
+  </vlan>
+  <virtualport type="openvswitch" />
+  <model type="virtio"/>
+  <alias name="net1"/>
+  <address type="pci" domain="0x0000" bus="0x07" slot="0x00" function="0x0"/>
+</interface>
+```
+
+#dentro de maquina virtual 'netservices'
+brctl addbr 2asir
+ip link set 2asir up
+ip addr add 172.30.4.254/24 dev 2asir
+brctl addif 2asir enp7s0
+ip link set enp7s0 up
+ip link add link enp7s0 name enp7s0.100 type vlan id 100
+ip link set enp7s0.100 up
+## para ver configuracion: ip -d link show type vlan
+## configuracion de interface
+auto enp1s0
+iface enp1s0 inet manual
+
+auto enp7s0
+iface enp1s0 inet manual
+
+auto br0
+iface br0 inet static
+  address 172.20.104.254
+  netmask 255.255.0.0
+  gateway 172.20.0.1
+  bridge_ports enp1s0
+  
+auto 2asir
+iface 2asir inet static
+  address 172.30.4.254
+  netmask 255.255.255.0
+  bridge_ports enp7s0
+
+
+# empieza craete MV lxc
+lxc-create --name gateway.Xuan.2asir.com -t debian -- -r trixie
+
+nano /var/lib/lxc/gateway.Xuan.2asir.com/config
+
+root@server01:~# lxc-ls -f
+NAME                   STATE   AUTOSTART GROUPS IPV4 IPV6 UNPRIVILEGED 
+gateway.Xuan.2asir.com STOPPED 0         -      -    -    false        
+root@server01:~# nano /var/lib/lxc/gateway.Xuan.2asir.com/config 
+
+```sh
+# Distribution configuration
+lxc.include = /usr/share/lxc/config/common.conf
+lxc.arch = linux64
+
+# Container specific configuration
+lxc.apparmor.profile = generated
+lxc.apparmor.allow_nesting = 1
+lxc.rootfs.path = dir:/var/lib/lxc/gateway.Xuan.2asir.com/rootfs
+lxc.uts.name = gateway.Xuan.2asir.com
+
+# Network configuration
+lxc.net.0.type = veth
+lxc.net.0.link = lan
+lxc.net.0.flags = up
+
+```
+
+root@server01:~# lxc-start -n gateway.Xuan.2asir.com 
+root@server01:~# lxc-ls -f
+NAME                   STATE   AUTOSTART GROUPS IPV4           IPV6             UNPRIVILEGED 
+gateway.Xuan.2asir.com RUNNING 0         -      172.20.200.228 fc42:5009:ba4b:5ab0:f882:6fff:fecb:b71e false        
