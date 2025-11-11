@@ -18,6 +18,8 @@ ovs-vsctl add-br 2asir lan 100
 ```
 
 #dentro de maquina virtual 'netservices'
+apt update
+apt install bridge-utils
 brctl addbr 2asir
 ip link set 2asir up
 ip addr add 172.30.4.254/24 dev 2asir
@@ -48,6 +50,7 @@ iface 2asir inet static
 
 
 # empieza craete MV lxc
+apt install lxc lxc-templates
 lxc-create --name gateway.Xuan.2asir.com -t debian -- -r trixie
 
 nano /var/lib/lxc/gateway.Xuan.2asir.com/config
