@@ -135,4 +135,13 @@ MEDICOS      TRATAMIENTOS_REALIZADOS UPDATE
 
 
 6 filas seleccionadas.
+
+SQL> create tablespace cunqueiro datafile 'C:\datafile\cunqueiro1.dbf' size 100M autoextend on next 5M maxsize unlimited;
+
+Tablespace creado.
 ```
+
+xuan.iaw.iesrodeira.com
+172.31.8.18
+23308
+abc#xuan

@@ -173,7 +173,7 @@ function recoge($key, $type = "")
    <div class="areaBotton">
       <button class="botton" type="submit" name="clear" value="1">limpiar lista</button>
       <?php if (!$termina){ //va ocultar el botón cuando termina programa?>
-         <button class="botton" type="submit">Submit</button>
+         <button class="botton" type="submit" name="submit" value="1">Submit</button>
       <?php } //para oculta boton ?>
    </div>
    
@@ -224,7 +224,7 @@ if(empty($_REQUEST)){
          $textOutput = "El numero aleatorio es más grante. ";
       }
       $textOutput .="<br/>Quedas ".$_SESSION['oportunidad']." oportunidades";
-   }elseif($termina==False){
+   }elseif(isset($_POST['clear'])){
       $textOutput = "No puedes quedar vacio <br/> Oportunidad queda igual";
    }
 

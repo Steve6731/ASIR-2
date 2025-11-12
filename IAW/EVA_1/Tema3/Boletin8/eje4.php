@@ -178,7 +178,7 @@ function recoge($key, $type = "")
    <div class="areaBotton">
       <button class="botton" type="submit" name="clear" value="1">limpiar lista</button>
       <?php if (!$termina){ //va ocultar el botón cuando termina programa?>
-         <button class="botton" type="submit">Submit</button>
+         <button class="botton" type="submit"  name="submit" value="1">Submit</button>
       <?php } //para contror ?>
    </div>
    
@@ -226,7 +226,7 @@ if(empty($_REQUEST)){
    }elseif($textInput != ""){
       $_SESSION['oportunidad']--;
       $textOutput = "La contraseña es falsa, queda ".$_SESSION['oportunidad']." oportunidades";
-   }elseif($termina==False){
+   }elseif(isset($_POST['submit'])){
       $textOutput = "No puedes quedar vacio <br/> Oportunidad queda igual";
    }
 

@@ -79,3 +79,6 @@ root@server01:~# lxc-start -n gateway.Xuan.2asir.com
 root@server01:~# lxc-ls -f
 NAME                   STATE   AUTOSTART GROUPS IPV4           IPV6             UNPRIVILEGED 
 gateway.Xuan.2asir.com RUNNING 0         -      172.20.200.228 fc42:5009:ba4b:5ab0:f882:6fff:fecb:b71e false        
+### configura "interface" de lxc
+docker run -d --name webserver -p 80:80 httpd
+
