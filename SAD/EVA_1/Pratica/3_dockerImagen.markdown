@@ -983,7 +983,7 @@ root@demo-system:~#  docker exec web-from-dockerfile ip addr show
     inet 172.17.0.6/16 brd 172.17.255.255 scope global eth0  
        valid_lft forever preferred_lft forever  
   
-root@demo-system:~#  root@demo-system:~#  wget http://172.17.0.6  
+root@demo-system:~#  wget http://172.17.0.6  
 --2025-10-19 23:37:31--  http://172.17.0.6/  
 Conectando con 172.17.0.6:80... conectado.  
 Petición HTTP enviada, esperando respuesta... 200 OK  

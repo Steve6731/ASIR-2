@@ -92,5 +92,22 @@ REPOSITORY    TAG       IMAGE ID       CREATED       SIZE
 hello-world   latest    1b44b5a3e06a   7 weeks ago   10.1kB
 root@DockerXuan:~# 
 
+## para obtener un contenedor debian que puede acceder bash
+root@gateway:~# docker ps -a
+CONTAINER ID   IMAGE     COMMAND              CREATED          STATUS                      PORTS     NAMES
+a5205cb3de64   debian    "/bin/bash"          29 seconds ago   Exited (0) 24 seconds ago             debian
+79a93128be93   httpd     "httpd-foreground"   22 minutes ago   Exited (0) 21 minutes ago             paginaweb
+root@gateway:~# docker rm debian
+debian
+root@gateway:~# docker run -d -it --name debian --hostname server debian /bin/bash
+c9e0e31e32ec33a48d4fe4aa84a44dc2481f0a031518e28b831c5f70682d007e
+root@gateway:~# docker exec -it debian bash
+root@server:/# exit
+exit
+root@gateway:~# docker ps -a
+CONTAINER ID   IMAGE     COMMAND              CREATED          STATUS                      PORTS     NAMES
+c9e0e31e32ec   debian    "/bin/bash"          21 seconds ago   Up 20 seconds                         debian
+79a93128be93   httpd     "httpd-foreground"   23 minutes ago   Exited (0) 22 minutes ago             paginaweb
+root@gateway:~# 
 
 
