@@ -38,7 +38,7 @@
 <?php }} //acaba else y funcion imc?>
 
 
-<?php include(".\\inc\\funciones.php");//obtener funcion recoge?>
+<?php include("./inc/funciones.php");//obtener funcion recoge?>
 
 <?php 
 //crear session porque en funcion no puedo poner $imc

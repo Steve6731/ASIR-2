@@ -20,7 +20,7 @@ XE =
 sql> show con_name -- nombre de contenedor
 sql> show pdbs
 sql> desc [tablename]
-
+select tablespace_name from dba_tablespaces; --obtener lista de tablespace
 ```
 prueba los comandos de PowerShell indicados a continuacion. Con cada tarea haz una captura de pantalla y añade una breve explicacion de su funcionalidad 
 

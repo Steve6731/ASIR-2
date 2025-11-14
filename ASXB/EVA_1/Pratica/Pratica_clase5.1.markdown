@@ -141,7 +141,7 @@ SQL> create tablespace cunqueiro datafile 'C:\datafile\cunqueiro1.dbf' size 100M
 Tablespace creado.
 ```
 
-xuan.iaw.iesrodeira.com
+xuan.iaw.iesrodeira.com[192.168.1.254]
 172.31.8.18
 23308
 abc#xuan
