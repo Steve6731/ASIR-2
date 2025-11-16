@@ -1,0 +1,4 @@
+- /proc
+   - /proc/cpuinfo: los datos sobre el procesador de tu equipo.  
+   - /proc/filesystems
+   - /proc/[PID]

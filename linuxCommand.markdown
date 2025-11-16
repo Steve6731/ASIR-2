@@ -1,16 +1,87 @@
-# Etapa de arranque
-- arranque del hardware
-- gestor de arranque(BIOS/UEFI)
-- kernel linux y unos no importante:
-  - inittramfs: accede directorio raiz /
-  - mount
-- proceso de inicialización:
-  - /sbin/init
-  - servicios
-- login en modo texto.
-- sistamas de ventanas x(GUI)
+# basico
+- su -
+- ls
+- cd
+- nano
+- mv
+- cp
+- rm
+- cat
+- echo
+- mkdir
+- touch
+- [>>|>|2>|2>>]
+- (|)
 
-# systemV y systemd
+
+---
+# avanzado
+
+## id [userName]
+## adduser [userName]
+## usermod -a G [listGroup]
+## groups [userName]
+## chgrp [groupName] [fichero]
+## chown [userName] [fichero]
+## chmod [ SNNN | [u|g|o][+|-][r|x|w|s|t] ]
+## at [optiones] [tiempo]
+## crontab [-u [usuario]] [-l|-e|-r]|[fichero]
+## /etc/init.d/[nombreServicio] [acction]
+## systemctl [action] [nameService]
+## journalctl [-l|-u|-k]
+## ps aux|-elf
+## top
+## htop
+## pstree [proceso]
+## pgrep / pidof [nombre de procesos]
+## kill [proceso]
+## jobs
+## bg /fg [id_de_jobs]
+## wait [proceso]
+## time [opcion] ["command"] [command]
+## nice [-n numNice|-numNice] [command]
+## renice [ [+|-] numNice ] [-p pid] [-u user] [-g grp]
+## nohup / &
+## wc -l
+## less
+## uptime
+## w
+## free
+## paquete: sysstat
+
+----
+
+
+### los permiso especial de linux
+**SUID(4)**: primer va ejecutar como su owner  
+x(executa) va enseña como s(owner tiene permiso) o S(owner no tiene permiso, va probar con permiso de grubo o cliente)  
+- sintax: chmod u+s [fichero] | chmod 4700 [fichero]
+  
+**SGID(2)**: primer va ejecutar como su owner grupo  
+x(executa) va enseña como s(owner tiene permiso) o S(owner no tiene permiso, va probar con permiso de grubo o cliente)  
+- sintax: chmod g+s [fichero] | chmod 2070 [fichero]
+
+**Sticky(1)**: todo puede ejecutar, leer, escribir pero no puede eliminar.  
+x(executa) va enseña como t(owner tiene permiso) o T(owner no tiene permiso, va probar con permiso de grubo o cliente)  
+- sintax: chmod +t [fichero] | chmod 1007 [fichero]
+
+
+- at [optiones] [tiempo]
+  - [time]: [hora:minuto[AM|PM] | midnight(00:00) | noon(12:00) | teatime(16:00)] [MMDDYY|today|tomorrow] | now + [numeroDeTiempo][minutes|hours|days|weeks]
+- cron
+  - archivo: /etc/crontab
+  - [minuto] [hora] [dia] [mes] [semana] [comando]
+  - [0-59] [0-23] [1-31] [1-31] [1-12] [cualquier]
+  - (*) indica cualquier valor
+  - (,) indica varios valores
+  - (-) indica rango
+  - (/) ej: [hora]: */7 indica function cuando tiempo = 7:00,14:00
+  - command: crontab [-u [usuario]] [-l|-e|-r]|[fichero]
+  - -l: leer -e: edit -r: remove
+- anacron
+   - archivo: /etc/anacron
+   - [periodo(unit:day)] [retardo(duracion)] [id_del_trabajo] [comando]
+
 - systemV: command: /etc/init.d/[nombreServicio] [acction]
   - [acction] => [start|restart|reload|stop|status]
   - command: update-rc.d [-n] [-f(remove)] [basename] [dafaults|disable|[enable[S|2|3|4|5]]]
@@ -43,40 +114,7 @@
     - journalctl -u [nameUnit] => show entradas por esa unit
     - journalctl -k => solo mensaje del kernel
   
-# automatizacion de tareas
-- at [optiones] [tiempo]
-  - [time]: [hora:minuto[AM|PM] | midnight(00:00) | noon(12:00) | teatime(16:00)] [MMDDYY|today|tomorrow] | now + [numeroDeTiempo][minutes|hours|days|weeks]
-- cron
-  - archivo: /etc/crontab
-  - [minuto] [hora] [dia] [mes] [semana] [comando]
-  - [0-59] [0-23] [1-31] [1-31] [1-12] [cualquier]
-  - (*) indica cualquier valor
-  - (,) indica varios valores
-  - (-) indica rango
-  - (/) ej: [hora]: */7 indica function cuando tiempo = 7:00,14:00
-  - command: crontab [-u [usuario]] [-l|-e|-r]|[fichero]
-  - -l: leer -e: edit -r: remove
-- anacron
-   - archivo: /etc/anacron
-   - [periodo(unit:day)] [retardo(duracion)] [id_del_trabajo] [comando]
-
-# command
-```
-# ps aux|-elf
-# top
-# htop
-# pstree [proceso]
-# pgrep / pidof [nombre de procesos]
-# kill [proceso]
-# jobs
-# bg /fg [id_de_jobs]
-# wait [proceso]
-# time [opcion] ["command"] [command]
-# nice [-n numNice|-numNice] [command]
-# renice [ [+|-] numNice ] [-p pid] [-u user] [-g grp]
-# nohup / &
-```
-### ps
+  ### ps
 #### sintaxe
 - system V
    - -e: show todo procesos
@@ -191,19 +229,6 @@ cambia prioridad de porcoso sin parar
 ambos funciona en segundo plano
 nohup funcionado aunque salir usuario
 & terminar cuando slir usuario
-
-### los permiso especial de linux
-**SUID(4)**: primer va ejecutar como su owner  
-x(executa) va enseña como s(owner tiene permiso) o S(owner no tiene permiso, va probar con permiso de grubo o cliente)  
-- sintax: chmod u+s [fichero] | chmod 4700 [fichero]
-  
-**SGID(2)**: primer va ejecutar como su owner grupo  
-x(executa) va enseña como s(owner tiene permiso) o S(owner no tiene permiso, va probar con permiso de grubo o cliente)  
-- sintax: chmod g+s [fichero] | chmod 2070 [fichero]
-
-**Sticky(1)**: todo puede ejecutar, leer, escribir pero no puede eliminar.  
-x(executa) va enseña como t(owner tiene permiso) o T(owner no tiene permiso, va probar con permiso de grubo o cliente)  
-- sintax: chmod +t [fichero] | chmod 1007 [fichero]
 
 ### other command:
 - uptime: muestra
