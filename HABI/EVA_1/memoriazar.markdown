@@ -10,11 +10,11 @@ router problem, breach, address an issue, meeting, wifi connection, finish a pro
   - the attitude or mood of a person or group, a way of feeling or behaving
 - network topology
   - how the elements of a network are arranged, the structure ofo a network
-- peering, misamatch
+- peering
   - voluntary interconnection of administratively separate internet networks to exchange traffic between the "down-stream" users of each network.
+- misamatch
+  - when two things fail to correspond,
 - misconfigured
-  - when two thing fail to correspond
-- bgp
   - when a system or part of it is incorrectly composed or formed.
 -----------------
 - pros and cons: benefits and drawbacks
