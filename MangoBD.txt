@@ -1,0 +1,8 @@
+username:steve6731943_db_user
+password:YXRS6j3dGHgQVn8Y
+mongodb+srv://steve6731943_db_user:YXRS6j3dGHgQVn8Y@cluster0.ucuvz2h.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+
+ssh usuario@172.20.3.54
+
+liuxuan_db_user
+WsIuJQHkGZPF65wJ
