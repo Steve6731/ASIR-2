@@ -1,5 +1,11 @@
-# backup manual en frio
+# apunte RMAN
 ```bash
+rman target=sys@xe # para entrar como sys con RMAN
+```
+# pratica de backup manual en frio
+
+
+``` bash
 # unos select para localiza files.
 # buscamos los ficheros de datos
 
@@ -105,9 +111,9 @@ SQL> alter database begin/end backup
 SQL> alter pluggable database nombre begin/end backup
 ```
 
-```bash
+``` sql
 shutdown
-start mountada
+start mounta
 alter pluggable database xepdb1 begin backup
 alter pluggable database xepdb1 end backup
 
@@ -134,21 +140,82 @@ Empezando backup a las 18/11/25
 se utiliza el archivo de control de la base de datos destino en lugar del catßlogo de recuperaci¾n
 canal asignado: ORA_DISK_1
 canal ORA_DISK_1: SID=14 tipo de dispositivo=DISK
+#termina correctamente
+
+```
+
+hecho otra vez
+
+``` bash
+C:\Users\Administrador>sqlplus / as sysdba
+SQL> shutdown immediate
+Base de datos cerrada.
+Base de datos desmontada.
+Instancia ORACLE cerrada.
+SQL> startup mount
+Instancia ORACLE iniciada.
+
+Total System Global Area 1291844832 bytes
+Fixed Size                  9854176 bytes
+Variable Size             520093696 bytes
+Database Buffers          754974720 bytes
+Redo Buffers                6922240 bytes
+Base de datos montada.
+SQL> alter database archivelog;
+
+Base de datos modificada.
+
+SQL> exit
+
+C:\Users\Administrador>rman target sys@xe
+
+Recovery Manager : Release 21.0.0.0.0 - Production on Jue Nov 20 09:48:37 2025
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle and/or its affiliates.  All rights reserved.
+
+Contrase±a de la base de datos destino:
+conectado a la base de datos de destino: XE (DBID=3092654103, no abierto)
+
+RMAN> backup pluggable database xepdb1;
+
+Empezando backup a las 20/11/25
+se utiliza el archivo de control de la base de datos destino en lugar del catßlogo de recuperaci¾n
+canal asignado: ORA_DISK_1
+canal ORA_DISK_1: SID=17 tipo de dispositivo=DISK
 canal ORA_DISK_1: iniciando juego de copias de seguridad de archivo de datos completo
 canal ORA_DISK_1: especificando archivo(s) de datos en el juego de copias de seguridad
 n·mero de archivo de datos de entrada=00010 nombre=C:\APP\ADMINISTRADOR\PRODUCT\21C\ORADATA\XE\XEPDB1\SYSAUX01.DBF
 n·mero de archivo de datos de entrada=00009 nombre=C:\APP\ADMINISTRADOR\PRODUCT\21C\ORADATA\XE\XEPDB1\SYSTEM01.DBF
 n·mero de archivo de datos de entrada=00011 nombre=C:\APP\ADMINISTRADOR\PRODUCT\21C\ORADATA\XE\XEPDB1\UNDOTBS01.DBF
 n·mero de archivo de datos de entrada=00012 nombre=C:\APP\ADMINISTRADOR\PRODUCT\21C\ORADATA\XE\XEPDB1\USERS01.DBF
-canal ORA_DISK_1: iniciando parte 1 en 18/11/25
-canal ORA_DISK_1: finalizando parte 1 en 18/11/25
-manejador de parte=C:\APP\ADMINISTRADOR\PRODUCT\21C\DBHOMEXE\DATABASE\01493ATO_1_1_1 etiqueta=TAG20251118T121028 comentario=NONE
-canal ORA_DISK_1: juego de copias de seguridad terminado, tiempo transcurrido: 00:00:05
-Se ha finalizado backup a las 18/11/25
+canal ORA_DISK_1: iniciando parte 1 en 20/11/25
+canal ORA_DISK_1: finalizando parte 1 en 20/11/25
+manejador de parte=C:\APP\ADMINISTRADOR\PRODUCT\21C\DBHOMEXE\DATABASE\03498BCD_3_1_1 etiqueta=TAG20251120T094901 comentario=NONE
+canal ORA_DISK_1: juego de copias de seguridad terminado, tiempo transcurrido: 00:00:04
+Se ha finalizado backup a las 20/11/25
 
-Empezando Control File and SPFILE Autobackup a las 18/11/25
-manejador de parte=C:\APP\ADMINISTRADOR\PRODUCT\21C\DBHOMEXE\DATABASE\C-3092654103-20251118-00 comentario=NONE
-Se ha finalizado Control File and SPFILE Autobackup a las 18/11/25
+Empezando Control File and SPFILE Autobackup a las 20/11/25
+manejador de parte=C:\APP\ADMINISTRADOR\PRODUCT\21C\DBHOMEXE\DATABASE\C-3092654103-20251120-00 comentario=NONE
+Se ha finalizado Control File and SPFILE Autobackup a las 20/11/25
 
-RMAN>
+RMAN> backup pluggable database CUNQUEIRO;
+
+Empezando backup a las 20/11/25
+usando el canal ORA_DISK_1
+canal ORA_DISK_1: iniciando juego de copias de seguridad de archivo de datos completo
+canal ORA_DISK_1: especificando archivo(s) de datos en el juego de copias de seguridad
+n·mero de archivo de datos de entrada=00017 nombre=C:\APP\ADMINISTRADOR\PRODUCT\21C\ORADATA\XE\CUNQUEIRO\SYSAUX01.DBF
+n·mero de archivo de datos de entrada=00016 nombre=C:\APP\ADMINISTRADOR\PRODUCT\21C\ORADATA\XE\CUNQUEIRO\SYSTEM01.DBF
+n·mero de archivo de datos de entrada=00018 nombre=C:\APP\ADMINISTRADOR\PRODUCT\21C\ORADATA\XE\CUNQUEIRO\UNDOTBS01.DBF
+canal ORA_DISK_1: iniciando parte 1 en 20/11/25
+canal ORA_DISK_1: finalizando parte 1 en 20/11/25
+manejador de parte=C:\APP\ADMINISTRADOR\PRODUCT\21C\DBHOMEXE\DATABASE\05498BD8_5_1_1 etiqueta=TAG20251120T094928 comentario=NONE
+canal ORA_DISK_1: juego de copias de seguridad terminado, tiempo transcurrido: 00:00:07
+Se ha finalizado backup a las 20/11/25
+
+Empezando Control File and SPFILE Autobackup a las 20/11/25
+manejador de parte=C:\APP\ADMINISTRADOR\PRODUCT\21C\DBHOMEXE\DATABASE\C-3092654103-20251120-01 comentario=NONE
+Se ha finalizado Control File and SPFILE Autobackup a las 20/11/25
+
 ```
