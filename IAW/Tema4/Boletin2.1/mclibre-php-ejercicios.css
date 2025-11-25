@@ -7,6 +7,10 @@
 /* 10 de septiembre de 2017                 */
 /*                                          */
 
+*{
+   font-size: 1.1em;
+}
+
 body {
   padding: 0 20px;
   background-color: #F6F6FF;
@@ -23,6 +27,52 @@ h1 {
 h2 {
   font-size: 125%;
 }
+
+.areaJuego,form {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.areaJuego p,.gana{
+   margin: 5px 50px;
+   text-align: center;
+   background-color: #ffdef1;
+   border-radius: 20px;
+}
+
+.gana{
+   width: 70%;
+   margin: auto;
+}
+
+img {
+   height: 50vh;
+}
+
+button {
+   padding: 15px 30px;
+   margin: 5px;
+   font-size: 18px;
+   border: none;
+   border-radius: 8px;
+   background-color: white;
+   color: #030303;
+   cursor: pointer;
+   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+   transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+   transform: translateY(+2px);
+   box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+button:active {
+   transform: translateY(0);
+   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
 
 fieldset {
   border: #8686FF 3px solid;
