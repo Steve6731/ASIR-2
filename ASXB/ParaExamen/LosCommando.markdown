@@ -1,6 +1,8 @@
 ## conectar al sqlplus
 ```sql
 sqlplus [user]/[passwd][@contenedor] [as (sysdba | sysper)]
+-- para cambiar contraseña
+alter user system IDENTIFIED BY oracle
 -- para conectar al pluggable tiene que añadir en TNSNAMES.ORA
 ```
 ## ejemplo de un pluggable para TNSNAMES.ORA

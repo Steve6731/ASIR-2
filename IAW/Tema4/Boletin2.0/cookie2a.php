@@ -4,9 +4,19 @@
    <meta charset="utf-8">
    <title>HTML</title>
    <meta name="viewport" content="width = device_width, initial-scale=1.0">
-   <!--  
-   <link rel="stylesbeet" href"estilo.css">
-   -->
+   <style>
+      body {
+         margin: 0;
+         padding: 0;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: 100vh;
+         font-family: Arial, sans-serif;
+         transition: background-color 0.5s ease;
+      }
+
+   </style>
 </head>
 <body>
    <form action="./cookie1b.php" method="POST">

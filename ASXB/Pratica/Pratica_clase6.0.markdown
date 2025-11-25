@@ -219,3 +219,44 @@ manejador de parte=C:\APP\ADMINISTRADOR\PRODUCT\21C\DBHOMEXE\DATABASE\C-30926541
 Se ha finalizado Control File and SPFILE Autobackup a las 20/11/25
 
 ```
+
+```bash
+# hace backup de tablespace users con transport
+
+sql> create directory backup_tablespace_users as 'C:\backup\tableSpace\users';
+sql> alter tablespace users read only;
+
+C:\Users\Administrador>expdp \"/ as sysdba\" DIRECTORY=backup_tablespace_users DUMPFILE=users_exp.dmp LOGFILE=tablespace_exp.log TRANSPORT_TABLESPACES=users
+
+Export: Release 21.0.0.0.0 - Production on Mar Nov 25 11:28:21 2025
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle and/or its affiliates.  All rights reserved.
+
+Conectado a: Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production
+
+Advertencia: Las operaciones de Oracle Data Pump no se necesitan normalmente cuando se conecta a la raÝz o al elemento inicial de una base de datos del contenedor.
+
+Iniciando "SYS"."SYS_EXPORT_TRANSPORTABLE_01":  "/******** AS SYSDBA" DIRECTORY=backup_tablespace_users DUMPFILE=users_exp.dmp LOGFILE=tablespace_exp.log TRANSPORT_TABLESPACES=users
+Procesando el tipo de objeto TRANSPORTABLE_EXPORT/STATISTICS/TABLE_STATISTICS
+Procesando el tipo de objeto TRANSPORTABLE_EXPORT/STATISTICS/MARKER
+Procesando el tipo de objeto TRANSPORTABLE_EXPORT/PLUGTS_BLK
+Procesando el tipo de objeto TRANSPORTABLE_EXPORT/POST_INSTANCE/PLUGTS_BLK
+Procesando el tipo de objeto TRANSPORTABLE_EXPORT/TABLE
+Procesando el tipo de objeto TRANSPORTABLE_EXPORT/INDEX/INDEX
+Procesando el tipo de objeto TRANSPORTABLE_EXPORT/CONSTRAINT/CONSTRAINT
+Procesando el tipo de objeto TRANSPORTABLE_EXPORT/CONSTRAINT/REF_CONSTRAINT
+La tabla maestra "SYS"."SYS_EXPORT_TRANSPORTABLE_01" se ha cargado/descargado correctamente
+******************************************************************************
+El juego de archivos de volcado para SYS.SYS_EXPORT_TRANSPORTABLE_01 es:
+  C:\BACKUP\TABLESPACE\USERS\USERS_EXP.DMP
+******************************************************************************
+Archivos de datos necesarios para tablespace transportable USERS:
+  C:\APP\ADMINISTRADOR\PRODUCT\21C\ORADATA\XE\USERS01.DBF
+El trabajo "SYS"."SYS_EXPORT_TRANSPORTABLE_01" ha terminado correctamente en Mar Nov 25 11:28:45 2025 elapsed 0 00:00:24
+
+CREATE USER test IDENTIFIED BY password
+DEFAULT TABLESPACE USERS
+QUOTA UNLIMITED ON USERS;
+
+```

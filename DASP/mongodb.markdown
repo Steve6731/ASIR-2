@@ -15,3 +15,5 @@ db.restaurants.findOne({},{
   cuicine:1,grades:1
 })
 ```
+
+在mongodb find()如何只显示array grades.0.score元素
