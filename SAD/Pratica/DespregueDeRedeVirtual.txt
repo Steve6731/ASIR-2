@@ -1,0 +1,37 @@
+Despregue de rede Virtual
+Nesta tarefa imos despregar a rede virtual 2ASIR. Esta rede irá incorporando diferentes servizos durante o curso e rematará sendo unha rede segura que ofrece os servizos típicos para unha pequena organizacións.
+
+Nesta práctica:
+
+    A nosa organización se chamará 2asir.com e está dividida en varios departamentos (un departamento por cada un de vos), denominados <nomeusuario>.2asir.com
+    A IP da organización será 172.30.0.0/24
+    As IP dos departamentos serán 172.30.x.y/24 onde x corresponde ao número do teu equipo (IF3-01, IF3-02...). A rede 172.30.0.0/24 será a DMZ
+    Crearás no teu Host un switch openvswitch 2ASIR que conectará cos outros hosts da rede (os dos teus compañeiros) a través da VLAN 100. 
+    O teu Host non terá conectividade directa con 2ASIR (o interface do switch 2ASIR estará down)
+    Despregaremos unha máquina virtual denonominada netservices a partir da plantilla de Debian sen contorno gráfico. Esta máquina terá dúas tarxetas de rede, unha conectada a 2ASIR e outra conectada a rede local (lan).
+    Dentro de netservices,  crearemos un switch conectado a 2ASIR, outro switch conectado a LAN e un switch <user>_2asir para os departamentos. netservices soamente deberá poder ser accedido dende a rede do departamento e terá como IP 172.30.x.254/24. 
+    A interface LAN non terá IP si e un bridge e no caso de ser openvswitch estará ademais  DOWN. Polo tanto netservices será unha máquina máis de <usuario>.2asir.com
+    Crearemos a máquina gateway.<usuario>.2asir.com que será un Debian consola con tres tarxetas de rede. Unha que conecta coa DMZ con IP 172.30.0.x/24, outra que conecta coa rede da organización con IP 172.30.x.1/24 e unha terceira tarxeta conectada a rede  LAN 172.20.0.0/16  coa IP 172.20.1xx.1/24 onde xx e o número do voso equipo ocupando dous díxitos. Configuraremos esta máquina para que sirva de gateway entre as redes que desexemos.
+    Despregaremos un Docker de Apache dentro de gateway que faga dispoñible a súa páxina web no host no volume webpage e que se poda consultar por calquera das IP de gateway.<usuario>.2asir.com coa url www.<user>.2asir.com
+    Despregaremos en netservices un LXC pki-root conectado a rede interna 172.30.xx.0/24 con IP 172.30.xx.100/24
+    Despregaremos en netservices un LXC pki-sign conectado a rede interna 172.30.xx.0/24 con IP 172.30.xx.101/24
+
+Resumindo:
+
+    O Host real debe ter 2 switches: 
+        switch lan que e a IP do host na rede local (172.20.3.xx/16) e que da saida a internet
+        switch 2asir que da conectividade a todos os equipos na VLAN 100, e que no caso do host está apagado (o host real non ten conectividade coa VLAN 100)
+    Debes crear unha máquina virtual Debian (consola) chamada netservices con dúas interfaces de rede.
+        Unha que da conexión a rede lan (172.20.0.0/16)
+        Outra que da conexión a rede 2asir (172.30.0.0/24) e ademais sirve para comunicar os equipos dos diferentes "departamentos" (<usuario>.2asir.com)
+    Con esas dúas conexións físicas en netservices:
+        Debes crear un switch virtual no que poder conectar máquinas virtuais a rede lan.  netservices non terá conexión a lan, polo que a interface deste switch non se usa
+        Debes crear un switch virtual no que poder comunicar as máquinas da rede 2asir  e todas as subredes. netservices ten neste switch a IP 172.30.xx.254/24
+        Debes crear outro switch <user>.2asir.com
+    Dentro de netservices debes crear un LXC denominado gateway, conectado a LAN (172.20.1xx.1/16), a 2asir (172.30.0.xx/24) e a rede da organización (172.30.xx.1/24). Polo tanto terá 3 tarxetas de rede.
+    Dentro de netservices debes crear os LXC denominado pki-root e pki-sign, conectadoa  a rede da organización (172.30.xx.100/24 e 172.30.xx.101/24). 
+    Dentro de gateway, debes instalar docker e despregar un Apache con Docker que faga accesible a súa páxina web no volume webpage, e que se poda consultar a través de calquera das IP de gateway.
+
+TODOS OS EQUIPOS DEBEN TER CONEXIÓN A INTERNET
+
+TODOS OS EQUIPOS SE DEBEN PODER COMUNICAR COS DEMAIS DA MESMA REDE

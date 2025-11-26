@@ -1,0 +1,2 @@
+# para vMware funciona necesita que: 
+apt install build-essential linux-headers-$(uname -r)

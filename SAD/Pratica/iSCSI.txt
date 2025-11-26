@@ -1,0 +1,8 @@
+servidor: targetcli-fb
+cliente: open-iscsi
+
+crea disk.img:
+mkdir /storage
+dd if=/dev/zero of=/storage/disk.img bs=1024K count=100
+
+
