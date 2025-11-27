@@ -255,8 +255,152 @@ Archivos de datos necesarios para tablespace transportable USERS:
   C:\APP\ADMINISTRADOR\PRODUCT\21C\ORADATA\XE\USERS01.DBF
 El trabajo "SYS"."SYS_EXPORT_TRANSPORTABLE_01" ha terminado correctamente en Mar Nov 25 11:28:45 2025 elapsed 0 00:00:24
 
-CREATE USER test IDENTIFIED BY password
-DEFAULT TABLESPACE USERS
-QUOTA UNLIMITED ON USERS;
+ create directory backup_dir as 'C:\backup';
+
+C:\Users\Administrador>expdp system/oracle FULL=y DIRECTORY=backup_dir DUMPFILE=oracle_exp.dmp LOGFILE=oracle_exp.log
+
+Export: Release 21.0.0.0.0 - Production on Jue Nov 27 09:05:26 2025
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle and/or its affiliates.  All rights reserved.
+
+Conectado a: Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production
+
+Advertencia: Las operaciones de Oracle Data Pump no se necesitan normalmente cuando se conecta a la raÝz o al elemento inicial de una base de datos del contenedor.
+
+Iniciando "SYSTEM"."SYS_EXPORT_FULL_01":  system/******** FULL=y DIRECTORY=backup_dir DUMPFILE=oracle_exp.dmp LOGFILE=oracle_exp.log
+Procesando el tipo de objeto DATABASE_EXPORT/EARLY_OPTIONS/VIEWS_AS_TABLES/TABLE_DATA
+Procesando el tipo de objeto DATABASE_EXPORT/NORMAL_OPTIONS/TABLE_DATA
+Procesando el tipo de objeto DATABASE_EXPORT/NORMAL_OPTIONS/VIEWS_AS_TABLES/TABLE_DATA
+Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/TABLE/TABLE_DATA
+Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/TABLE/INDEX/STATISTICS/INDEX_STATISTICS
+Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/TABLE/STATISTICS/TABLE_STATISTICS
+Procesando el tipo de objeto DATABASE_EXPORT/PRE_SYSTEM_IMPCALLOUT/MARKER
+Procesando el tipo de objeto DATABASE_EXPORT/PRE_INSTANCE_IMPCALLOUT/MARKER
+Procesando el tipo de objeto DATABASE_EXPORT/TABLESPACE
+Procesando el tipo de objeto DATABASE_EXPORT/PROFILE
+Procesando el tipo de objeto DATABASE_EXPORT/RADM_FPTM
+Procesando el tipo de objeto DATABASE_EXPORT/GRANT/SYSTEM_GRANT/PROC_SYSTEM_GRANT
+Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/ROLE_GRANT
+Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/DEFAULT_ROLE
+Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/ON_USER_GRANT
+Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/TABLESPACE_QUOTA
+Procesando el tipo de objeto DATABASE_EXPORT/RESOURCE_COST
+Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/DB_LINK
+Procesando el tipo de objeto DATABASE_EXPORT/TRUSTED_DB_LINK
+Procesando el tipo de objeto DATABASE_EXPORT/DIRECTORY/DIRECTORY
+Procesando el tipo de objeto DATABASE_EXPORT/DIRECTORY/GRANT/OWNER_GRANT/OBJECT_GRANT
+Procesando el tipo de objeto DATABASE_EXPORT/SYSTEM_PROCOBJACT/PRE_SYSTEM_ACTIONS/PROCACT_SYSTEM
+Procesando el tipo de objeto DATABASE_EXPORT/SYSTEM_PROCOBJACT/PROCOBJ
+Procesando el tipo de objeto DATABASE_EXPORT/SYSTEM_PROCOBJACT/POST_SYSTEM_ACTIONS/PROCACT_SYSTEM
+Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/PROCACT_SCHEMA
+Procesando el tipo de objeto DATABASE_EXPORT/EARLY_OPTIONS/VIEWS_AS_TABLES/TABLE
+Procesando el tipo de objeto DATABASE_EXPORT/EARLY_POST_INSTANCE_IMPCALLOUT/MARKER
+Procesando el tipo de objeto DATABASE_EXPORT/NORMAL_OPTIONS/TABLE
+Procesando el tipo de objeto DATABASE_EXPORT/NORMAL_OPTIONS/VIEWS_AS_TABLES/TABLE
+Procesando el tipo de objeto DATABASE_EXPORT/NORMAL_POST_INSTANCE_IMPCALLOUT/MARKER
+Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/TABLE/TABLE
+Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/TABLE/COMMENT
+Procesando el tipo de objeto DATABASE_EXPORT/SCHEMA/TABLE/INDEX/INDEX
+Procesando el tipo de objeto DATABASE_EXPORT/FINAL_POST_INSTANCE_IMPCALLOUT/MARKER
+Procesando el tipo de objeto DATABASE_EXPORT/AUDIT_UNIFIED/AUDIT_POLICY_ENABLE
+Procesando el tipo de objeto DATABASE_EXPORT/POST_SYSTEM_IMPCALLOUT/MARKER
+. . "SYS"."KU$_USER_MAPPING_VIEW"               6.093 KB      38 filas exportadas
+. . "SYSTEM"."REDO_DB"                          26.01 KB       1 filas exportadas
+. . "WMSYS"."WM$WORKSPACES_TABLE$"              12.10 KB       1 filas exportadas
+. . "WMSYS"."WM$HINT_TABLE$"                    9.984 KB      97 filas exportadas
+. . "LBACSYS"."OLS$INSTALLATIONS"               6.960 KB       2 filas exportadas
+. . "WMSYS"."WM$WORKSPACE_PRIV_TABLE$"          7.078 KB      11 filas exportadas
+. . "SYS"."DAM_CONFIG_PARAM$"                   6.531 KB      14 filas exportadas
+. . "SYS"."TSDP_SUBPOL$"                        6.328 KB       1 filas exportadas
+. . "WMSYS"."WM$NEXTVER_TABLE$"                 6.375 KB       1 filas exportadas
+. . "LBACSYS"."OLS$PROPS"                       6.234 KB       5 filas exportadas
+. . "WMSYS"."WM$ENV_VARS$"                      6.015 KB       3 filas exportadas
+. . "SYS"."TSDP_PARAMETER$"                     5.953 KB       1 filas exportadas
+. . "SYS"."TSDP_POLICY$"                        5.921 KB       1 filas exportadas
+. . "WMSYS"."WM$VERSION_HIERARCHY_TABLE$"       5.984 KB       1 filas exportadas
+. . "WMSYS"."WM$EVENTS_INFO$"                   5.812 KB      12 filas exportadas
+. . "LBACSYS"."OLS$AUDIT_ACTIONS"               5.757 KB       8 filas exportadas
+. . "LBACSYS"."OLS$DIP_EVENTS"                  5.539 KB       2 filas exportadas
+. . "AUDSYS"."AUD$UNIFIED":"AUD_UNIFIED_P0"         0 KB       0 filas exportadas
+. . "AUDSYS"."AUD$UNIFIED":"SYS_P261"           92.91 KB      79 filas exportadas
+. . "AUDSYS"."AUD$UNIFIED":"SYS_P328"           54.18 KB       3 filas exportadas
+. . "AUDSYS"."AUD$UNIFIED":"SYS_P368"           55.20 KB       7 filas exportadas
+. . "AUDSYS"."AUD$UNIFIED":"SYS_P388"           54.01 KB       4 filas exportadas
+. . "AUDSYS"."AUD$UNIFIED":"SYS_P408"           53.07 KB       2 filas exportadas
+. . "AUDSYS"."AUD$UNIFIED":"SYS_P428"           56.90 KB      11 filas exportadas
+. . "AUDSYS"."AUD$UNIFIED":"SYS_P448"           53.82 KB       4 filas exportadas
+. . "AUDSYS"."AUD$UNIFIED":"SYS_P468"           58.77 KB      15 filas exportadas
+. . "AUDSYS"."AUD$UNIFIED":"SYS_P508"           54.78 KB       7 filas exportadas
+. . "LBACSYS"."OLS$AUDIT"                           0 KB       0 filas exportadas
+. . "LBACSYS"."OLS$COMPARTMENTS"                    0 KB       0 filas exportadas
+. . "LBACSYS"."OLS$DIP_DEBUG"                       0 KB       0 filas exportadas
+. . "LBACSYS"."OLS$GROUPS"                          0 KB       0 filas exportadas
+. . "LBACSYS"."OLS$LAB"                             0 KB       0 filas exportadas
+. . "LBACSYS"."OLS$LEVELS"                          0 KB       0 filas exportadas
+. . "LBACSYS"."OLS$POL"                             0 KB       0 filas exportadas
+. . "LBACSYS"."OLS$POLICY_ADMIN"                    0 KB       0 filas exportadas
+. . "LBACSYS"."OLS$POLS"                            0 KB       0 filas exportadas
+. . "LBACSYS"."OLS$POLT"                            0 KB       0 filas exportadas
+. . "LBACSYS"."OLS$PROFILE"                         0 KB       0 filas exportadas
+. . "LBACSYS"."OLS$PROFILES"                        0 KB       0 filas exportadas
+. . "LBACSYS"."OLS$PROG"                            0 KB       0 filas exportadas
+. . "LBACSYS"."OLS$SESSINFO"                        0 KB       0 filas exportadas
+. . "LBACSYS"."OLS$USER"                            0 KB       0 filas exportadas
+. . "LBACSYS"."OLS$USER_COMPARTMENTS"               0 KB       0 filas exportadas
+. . "LBACSYS"."OLS$USER_GROUPS"                     0 KB       0 filas exportadas
+. . "LBACSYS"."OLS$USER_LEVELS"                     0 KB       0 filas exportadas
+. . "SYS"."AUD$"                                    0 KB       0 filas exportadas
+. . "SYS"."DAM_CLEANUP_EVENTS$"                     0 KB       0 filas exportadas
+. . "SYS"."DAM_CLEANUP_JOBS$"                       0 KB       0 filas exportadas
+. . "SYS"."TSDP_ASSOCIATION$"                       0 KB       0 filas exportadas
+. . "SYS"."TSDP_CONDITION$"                         0 KB       0 filas exportadas
+. . "SYS"."TSDP_FEATURE_POLICY$"                    0 KB       0 filas exportadas
+. . "SYS"."TSDP_PROTECTION$"                        0 KB       0 filas exportadas
+. . "SYS"."TSDP_SENSITIVE_DATA$"                    0 KB       0 filas exportadas
+. . "SYS"."TSDP_SENSITIVE_TYPE$"                    0 KB       0 filas exportadas
+. . "SYS"."TSDP_SOURCE$"                            0 KB       0 filas exportadas
+. . "SYSTEM"."REDO_LOG"                             0 KB       0 filas exportadas
+. . "WMSYS"."WM$BATCH_COMPRESSIBLE_TABLES$"         0 KB       0 filas exportadas
+. . "WMSYS"."WM$CONSTRAINTS_TABLE$"                 0 KB       0 filas exportadas
+. . "WMSYS"."WM$CONS_COLUMNS$"                      0 KB       0 filas exportadas
+. . "WMSYS"."WM$LOCKROWS_INFO$"                     0 KB       0 filas exportadas
+. . "WMSYS"."WM$MODIFIED_TABLES$"                   0 KB       0 filas exportadas
+. . "WMSYS"."WM$MP_GRAPH_WORKSPACES_TABLE$"         0 KB       0 filas exportadas
+. . "WMSYS"."WM$MP_PARENT_WORKSPACES_TABLE$"        0 KB       0 filas exportadas
+. . "WMSYS"."WM$NESTED_COLUMNS_TABLE$"              0 KB       0 filas exportadas
+. . "WMSYS"."WM$RESOLVE_WORKSPACES_TABLE$"          0 KB       0 filas exportadas
+. . "WMSYS"."WM$RIC_LOCKING_TABLE$"                 0 KB       0 filas exportadas
+. . "WMSYS"."WM$RIC_TABLE$"                         0 KB       0 filas exportadas
+. . "WMSYS"."WM$RIC_TRIGGERS_TABLE$"                0 KB       0 filas exportadas
+. . "WMSYS"."WM$UDTRIG_DISPATCH_PROCS$"             0 KB       0 filas exportadas
+. . "WMSYS"."WM$UDTRIG_INFO$"                       0 KB       0 filas exportadas
+. . "WMSYS"."WM$VERSION_TABLE$"                     0 KB       0 filas exportadas
+. . "WMSYS"."WM$VT_ERRORS_TABLE$"                   0 KB       0 filas exportadas
+. . "WMSYS"."WM$WORKSPACE_SAVEPOINTS_TABLE$"        0 KB       0 filas exportadas
+. . "MDSYS"."RDF_PARAM$"                        6.515 KB       3 filas exportadas
+. . "SYS"."AUDTAB$TBS$FOR_EXPORT"               5.953 KB       2 filas exportadas
+. . "SYS"."DBA_SENSITIVE_DATA"                      0 KB       0 filas exportadas
+. . "SYS"."DBA_TSDP_POLICY_PROTECTION"              0 KB       0 filas exportadas
+. . "SYS"."FGA_LOG$FOR_EXPORT"                      0 KB       0 filas exportadas
+. . "SYS"."GV_$UNIFIED_AUDIT_TRAIL"                 0 KB       0 filas exportadas
+. . "SYS"."NACL$_ACE_EXP"                           0 KB       0 filas exportadas
+. . "SYS"."NACL$_HOST_EXP"                      6.976 KB       2 filas exportadas
+. . "SYS"."NACL$_WALLET_EXP"                        0 KB       0 filas exportadas
+. . "SYS"."SQL$TEXT_DATAPUMP"                       0 KB       0 filas exportadas
+. . "SYS"."SQL$_DATAPUMP"                           0 KB       0 filas exportadas
+. . "SYS"."SQLOBJ$AUXDATA_DATAPUMP"                 0 KB       0 filas exportadas
+. . "SYS"."SQLOBJ$DATA_DATAPUMP"                    0 KB       0 filas exportadas
+. . "SYS"."SQLOBJ$PLAN_DATAPUMP"                    0 KB       0 filas exportadas
+. . "SYS"."SQLOBJ$_DATAPUMP"                        0 KB       0 filas exportadas
+. . "SYSTEM"."SCHEDULER_JOB_ARGS"                   0 KB       0 filas exportadas
+. . "SYSTEM"."SCHEDULER_PROGRAM_ARGS"               0 KB       0 filas exportadas
+. . "WMSYS"."WM$EXP_MAP"                        7.718 KB       3 filas exportadas
+. . "WMSYS"."WM$METADATA_MAP"                       0 KB       0 filas exportadas
+La tabla maestra "SYSTEM"."SYS_EXPORT_FULL_01" se ha cargado/descargado correctamente
+******************************************************************************
+El juego de archivos de volcado para SYSTEM.SYS_EXPORT_FULL_01 es:
+  C:\BACKUP\ORACLE_EXP.DMP
+El trabajo "SYSTEM"."SYS_EXPORT_FULL_01" ha terminado correctamente en Jue Nov 27 09:07:56 2025 elapsed 0 00:02:28
 
 ```
