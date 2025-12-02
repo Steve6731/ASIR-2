@@ -404,3 +404,27 @@ El juego de archivos de volcado para SYSTEM.SYS_EXPORT_FULL_01 es:
 El trabajo "SYSTEM"."SYS_EXPORT_FULL_01" ha terminado correctamente en Jue Nov 27 09:07:56 2025 elapsed 0 00:02:28
 
 ```
+
+
+select owner,directory_name,directory_path from dba_directories;
+
+
+expdp system/oracle directory=BACKUP_HR dumpfile=exp021225.dmp logfile=exp021225.log schemas='HR'
+
+# ejemplo profe de copy table
+expdp system/oracle@xepdb1 
+   directory=BACKUP_TABLE 
+   dumpfile=exp_REGIONS_021225.dump 
+   logfile=exp_REGIONS_021225.log 
+   tables=HR.REGIONS 
+   query=\"where region_id>30\"
+
+impdp system/oracle@xepdb1 
+   directory=BACKUP_TABLE 
+   dumpfile=exp_REGIONS_021225.dump 
+   logfile=exp_REGIONS_021225.log 
+   tables=HR.REGIONS 
+   REMAP_SCHEMA='HR:MANUEL'
+
+#  import from network
+impdp system/oracle@xepdb1 directory=backup_online logfile=imp_joana_021225.log network_link=ruben schemas='ruben';
