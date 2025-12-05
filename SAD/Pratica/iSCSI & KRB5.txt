@@ -1,0 +1,65 @@
+servidor: targetcli-fb
+cliente: open-iscsi
+
+crea disk.img:
+mkdir /storage
+dd if=/dev/zero of=/storage/disk.img bs=1024K count=100
+
+en krb-server
+rm /var/lib/dbus/machine-id /etc/machine-id
+systemd-machine-id-setup
+dbus-uuidgen --ensure
+hostname kerberos-server
+nano /etc/hostname
+	kerb5-server.xuan.local
+nano /etc/hosts
+nano /etc/network/interfaces
+apt update
+# para cliente: apt install krbs-user
+apt install krb5-admin-server krb5-kdc
+configura 
+	xuan.local
+	kervero-server
+	kervero-server.xuan.local
+# ahora está creado /etc/krb5kdc/krb.conf
+# en krb.conf solo importante parte xuan.local en mi caso.
+# entonces remove todo resto hasta [domain_realm]
+# añadir en domain_realm] .xuan.local = xuan.local y xuan.local = xuan.local
+krb5_newrealm
+	master key: abc123.
+	repetir: abc123.
+kadmin.local #no puede hacelo si esta remoto
+	exit # vamos a configurar para que podemos administrar remotamente
+nano /etc/krbkdc/kadm5.acl
+	descomenta ultima liña.
+kadmin.local
+	addprinc master/admin
+	# mas comodo: addprinc root/admin
+	password: abc123.
+	exit
+	
+en krb-cliente
+rm /var/lib/dbus/machine-id /etc/machine-id
+systemd-machine-id-setup
+dbus-uuidgen --ensure
+hostname cli-genome
+nano /etc/hostname
+nano /etc/hosts
+	cli-genome.xuan.local
+nano /etc/network/interfaces
+apt update
+apt install krbs-user
+configura 
+	kerb5-server.xuan.local
+nano /etc/hosts
+	[ipDeServer] kerb5-server.xuan.local
+# en krb.conf
+	# entonces remove todo resto hasta [domain_realm]
+	# añadir en domain_realm] .xuan.local = xuan.local y xuan.local = xuan.local
+kadmin
+	addprinc juan
+		password:
+		repite:
+	exit
+apt install libpam-krb5
+pam-auth-update

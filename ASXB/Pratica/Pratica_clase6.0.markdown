@@ -427,4 +427,32 @@ impdp system/oracle@xepdb1
    REMAP_SCHEMA='HR:MANUEL'
 
 #  import from network
-impdp system/oracle@xepdb1 directory=backup_online logfile=imp_joana_021225.log network_link=ruben schemas='ruben';
+impdp system/oracle@xepdb1 directory=backup_online logfile=imp_joana_021225.log 
+   network_link=ruben schemas='ruben';
+
+
+MI PASO
+
+#### PARA MI COMPAÑERO FUNCIONA
+
+CREATE USER XUAN INDENTIFIED BY ORACLE;
+GRANTE ALL PRIVILIGIO TO XUAN;
+CREATE TABLE FOO(ID NUMBER,NOMBRE VARCHAR32(30));
+INSERT INTO FOO(ID,NOMBRE) VALUES(1,'XUAN');
+
+#### ENPIEZA PRATICA
+SQLPLUS SYSTEM/ORACLE@XEPDB1
+CREATE DIRECTORY BACKUPONLINE AS 'C:\backup\backuponline';
+AÑADIR EN TNSNAME.ORA
+RUBEN =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = 172.20.3.60)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVER = DEDICATED)
+      (SERVICE_NAME = XEPDB1)
+    )
+  )
+
+CREATE DATABASE LINK RUBEN USING 'RUBEN';
+
+impdp system/oracle@xepdb1 directory=BACKUP_ONLINE logfile=onlineback.log network_link=ruben schemas='ruben';
