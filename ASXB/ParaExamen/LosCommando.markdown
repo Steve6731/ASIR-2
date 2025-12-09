@@ -11,6 +11,7 @@ alter session set container=XEPDB1;
 DBA_PDBS
 DBA_TABLESPACE
 DBA_USERS
+DBA_AUDIT_TRAIL
 USER|ALL|DBA_OBJECTS: información de cualquier objeto de la base de datos.
 USER|ALL|DBA_TABLES: información de las tablas.
 USER|ALL|DBA_TAB_COLUMNS: información de las columnas de las tablas.
