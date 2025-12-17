@@ -1,14 +1,14 @@
 {
 	"folders": [
-		{
-			"path": "."
-		},
-		{
-			"path": "C:/xampp/htdocs/Xuan"
-		},
-		{
-			"path": "../ASIR-1"
-		}
-	],
+      {
+         "path": "."
+      },
+      {
+         "path": "../ASIR-1"
+      },
+      {
+         "path": "C:/xampp/htdocs/Xuan"
+      }
+   ],
 	"settings": {}
 }

@@ -80,4 +80,9 @@ creaGrupo() {
    mainMenu
 }
 
+erroFueraRango() {
+   echo "Solo puedes introduce numero dentro de 1-5"
+   mainMenu
+}
+
 mainMenu

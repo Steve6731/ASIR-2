@@ -12,6 +12,11 @@ DBA_PDBS
 DBA_TABLESPACE
 DBA_USERS
 DBA_AUDIT_TRAIL
+DBA_COMMON_AUDIT_TRAIL
+DBA_SYS_PRIVS: todos los privilegios asignados a usuarios o a roles
+DBA_TAB_PRIVS: privilegios concedidos sobre tablas
+DBA_COL_PRIVS: privilegions concedidos sobre columnas de tablas
+DBA_ROLE_PRIVS: roles concedidos a usuarios u otros roles
 USER|ALL|DBA_OBJECTS: información de cualquier objeto de la base de datos.
 USER|ALL|DBA_TABLES: información de las tablas.
 USER|ALL|DBA_TAB_COLUMNS: información de las columnas de las tablas.

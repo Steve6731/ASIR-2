@@ -28,10 +28,12 @@ catListaDir | while IFS= read -r directory; do
 	if [ "$accion" = 'c' ]; then
 
 		mkdir $directory;	
+      echo "$directory creado" >> lista_dir.log;
 
 	elif [ "$accion" = 'e' ]; then
 
 		rm -d $directory;
+      echo "$directory borrado" >> lista_dir.log;
 
 	fi
     

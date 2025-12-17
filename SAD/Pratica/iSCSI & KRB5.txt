@@ -1,9 +1,97 @@
 servidor: targetcli-fb
 cliente: open-iscsi
 
-crea disk.img:
-mkdir /storage
-dd if=/dev/zero of=/storage/disk.img bs=1024K count=100
+# servidor: formatear disco
+pvcreate /dev/vdb
+vgcreate vg_vm /dev/vdb
+lvcreate -n lv_vm1 -L 20G vg_vm
+# empieza configura ISCSI
+targetcli
+	# crear objeto de almacenamiento
+	cd /backstores/block
+		create lxc_conf /dev/vdc
+		create lxc_disk /dev/vg_vm/lv_vm1
+	# crear objeto de iSCSI
+	cd /iscsi
+		create iqn.2025-12.local.xuan:server.target1
+		# crear LUN
+		cd iqn.2025-12.local.xuan:server.target1/tpg1
+			create /backstores/block/lxc_conf
+			create /backstores/block/lxc_disk
+			cd ..
+		# configura acls
+		cd acls
+			create iqn.2025-12.local.xuan:client.initiator1
+			cd iqn.2025-12.local.xuan:client.initiator1/
+				set auth userid=xuan
+				set auth password=abc123
+				cd ..
+			cd ..
+		# configura IP y puerto de escucha
+		cd portals/
+		delete 0.0.0.0 3260
+		create 10.10.4.1
+		cd /
+	# save config
+	saveconfig
+	exit
+# para comprobar
+targetcli ls [path]
+
+targetcli
+cd /iscsi/iqn.2025-12.local.xuan:server.target1/tpg1
+set attribute authentication=1
+
+# en cliente
+# forma con commando
+iscsiadm -m discovery -t st -p 10.10.4.1   
+	iscsiadm -m node -T iqn.2025-12.local.xuan:server.target1 -p 10.10.4.1 \
+  		--op update -n node.session.auth.authmethod -v CHAP
+  	iscsiadm -m node -T iqn.2025-12.local.xuan:server.target1 -p 10.10.4.1 \
+		--op update -n node.session.auth.username -v xuan
+	iscsiadm -m node -T iqn.2025-12.local.xuan:server.target1 -p 10.10.4.1 \
+  		--op update -n node.session.auth.password -v abc123
+# no configurarlo, auth este para dos lado
+iscsiadm -m node -T iqn.2025-12.local.xuan:server.target1 -p 10.10.4.1 \
+	--op update -n node.session.auth.username_in -v myuser
+iscsiadm -m node -T iqn.2025-12.local.xuan:server.target1 -p 10.10.4.1 \
+	--op update -n node.session.auth.password_in -v mypassword
+	
+nano /etc/iscsi/initiatorname.iscsi
+	InitiatorName=iqn.2025-12.local.xuan:client.initiator1
+systemctl restart iscsid
+
+nano /etc/iscsi/iscsid.conf
+	node.startup = manual
+	node.session.auth.authmethod = CHAP
+	node.session.auth.username = xuan
+	node.session.auth.password = abc123
+iscsiadm -m discovery -t st -p 10.10.4.1
+
+iscsiadm -m node -T iqn.2025-12.local.xuan:server.target1 -p 10.10.4.1 -l
+
+# ver configuracion en cliente
+iscsiadm -m node -T iqn.2025-12.local.xuan:server.target1 -p 10.10.4.1 -o show
+
+# mountar en cliente
+fdisk -l or lsblk
+cfdisk /dev/sda
+cfdisk /dev/sdb
+mkdir /mnt/lxc_disk | mkdir /mnt/lxc_conf
+mkfs.ext4 /dev/sda1
+mount /dev/sda1 /mnt/lxc_conf/
+mkfs.ext4 /dev/sdb1
+mount /dev/sdb1 /mnt/lxc_disk/
+nano /etc/fstab 
+	/dev/sda1   /mnt/lxc_disk   ext4   defaults,_netdev   0   2
+	/dev/sdb1   /mnt/lxc_conf   ext4   defaults,_netdev   0   2
+
+#cambiar default disk de lxc
+nano /etc/lxc/lxc.conf	
+	lxc.lxcpath = /mnt/lxc_disk
+	lxc.default_config = /mnt/lxc_conf/default.conf
+
+
 
 en krb-server
 rm /var/lib/dbus/machine-id /etc/machine-id
