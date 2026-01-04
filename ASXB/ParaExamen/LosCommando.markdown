@@ -1,26 +1,31 @@
+## para coneccion
 contenedor: xe <= pluggable(xepdb1)  
 ORACLE-SID = XE   
 
-sqlplus [user]/[passwd][@contenedor] [as (sysdba | sysper)]
-sqlplus / as sysdba
-sqlplus system/oracle@xe
-conn / @xepdb1 as sysdba
+``` sql
+sqlplus [<user>]/[<passwd>][@<contenedor>] [as (sysdba | sysper)]  
+sqlplus / as sysdba  
+sqlplus system/oracle@xe  
+conn / @xepdb1 as sysdba  
 alter session set container=XEPDB1;
+alter system kill session '<sid>,<serial#>' IMMEDIATE;
+```
 
 ## usefull
-set linesize 120 设置sqlplus显示宽度为120字符  
-desc table_name  
-col[umn] file_name format a30  
-DEFlNE [variable] = [valor]  
-CREATE PFILE='[Ubricacion]' FROM SPFILE;  
-ALTER SYSTEM SET [clave]=[valor] SCOPE=SPFILE; 动态修改并持久化  
+``` sql
+set linesize <number>; 设置sqlplus显示宽度为120字符  
+desc <table_name>;
+col[umn] <file_name> format a<number>;  
+DEFlNE <variable> = <valor>;  
+CREATE PFILE='<Ubricacion>' FROM SPFILE;  
+ALTER SYSTEM SET <clave>=<valor> SCOPE=SPFILE; 动态修改并持久化  
+```
 
 ### DESC tablas:
 DBA_PDBS  
 DBA_TABLESPACE  
 DBA_USERS  
-DBA_AUDIT_TRAIL  
-DBA_COMMON_AUDIT_TRAIL  
+
 DBA_SYS_PRIVS: todos los privilegios asignados a usuarios o a roles  
 DBA_TAB_PRIVS: privilegios concedidos sobre tablas  
 DBA_COL_PRIVS: privilegions concedidos sobre columnas de tablas  
@@ -34,7 +39,14 @@ USER|ALL|DBA_CONSTRAINTS: información sobre las restricciones.
 USER|ALL|DBA_CONS_COLUMNS: información sobre las columnas de las restricciones.  
 USER|ALL|DBA_VIEWS: información de las vistas.  
 USER|ALL|DBA_SYNONYMS: información de los sinónimos.  
-USER|ALL|DBA_SEQUENCES: información de las secuencias.  
+USER|ALL|DBA_SEQUENCES: información de las secuencias. 
+
+AUD$: almacena los registros de auditoria  
+DBA_AUDIT_TRAIL: parametro de auditoria  
+DBA_COMMON_AUDIT_TRAIL:  
+DBA_PRIV_AUDIT_OPTS; vista de auditorias sobre privilegios
+DBA_STMT_AUDIT_OPTS: vista de auditorias sobre sentencias  
+DBA_OBJ_AUDIT_OPTS: vista de auditorias sobre objetos  
 
 ### vistas
 
