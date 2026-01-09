@@ -77,6 +77,7 @@ lxc.net.0.link = lan
 lxc.net.0.flags = up
 
 ```
+# IMPORTANTE: cada vez reinicia servicio networking de maquina tambien tiene que reinicia lxc container sino rede va desconecta a bridge.
 
 root@server01:~# lxc-start -n gateway.Xuan.2asir.com 
 root@server01:~# lxc-ls -f

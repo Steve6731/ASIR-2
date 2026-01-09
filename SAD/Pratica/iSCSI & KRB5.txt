@@ -103,7 +103,9 @@ nano /etc/hostname
 nano /etc/hosts
 nano /etc/network/interfaces
 apt update
-# para cliente: apt install krbs-user
+# para cliente:
+apt install krbs-user
+# para servidor
 apt install krb5-admin-server krb5-kdc
 configura 
 	xuan.local
@@ -151,3 +153,5 @@ kadmin
 	exit
 apt install libpam-krb5
 pam-auth-update
+
+# para thin-pool necesita que: apt install thin-provisioning-tools
