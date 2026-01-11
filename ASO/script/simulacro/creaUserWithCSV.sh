@@ -14,9 +14,9 @@ elif ! test -f $pathDoc ; then
    echo 'No existe fichero '$pathDoc
 fi
 
-# sed -i '1d' user2.csv
 
-while read -r line || [[ -n "$line" ]]; do
+
+sed '1d' $pathDoc | while read -r line || [[ -n "$line" ]]; do
 
    nombre=$( echo "$line" | awk -F ',' '{gsub(/"/,"",$1);print $1}' )
    passwd=$( echo "$line" | awk -F ',' '{gsub(/"/,"",$2);print $2}' )
@@ -36,4 +36,4 @@ while read -r line || [[ -n "$line" ]]; do
    fi
 
 
-done < $pathDoc
+done
