@@ -1,2 +1,11 @@
 # para vMware funciona necesita que: 
 apt install build-essential linux-headers-$(uname -r)
+root
+user: sysadmin
+pawd: CMLabc123.
+
+user: admin
+pawd: CMLabc123.
+
+# 运行配置 Playbook
+ansible-playbook -i inventory.ini switch_config.yml

@@ -57,44 +57,88 @@ BEGIN
       values(v_id,v_fecha);
 END;
 /
+select * from hr.tareas;
+/
+BEGIN
+    DBMS_SCHEDULER.CREATE_PROGRAM(
+        PROGRAM_NAME => 'MY_PROGRAM'
+        ,PROGRAM_TYPE => 'STORED_PROCEDURE'
+        ,PROGRAM_ACTION => 'insertTareasDeHR'
+        ,ENABLED =>  TRUE
+        ,COMMENTS => 'PROGRAMA PARA MI PROCEDIMIENTO'
+    );
+    
+    DBMS_SCHEDULER.CREATE_JOB (
+        job_name => 'MY_JOB',
+        PROGRAM_NAME => 'MY_PROGRAM'
+    );
+END;
+/
 
 Begin
-   DBMS_SCHEDULER.CREATE_JOB(
-      job_name => 'MY_JOB', 
-      job_type => 'PLSQL_BLOCK', 
-      job_action => 'insertTareasDeHR', 
-      repeat_interval => 'FREQ=DAILY', 
-      enabled => FALSE
+   DBMS_SCHEDULER.drop_JOB(
+      job_name => 'MY_JOB'
+   );
+   DBMS_SCHEDULER.drop_program(
+      program_name => 'MY_PROGRAM'
    );
 END;
 /
 
+select * from hr.tareas;
+exec insertTareasDeHR();
+
+BEGIN 
+   DBMS_SCHEDULER.RUN_JOB ('MY_JOB'); 
+END;
+/
 --------------------------
 -- Practica: Jobs externos
 --------------------------
+create or replace directory backups as 'C:\backup';
+SELECT * FROM dba_directories WHERE directory_name = 'BACKUPS';
+/* cat expdp_tab.par
+userid=system/oracle@XEPDB1
+dumpfile=FULL_DB.dmp
+logfile=FULL_DB.log
+directory=backups
+full=y
+*/
 
 BEGIN
    dbms_credential.create_credential (
-   CREDENTIAL_NAME => 'AdministradorSO',
-   USERNAME => 'Administrador',           -- usuario del S.O.
-   PASSWORD => 'abc123.',
-   DATABASE_ROLE => NULL,
-   WINDOWS_DOMAIN => NULL,
-   COMMENTS => 'Oracle OS User',
-   ENABLED => true
+      CREDENTIAL_NAME => 'AdministradorSO',
+      USERNAME => 'Administrador',           -- usuario del S.O.
+      PASSWORD => 'abc123.',
+      DATABASE_ROLE => NULL,
+      WINDOWS_DOMAIN => NULL,
+      COMMENTS => 'Oracle OS User',
+      ENABLED => true
    );
 END;
 /
 
 Begin
-Dbms_scheduler.create_job (
-    job_name => 'BACKUP_FULLDB',
-    job_type => 'EXTERNAL_SCRIPT',
-     job_action=>'/oracle/app/oracle/product/12.1.0/dbhome_1/bin/expdp parfile=/export/home/oracle/expdp_tab.par',
-    start_date => sysdate,
-    Repeat_interval =>'FREQ=DAILY;BYHOUR=11; BYMINUTE=25',
-    enabled => TRUE,
-    credential_name=>'AdministradorSO');
+   Dbms_scheduler.create_job (
+      job_name => 'BACKUP_FULLDB',
+      job_type => 'EXTERNAL_SCRIPT',
+      job_action=>'C:\app\Administrador\product\21c\dbhomeXE\bin\expdp.exe parfile=C:\parfile\parfile.par',
+      start_date => sysdate,
+      Repeat_interval =>'FREQ=DAILY;BYHOUR=11; BYMINUTE=25',
+      enabled => TRUE,
+      credential_name=>'AdministradorSO');
 end;
 /
 
+Begin
+   DBMS_SCHEDULER.drop_JOB(
+      job_name => 'BACKUP_FULLDB'
+   );
+END;
+/
+
+BEGIN 
+   DBMS_SCHEDULER.RUN_JOB ('BACKUP_FULLDB'); 
+END;
+
+/

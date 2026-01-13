@@ -1,0 +1,8 @@
+get-netIPConfiguracion
+get-netRoute
+
+netsh interface ip set address "Ethernet" static 172.20.3.104 255.255.0.0 172.20.0.1
+
+Get-netipaddress -InterfaceIndex 6 | Remove-Netipaddress -Confirm:$false
+netsh interface ipv4 delete route 0.0.0.0/0 <InterfaceIndex> <Gateway> # delete gatway
+
