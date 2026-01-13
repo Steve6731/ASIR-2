@@ -185,7 +185,10 @@ Para evitar maximo posibe errores, es comentable que escribir segun seguientes r
 | =    | -eq  | \|  | >=   | -ge  | \|  | >    | -lt  |
 | !=   | -ne  | \|  | <=   | -le  | \|  | <    | -gt  |
 
-# EXPRESIONES REGULARES 
+# EXPRESIONES REGULARES
+```sh
+<text> =~ "<pattern>" # comproba si un texto segun un EXPRESIONES REGULARES
+```
 - \. : Vale por cualquier carácter.
 - \* : La expresión anterior se repite 0 o más veces.
 - \+ : La expresión anterior se repite 1 o más veces.
@@ -224,6 +227,14 @@ echo <text> # sale texto en terminar.
 ```
 ```sh
 printf "<text> <%forma1> <text> <%forma2>" <valor1> <valor2> # print dato segun forma;
+   <%forma> # cada % va entiende como empieza de un forma si quiere % solo pon \%
+   # tipo de forma
+      %ns string           printf "%s\n" "Hello" # n es numero de ancho, admás sin - es Alineación derecha sino Alineación izquierda para string tambien
+      %nd int              printf "%-010d\n" 42 # igual que string y puede añadir un 0 en delante d n asique va Relleno con ceros 42 => 4200000000
+      %.nf float           printf "%.2f\n" 3.14159 # n indica muestra cuando decimales 3.13159 => 3.14
+      %x hexadecimal       printf "%x\n" 255 # 255 => FF
+      %o Octal             printf "%o\n" 64 # 64 => 100
+      %b EscapeCharacter   printf "%b\n" "Line1\nLine2" # \n => enter(cambiar linea)
 ```
 ```sh
 od <docName> # sale texto en binario
@@ -283,16 +294,61 @@ tr <text1> <text2> # cambiar <text1> a <text2> pero solo va usar primer caracter
    -c # borra los que fuera <text1> 
 ```
 ```sh
-awk # null
+awk '<pattern> {<action>}' <file> # awk es un herramento util para texto
+   -F # indica simpolo de separar ej: 
+      awk -F ',' '{print $2}' data.csv # , va entender como simpolo de separar
+      awk -F '[,;]' '{print $1}' data.csv # , y ; van entender como simpolo de separar 
+   <pattern> # pon los condiciones o exprecion regulares para filtra texto ej:
+      '$2 > 100 {print}' # va muestra linea que columna 2 es mayor que 100
+      '/erro/ {print}' # va muestra linea que contiene 'erro'
+      '$1 ~ /^x/ {print $0}' # va muestra la linea que su columna 1 empieza por x
+
+   # unos variable interna
+   NR：numero de linea actual
+   NF: numero de caracter acutal
+   $0：todo texto de la linea
+   $1, $2... : contenido de cada columna
+
+   # algo más avanzado sobre <acction>
+   'BEGIN {print "start"} {print $1} END {print "end"}' # BEGIN y END puede indica unos commando que solo ejecuta una vez en empieza y fin
+   '{sum += $1; count++} END {print sum/count}' # puede indica variable
+   '{print "user:", $1, "nota:", $2}' # puede usar , combina texto
+   '{if ($2 >= 5) print $1,"apro"; else print $1,"susp"}' # puede usar if else
+   '{sum1 += $1; sum2 += $2} END {printf "total: %.2f, %.2f\n", sum1, sum2}' # tambien puede usar "printf"
+   '{ip[$1]++} END {for(i in ip) print i, ip[i]}' # un ejemplo de count cada IP aparece cuando veces
 ```
 ```sh
-sed # null
+sed '<accion>' <docName> # herramente util para editar texto
+   -i # modifica documento(sino pone solo modifica el texto que muestra en terminar)
+   # sustituye texto
+   sed 's/<text>/<textChanged>/<rango>' # en rango puede poner 2(2º texto coincidente), g(todo texto coinc.), 2g(2º a final texto coinc.)
+   # borra texto
+   sed '<pattern>d' # ej: '3d'(3ª linea solo), '2,4d'(2-4 linea), '$d'(ultimo linea), '/erro/d'(linea que tiene texto erro), '/^$/d'(linea vacio)
+   # print texto
+   sed '<pattern>p' # igual que borrar
+   # inserta
+   sed '<pattern>i' # va borrar anterior
+   # añadir 
+   sed '<pattern>a' # no borra solo añadir
+   # para vario accion hay dos forma, primer forma puede indica línea especificada unas vez solo
+   sed '3,5{s/foo/bar/; s/baz/qux/}'
+   sed -e 's/foo/bar/' -e 's/baz/qux/'
+   # puede añadir ! depues de <pattern> ej: '5!s/foo/bar/g' y '!5p'
 ```
 ```sh
-eval # null
+eval <command> <varName> # transforma variable a parametro
 ```
 ```sh
-set # null
+set -- <arg1> <arg2> <arg3> # usa para indica parametro
+set -- # para borra todo parametro
+set # mira todo parametro
+set -euo pipefail
+   -e # exit si hay erro (usa set +e puede desactivo)
+   -u # dice erro si hay option indefinido (usa set +u puede desactivo)
+   -o pipefail # -o significa option, pipefail significa estado de terminar va ser igual que ultimo commando. es decir cual quier fallo, falla todo.
+   -x # modo debug
+   -v # muestra commando
+   -n # solo leer no ejecuta
 ```
 ```sh
 cut <docName> # corta secciones de cada linea
@@ -425,4 +481,49 @@ while true; do
 done
 ```
 
+# COLOR DE ANSI
+Este parte solo explica como cambiar color de texto en termina  
+No es nada importante pero intelesante.
+```sh
+\033[<code>m # "033" y "e" significa ESC caracter, <code> es numero de color
+\e[<code>m # [ significa empieza, m significa terminar
+\033[0m # si no quiere cambiar todo de un linea pon este en medio
+\e[1;30;47m # un texto dafaut, con background negro, color blanco
+```
+### 文本颜色（前景色）
+| 代码  | 颜色 | 示例              |
+| ----- | ---- | ----------------- |
+| 30    | 黑色 | `\e[30m黑字\e[0m` |
+| 31    | 红色 | `\e[31m红字\e[0m` |
+| 32    | 绿色 | `\e[32m绿字\e[0m` |
+| 33    | 黄色 | `\e[33m黄字\e[0m` |
+| 34    | 蓝色 | `\e[34m蓝字\e[0m` |
+| 35    | 洋红 | `\e[35m紫字\e[0m` |
+| 36    | 青色 | `\e[36m青字\e[0m` |
+| 37    | 白色 | `\e[37m白字\e[0m` |
+| 90-97 | 亮色 | `\e[91m亮红\e[0m` |
 
+### 背景颜色
+| 代码 | 颜色     | 示例                        |
+| ---- | -------- | --------------------------- |
+| 40   | 黑色背景 | `\e[40m\e[37m白字黑底\e[0m` |
+| 41   | 红色背景 | `\e[41m红底\e[0m`           |
+| 42   | 绿色背景 | `\e[42m绿底\e[0m`           |
+| 43   | 黄色背景 | `\e[43m黄底\e[0m`           |
+| 44   | 蓝色背景 | `\e[44m蓝底\e[0m`           |
+| 45   | 洋红背景 | `\e[45m紫底\e[0m`           |
+| 46   | 青色背景 | `\e[46m青底\e[0m`           |
+| 47   | 白色背景 | `\e[47m白底\e[0m`           |
+
+### 文本样式
+| 代码 | 样式                 | 示例                 |
+| ---- | -------------------- | -------------------- |
+| 0    | 重置所有属性         | `\e[0m`              |
+| 1    | 加粗/高亮            | `\e[1m粗体\e[0m`     |
+| 2    | 暗淡（通常不明显）   |                      |
+| 3    | 斜体                 | `\e[3m斜体\e[0m`     |
+| 4    | 下划线               | `\e[4m下划线\e[0m`   |
+| 5    | 闪烁                 | `\e[5m闪烁\e[0m`     |
+| 7    | 反色（前景背景互换） | `\e[7m反色\e[0m`     |
+| 8    | 隐藏                 | `\e[8m隐藏文字\e[0m` |
+| 9    | 删除线               | `\e[9m删除线\e[0m`   |
