@@ -1,3 +1,13 @@
+# para obtener imagen de MV
+qemu-img create -f qcow2 -F raw -b /var/lib/libvrit/templates/windows11.img /var/lib/libvrit/images/Win11.qcow2
+# (Maquinca xestor virtual) para install un MV se arranca en modo UEFI
+crea new virtual michime
+import existing disk image => Forward
+pon path de imagen y choose OS => Forward
+pon memoria y CPUs que queire => Forward
+customize configuration before install => Finish
+
+
 #en maquina real
 ovs-vsctl add-br 2asir lan 100
 ## configura "interface"
