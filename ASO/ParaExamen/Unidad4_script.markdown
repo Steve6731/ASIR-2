@@ -365,6 +365,10 @@ tail <docName> # obtiene ultimas lineas
    -n # numero de lineas
 ```
 ```sh
+less # mostra resultado paginada
+more # igual pero no funciona en script
+```
+```sh
 tac <docName> # sale texto de documento pero desde ultimo hasta inicio.
 ```
 ```sh
