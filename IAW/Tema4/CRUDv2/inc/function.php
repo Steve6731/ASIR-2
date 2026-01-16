@@ -20,4 +20,18 @@ function recoge($key, $type = "")
     }
     return $tmp;
 }
+
+function loggingCheck(){ 
+   if (empty($_SESSION) || $_SESSION["USER"] != USER || $_SESSION["PASS"] != PASS || $_SESSION["logging"]==0){
+      header("Location: index.php");
+      exit;
+   }
+}
+
+function parameterCheck(){
+   if (empty($_REQUEST) || empty($_REQUEST["id"])){
+      header("Location: bd_listado.php");
+      exit;
+   }
+}
 ?>

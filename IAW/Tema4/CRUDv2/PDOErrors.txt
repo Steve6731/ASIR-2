@@ -1,0 +1,16 @@
+
+9 January, 2026 012:12 pmSQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+9 January, 2026 012:13 pmSQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+9 January, 2026 012:28 pmSQLSTATE[42S22]: Column not found: 1054 Unknown column 'descripcion' in 'field list'
+9 January, 2026 012:29 pmSQLSTATE[23000]: Integrity constraint violation: 1048 Column 'tareas' cannot be null
+9 January, 2026 012:32 pmSQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+9 January, 2026 012:47 pmSQLSTATE[23000]: Integrity constraint violation: 1048 Column 'titulo' cannot be null
+9 January, 2026 012:47 pmSQLSTATE[23000]: Integrity constraint violation: 1048 Column 'titulo' cannot be null
+13 January, 2026 0112:58 pmSQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+13 January, 2026 0112:58 pmSQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+13 January, 2026 011:08 pmSQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 1
+13 January, 2026 011:11 pmSQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 1
+13 January, 2026 011:15 pmSQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 1
+13 January, 2026 011:15 pmSQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 1
+13 January, 2026 011:15 pmSQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 1
+13 January, 2026 011:53 pmSQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
