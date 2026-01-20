@@ -26,7 +26,9 @@
          <div class="btnArea">
             <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Sign in</button>
          </div>
-         <?php if($erro!=""){echo $erro;}?>
+         <div class="erroArea">
+            <?php if($erro!=""){echo $erro;}?>
+         </div>
       </form>
    </div>
 </div>
@@ -45,18 +47,26 @@ if($_SESSION['logging'] == 1){
       $erro = "";
       $username = recoge("USERNAME");
       $password = recoge("PASSWORD");
-      if ($username != USER || $password != PASS){
-         $erro .= "<p class='text-danger'>Falso username o password</p>";
-         loggingMenu($username,$password,$erro);
-      }
-      if($erro == ""){
-         $_SESSION["logging"] = 1;
-         $_SESSION["USER"] = $username;
-         $_SESSION["PASS"] = $password; 
 
-         header("Location: bd_listado.php");
-         exit;
+      if ($username == ""){
+         $erro .= "<p class='text-danger'>username no puede ser vacio</p>";
       }
+
+      if ($password == ""){
+         $erro .= "<p class='text-danger'>password no puede ser vacio</p>";
+      }
+
+      if($erro == ""){
+         if ( !checkUser($username,$password) ){
+            $erro .= "<p class='text-danger'>Falso username o password</p>";
+         }else{
+            $_SESSION["logging"] = 1;
+            header("Location: bd_listado.php");
+            exit;
+         }
+      }
+      
+      loggingMenu($username,$password,$erro);
    }
 }
 ?>

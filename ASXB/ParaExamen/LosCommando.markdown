@@ -2,6 +2,11 @@
 contenedor: xe <= pluggable(xepdb1)  
 ORACLE-SID = XE   
 
+para usar link tiene que ser todo mayuscura
+```sql
+create database link LinkCentrar connect to userCentral
+   identified by oracle using 'CENTRAL'; -- link central
+```
 ``` sql
 sqlplus [<user>]/[<passwd>][@<contenedor>] [as (sysdba | sysper)]  
 sqlplus / as sysdba  

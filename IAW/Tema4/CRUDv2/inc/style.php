@@ -97,4 +97,9 @@
       justify-content: center;
    }
 
+   .erroArea p{
+      margin: 0;
+      text-align: center;
+   }
+
 </style>

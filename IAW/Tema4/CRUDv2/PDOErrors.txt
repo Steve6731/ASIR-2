@@ -14,3 +14,8 @@
 13 January, 2026 011:15 pmSQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 1
 13 January, 2026 011:15 pmSQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 1
 13 January, 2026 011:53 pmSQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+20 January, 2026 011:20 pmSQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+20 January, 2026 011:20 pmSQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+20 January, 2026 011:25 pmSQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+20 January, 2026 011:25 pmSQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+20 January, 2026 011:26 pmSQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens

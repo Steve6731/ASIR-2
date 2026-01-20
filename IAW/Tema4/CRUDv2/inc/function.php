@@ -22,7 +22,7 @@ function recoge($key, $type = "")
 }
 
 function loggingCheck(){ 
-   if (empty($_SESSION) || $_SESSION["USER"] != USER || $_SESSION["PASS"] != PASS || $_SESSION["logging"]==0){
+   if (empty($_SESSION)|| $_SESSION["logging"]==0){
       header("Location: index.php");
       exit;
    }

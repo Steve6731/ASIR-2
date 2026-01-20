@@ -38,6 +38,27 @@ function selectTarea($id){
    return $rows;
 }
 
+function checkUser($username,$password){
+   $correct = False;
+   $con = conectaDB() ;
+   try{
+      $sql = "Select * from users where username = :username";
+      $stmt = $con->prepare($sql);
+      $stmt -> execute([ ':username' => $username ]);
+      $row = $stmt->fetch(PDO::FETCH_ASSOC);
+   } catch(PDOException $e){
+      echo "ERROR: Error al seleccionar la tarea".$e->getMessage();
+      file_put_contents("PDOErrors.txt","\r\n".date('j F, Y mg:i a').$e->getMessage(),FILE_APPEND);
+      exit;
+   }
+   if (password_verify($password, $row['PASSWORD'])) {
+      unset($row['password']);
+      $correct = True;
+   }
+   return $correct;
+}
+
+
 function borrarTarea($id){
    $con = conectaDB();
    try{

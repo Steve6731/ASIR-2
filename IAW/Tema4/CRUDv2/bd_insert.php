@@ -3,7 +3,6 @@
 <?php include("./inc/bbdd.php")?>
 <?php include("./inc/encabezado.php")?>
 <?php loggingCheck(); ?>
-<?php parameterCheck(); ?>
 
 <h1 class="p-5 m-0 " data-bs-theme="dark">Añadir tareas</h1>
 
