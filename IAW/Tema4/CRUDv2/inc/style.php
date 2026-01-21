@@ -61,8 +61,10 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      max-width: 30%;
       padding: 50px 100px;
+      min-width:30em;
+      max-width:50em;
+      width:30%;
    }
 
    .menuLogging .card form{
