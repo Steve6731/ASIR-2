@@ -98,8 +98,22 @@
    }
 
    .erroArea p{
+      margin: 5px 0px 0px;
+      text-align: center;
+   }
+
+   p{
       margin: 0;
       text-align: center;
    }
 
+   .registerResults{
+      font-size: 3em;
+      background: none;
+      font-weight: 900;
+   }
+
+   .registerResults span{
+      color: #4b93ff;
+   }
 </style>

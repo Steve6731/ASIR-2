@@ -95,7 +95,9 @@ nano /etc/lxc/lxc.conf
 # para auto arranca lxc container
 nano <lxc.lxcpath>/<containerName>/config
 	lxc.start.auto = 1
-
+	# y otro forma mejor para canbiar dir de lxc que montar disco
+	# conecta directamente:
+	lxc.rootfs.path = dev:/dev/sda1
 
 
 en krb-server
@@ -129,12 +131,35 @@ kadmin.local #no puede hacelo si esta remoto
 	exit # vamos a configurar para que podemos administrar remotamente
 nano /etc/krbkdc/kadm5.acl
 	descomenta ultima liña.
+nano /etc/krb5.conf
+	[libdefaults]
+        	default_realm = xuan.local
+	# The following krb5.conf variables are only for MIT Kerberos.
+	        kdc_timesync = 1
+ 	       	ccache_type = 4
+ 	       	forwardable = true
+ 	       	proxiable = true
+  	      	rdns = false
+	# The following libdefaults parameters are only for Heimdal Kerberos.
+	        fcc-mit-ticketflags = true
+	[realms]
+	        xuan.local = {
+ 	               kdc = krb-server.xuan.local
+   	             admin_server = krb-server.xuan.local
+   	     	}
+	[domain_realm]
+  	      .xuan.local = xuan.local
+ 	       xuan.local = xuan.local
+
 kadmin.local
 	addprinc master/admin
 	# mas comodo: addprinc root/admin
 	password: abc123.
 	exit
+# si "kadmin" no funciona comprueba si tiene documento /etc/krb5kdc/kadm5.keytab
+# si no hay sigue siguientes pasos
 	
+
 en krb-cliente
 rm /var/lib/dbus/machine-id /etc/machine-id
 systemd-machine-id-setup
@@ -155,12 +180,34 @@ nano /etc/hosts
 	# añadir en [domain_realm] .xuan.local = xuan.local y xuan.local = xuan.local
 kadmin
 	addprinc juan
-		password:
-		repite:
+		password: abc123.
+		repite: abc123.
 	exit
-apt install libpam-krb5
+apt install libpam-krb5 # para debian puede logging usuario con krb-server
 pam-auth-update
+# va aparece menu sigientes puedes ser importante pero realmente activa todo tambien funciona.
+[ * ] Unix authentication
+[ * ] Kerberos authentication 
+[ * ] Create home directory on login
 
+adduser juan
+	password: otherPassword
+	otra vez: otherPassword
+	...
+
+# ahora puede inicia usuario juan pero con contraseña que está registrado en krb-server.
+# ej:
+root@oficina-02:~# ssh juan@localhost
+juan@localhost's password: 
+Linux oficina-02 6.12.41+deb13-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.12.41-1 (2025-08-12) x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+juan@oficina-02:~$ 
 
 
 # para thin-pool necesita que: apt install thin-provisioning-tools

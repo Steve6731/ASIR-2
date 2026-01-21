@@ -21,11 +21,11 @@
             <label class="form-label" for="form2Example2">PASSWORD</label>
             <input type="password" id="form2Example2" class="form-control" name="PASSWORD" value="<?php echo $password?>"/>
          </div>
-
          <!-- Submit button -->
          <div class="btnArea">
             <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Sign in</button>
          </div>
+         <p>Not a member? <a href="./bd_register.php">Register</a></p>
          <div class="erroArea">
             <?php if($erro!=""){echo $erro;}?>
          </div>

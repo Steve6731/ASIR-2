@@ -19,3 +19,4 @@
 20 January, 2026 011:25 pmSQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
 20 January, 2026 011:25 pmSQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
 20 January, 2026 011:26 pmSQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+21 January, 2026 012:02 pmSQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'usuario' for key 'PRIMARY'

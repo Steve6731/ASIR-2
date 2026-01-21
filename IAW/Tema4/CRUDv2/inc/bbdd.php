@@ -58,6 +58,43 @@ function checkUser($username,$password){
    return $correct;
 }
 
+function issetUser($username){
+   $correct = False;
+   $con = conectaDB() ;
+   try{
+      $sql = "Select username from users where username = :username";
+      $stmt = $con->prepare($sql);
+      $stmt -> execute([ ':username' => $username ]);
+      $row = $stmt->fetch(PDO::FETCH_ASSOC);
+   } catch(PDOException $e){
+      echo "ERROR: Error al seleccionar la tarea".$e->getMessage();
+      file_put_contents("PDOErrors.txt","\r\n".date('j F, Y mg:i a').$e->getMessage(),FILE_APPEND);
+      exit;
+   }
+   if (isset($row['USERNAME'])) {
+      $correct = True;
+   }
+   return $correct;
+}
+
+
+function addUser($username,$password){
+   $con = conectaDB();
+   $password = password_hash($password,PASSWORD_DEFAULT);
+   try{
+      $sql = "INSERT INTO users(username,password) VALUES(:username,:password)";
+      $stmt = $con->prepare($sql);
+
+      $stmt->bindparam(':username',$username,);
+      $stmt->bindparam(':password',$password);
+
+      $stmt->execute();
+   }catch(PDOException $e){
+      echo "ERROR: Error al inserta la tarea".$e->getMessage();
+      file_put_contents("PDOErrors.txt","\r\n".date('j F, Y mg:i a').$e->getMessage(),FILE_APPEND);
+      exit;
+   }
+}
 
 function borrarTarea($id){
    $con = conectaDB();
