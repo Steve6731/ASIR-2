@@ -1,4 +1,25 @@
 <?php
+function recoge($key, $type = "")
+{
+    if (!is_string($key) && !is_int($key) || $key == "") {
+        trigger_error("Function recoge(): Argument #1 (\$key) must be a non-empty string or an integer", E_USER_ERROR);
+    } elseif ($type !== "" && $type !== []) {
+        trigger_error("Function recoge(): Argument #2 (\$type) is optional, but if provided, it must be an empty array or an empty string", E_USER_ERROR);
+    }
+    $tmp = $type;
+    if (isset($_REQUEST[$key])) {
+        if (!is_array($_REQUEST[$key]) && !is_array($type)) {
+            $tmp = trim(htmlspecialchars($_REQUEST[$key]));
+        } elseif (is_array($_REQUEST[$key]) && is_array($type)) {
+            $tmp = $_REQUEST[$key];
+            array_walk_recursive($tmp, function (&$value) {
+                $value = trim(htmlspecialchars($value));
+            });
+        }
+    }
+    return $tmp;
+}
+
 function conectaDB(){
    try{
       $con = new PDO("mysql:host=".HOST.";dbname=".DBNAME.";charset=utf8",USER,PASS);
@@ -51,8 +72,8 @@ function checkProduct($id){
 }
 ?>
 
-<?php 
-function showProduct($id){ 
+<?php
+function selectProduct($id){
    $con = conectaDB() ;
    try{
       $sql = "Select * from producto where idProducto = :id ";
@@ -64,6 +85,11 @@ function showProduct($id){
       file_put_contents("PDOErrors.txt","\r\n".date('j F, Y mg:i a').$e->getMessage(),FILE_APPEND);
       exit;
    }
+   return $row;
+}
+
+function showProduct($id){ 
+   $row = selectProduct($id);
 ?>
       <!-- empieza un producto -->
       <div class="col mb-5">
@@ -76,7 +102,7 @@ function showProduct($id){
                         <!-- Product name-->
                         <h5 class="fw-bolder"><?php echo $row['nombre'] ?></h5>
                         <!-- Product price-->
-                        <?php echo $row['precioOferta'] ?>
+                        <?php echo $row['precioOferta']."$" ?>
                      </div>
                   </div>
                   <!-- Product actions-->
