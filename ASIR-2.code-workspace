@@ -10,5 +10,7 @@
          "path": "C:/xampp/htdocs/Xuan"
       }
    ],
-	"settings": {}
+   "settings": {
+      "powershell.cwd": "ASIR-2"
+   }
 }

@@ -7,5 +7,8 @@
 
    if (!isset($_SESSION["logging"])) {
       $_SESSION["logging"] = 0;
+      $_SESSION["nombre"] = "";
+      $_SESSION["numCart"] = 0;
    }
+   
 ?>

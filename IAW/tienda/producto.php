@@ -16,13 +16,14 @@
                      <span>$<?php echo $row['precioOferta']?></span>
                </div>
                <p class="lead"><?php echo $row['descripcion']?></p>
-               <div class="d-flex">
+               
+               <form class="d-flex">
                      <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                     <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                     <button class="btn btn-outline-dark flex-shrink-0" type="submit">
                         <i class="bi-cart-fill me-1"></i>
                         Add to cart
                      </button>
-               </div>
+               </form>
             </div>
          </div>
    </div>

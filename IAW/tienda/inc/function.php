@@ -1,4 +1,10 @@
 <?php
+function showArray($array){
+   echo "<pre>";
+   print_r($array);
+   echo "</pre";
+}
+
 function recoge($key, $type = "")
 {
     if (!is_string($key) && !is_int($key) || $key == "") {
@@ -31,48 +37,80 @@ function conectaDB(){
    }
 }
 
-function checkUser($username,$password){
+function checkLogging($email,$password){
    $correct = False;
    $con = conectaDB() ;
    try{
-      $sql = "Select * from users where username = :username";
+      $sql = "Select * from usuarios where email = :email";
       $stmt = $con->prepare($sql);
-      $stmt -> execute([ ':username' => $username ]);
+      $stmt -> execute([ ':email' => $email ]);
       $row = $stmt->fetch(PDO::FETCH_ASSOC);
    } catch(PDOException $e){
       echo "ERROR: Error al seleccionar la tarea".$e->getMessage();
       file_put_contents("PDOErrors.txt","\r\n".date('j F, Y mg:i a').$e->getMessage(),FILE_APPEND);
       exit;
    }
-   if (password_verify($password, $row['PASSWORD'])) {
+   if (password_verify($password, $row['password'])) {
       unset($row['password']);
       $correct = True;
    }
    return $correct;
 }
 
-function checkProduct($id){
-   $correct = False;
-   $con = conectaDB() ;
+function getBasicUserDate($email){
+   $con = conectaDB();
    try{
-      $sql = "Select * from users where username = :username";
+      $sql = "Select id,nombre from usuarios where email = :email ";
       $stmt = $con->prepare($sql);
-      $stmt -> execute([ ':username' => $username ]);
+      $stmt -> execute([ ':email' => $email ]);
       $row = $stmt->fetch(PDO::FETCH_ASSOC);
    } catch(PDOException $e){
       echo "ERROR: Error al seleccionar la tarea".$e->getMessage();
       file_put_contents("PDOErrors.txt","\r\n".date('j F, Y mg:i a').$e->getMessage(),FILE_APPEND);
       exit;
    }
-   if (password_verify($password, $row['PASSWORD'])) {
-      unset($row['password']);
-      $correct = True;
-   }
-   return $correct;
+   return $row;
 }
-?>
 
-<?php
+function issetUserEmail($email){
+   $con = conectaDB() ;
+   try{
+      $sql = "Select * from usuarios where email = :email ";
+      $stmt = $con->prepare($sql);
+      $stmt -> execute([ ':email' => $email ]);
+      $row = $stmt->fetch(PDO::FETCH_ASSOC);
+   } catch(PDOException $e){
+      echo "ERROR: Error al seleccionar la tarea".$e->getMessage();
+      file_put_contents("PDOErrors.txt","\r\n".date('j F, Y mg:i a').$e->getMessage(),FILE_APPEND);
+      exit;
+   }
+   return $row;
+}
+
+function addUser($email,$password,$nombre,$apellidos,$direccion,$telefono){
+   $con = conectaDB();
+   $password = password_hash($password,PASSWORD_DEFAULT);
+   try{
+      $sql = "INSERT 
+         INTO usuarios(email,password,nombre,apellido,direccion,telefono) 
+         VALUES(:email,:password,:nombre,:apellidos,:direccion,:telefono)";
+      $stmt = $con->prepare($sql);
+
+      $stmt->bindparam(':email',$email,);
+      $stmt->bindparam(':password',$password);
+      $stmt->bindparam(':nombre',$nombre);
+      $stmt->bindparam(':apellidos',$apellidos);
+      $stmt->bindparam(':direccion',$direccion);
+      $stmt->bindparam(':telefono',$telefono);
+
+      $stmt->execute();
+   }catch(PDOException $e){
+      echo "ERROR: Error al inserta la tarea".$e->getMessage();
+      file_put_contents("PDOErrors.txt","\r\n".date('j F, Y mg:i a').$e->getMessage(),FILE_APPEND);
+      exit;
+   }
+}
+
 function selectProduct($id){
    $con = conectaDB() ;
    try{

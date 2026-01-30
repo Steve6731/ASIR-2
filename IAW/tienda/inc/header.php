@@ -37,15 +37,28 @@
                     </ul>
                     <form class="d-flex">
                         <button class="btn btn-outline-dark" type="submit">
-                            <i class="bi-cart-fill me-1"></i>
-                            Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                           <i class="bi-cart-fill me-1"></i>
+                           Cart
+                           <span class="badge bg-dark text-white ms-1 rounded-pill"><?php echo $_SESSION["numCart"]; ?></span>
                         </button>
-                        <button class="btn btn-outline-dark" type="submit">
+                        <?php if ($_SESSION["logging"]==0){?>
+                        <a class="btn btn-outline-dark" href="logging.php">
                            <i class="bi bi-person-circle"></i>
-                            Logging
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button>
+                           Logging
+                        </a>
+                        <?php }else{ ?>
+                           <button class="btn btn-outline-dark dropdown">
+                              <a class="nav-link dropdown-toggle" id="navbarDropdownUser" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                 <i class="bi bi-person-circle"></i>
+                                 <?php echo $_SESSION["nombre"]?>
+                              </a>
+                              <ul class="dropdown-menu" aria-labelledby="navbarDropdownUser">
+                                 <li><a class="dropdown-item" href="#!">All Products</a></li>
+                                 <li><hr class="dropdown-divider" /></li>
+                                 <li><a class="dropdown-item" href="logout.php">Log out</a></li>
+                              </ul>
+                           </button>
+                        <?php } ?>
                     </form>
                 </div>
             </div>
