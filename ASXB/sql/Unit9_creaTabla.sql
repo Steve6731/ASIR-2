@@ -1,4 +1,8 @@
 
+-- Madrid
+-- a) El stock de Madrid por lo que habrá que crear un campo stock en la tabla productos.
+-- b) Los clientes de Madrid.
+-- c) Las ventas realizadas en Madrid son gestionadas por Madrid.
 -- empieza crear los tablas.
 drop table empleado cascade constraints;
 drop table lineaventa cascade constraints;
@@ -36,8 +40,9 @@ Insert into PRODUCTO (CODPRODUCTO,STOCK) values ('5','1');
 	"DNICL" NUMBER
    ) ;
 
-Insert into VENTA (CODVENTA,FECHAHORA,DNIEMPL,DNICL) values ('2',to_date('02/11/22','DD/MM/RR'),'98103495','30001231');
-
+Insert into VENTA (CODVENTA,FECHAHORA,DNIEMPL,DNICL) values (seq_venta.nextval,to_date('02/11/22','DD/MM/RR'),'98103495','30001231');
+-- SELECT * FROM VENTA;
+-- delete from venta where codventa=2;
   CREATE TABLE "CLIENTE" 
    (	"DNICL" NUMBER, 
 	"NOMBRE" VARCHAR2(16 BYTE), 
@@ -69,8 +74,9 @@ Insert into CLIENTE (DNICL,NOMBRE,PRAPELLIDO,SGAPELLIDO,DIRECCION,TELEFONO,CORRE
 --	  REFERENCES "EMPLEADO" ("DNIEMPL") ENABLE;
   ALTER TABLE "VENTA" ADD CONSTRAINT "VENTA_FK2" FOREIGN KEY ("DNICL")
 	  REFERENCES "CLIENTE" ("DNICL") ENABLE;
+ 
+  -- ALTER TABLE "VENTA" drop CONSTRAINT "VENTA_FK2";
 
   ALTER TABLE "LINEAVENTA" ADD FOREIGN KEY ("CODVENTA") REFERENCES VENTA;
-
+--   alter table "LINEAVENTA" drop constraint "SYS_C008232";
   alter table lineaventa add foreign key(codproducto) references producto;
-

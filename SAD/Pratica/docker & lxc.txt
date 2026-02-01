@@ -1,3 +1,10 @@
+lxc-create -n <nombre>
+	--Blvm
+	--vgname <VGname>
+	--thinpool <poolname>
+	--lvname <lvname>
+	--fssize <ej: 5G>
+
 # para obtener imagen de MV
 qemu-img create -f qcow2 -F raw -b /var/lib/libvrit/templates/windows11.img /var/lib/libvrit/images/Win11.qcow2
 # (Maquinca xestor virtual) para install un MV se arranca en modo UEFI
@@ -85,6 +92,8 @@ lxc.uts.name = gateway.Xuan.2asir.com
 lxc.net.0.type = veth
 lxc.net.0.link = lan
 lxc.net.0.flags = up
+lxc.net.0.ipv4.gateway = <gateway>
+lxc.net.0.ipv4.address = <IP>
 
 ```
 # IMPORTANTE: cada vez reinicia servicio networking de maquina tambien tiene que reinicia lxc container sino rede va desconecta a bridge.

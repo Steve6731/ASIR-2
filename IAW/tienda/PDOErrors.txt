@@ -1,0 +1,2 @@
+
+28 January, 2026 012:31 pmSQLSTATE[42S22]: Column not found: 1054 Unknown column 'email' in 'where clause'

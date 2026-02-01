@@ -1,0 +1,58 @@
+# empieza compartir un vl por NFS autenticado con Kerberos
+# pero mi volumen(vg_vm) grupo ya esta lleno 
+# voy añadir un nuevo disk que es el lxc_conf de iscsi que al final es inutil para lxc
+# ir al servidor iscsi
+# quita disco lxc_conf(/dev/vdc)
+targetcli	
+	cd /backstores/block
+	delete lxc_conf
+	# si delete otro disk como lxc_disk 
+		# create lxc_disk /dev/vg_vm/lv_vm1
+	    # cd /iscsi/iqn.2025-12.local.xuan:server.target1/tpg1/luns
+	    # create /backstores/block/lxc_disk
+	exit
+
+cfdisk /dev/vdc # borrar tabla de particion
+vgextend vg_vm /dev/vdc # añadir nuevo disck
+lvcreate -n lv_nfs1 -L 200M vg_vm # crear lv
+mkfs.ext4 /dev/vg_vm/lv_nfs1
+
+# empieza de verdad
+nano /etc/fstab
+    /dev/vg_vm/lv_nfs1 /mnt/krb_nfs         ext4    defaults        0        0
+mount -a # actualiza conf. de mount
+# install paquete necesario
+apt install -y nfs_kernel-server krb5-user 
+	xuan.local
+	kervero-server
+	kervero-server.xuan.local
+
+# en servidor kerbero
+kadmin.local -q "addprinc -randkey nfs/nfs-server.xuan.local@XUAN.LOCAL"
+kadmin.local -q "addprinc -randkey host/nfs-server.xuan.local@XUAN.LOCAL"
+kadmin.local -q "ktadd -k /tmp/krb5.keytab nfs/nfs-server.xuan.local@XUAN.LOCAL"
+kadmin.local -q "ktadd -k /tmp/krb5.keytab host/nfs-server.xuan.local@XUAN.LOCAL"  
+
+# en servidor nfs o iscsi
+scp xuan@192.168.100.2:/tmp/krb5.keytab /etc/krb5.keytabs/nfs.keytab
+chmod 600 /etc/krb5.keytabs/nfs.keytab
+nano /etc/default/nfs-kernel-server
+	RPCSVCGSSDOPTS="-vvv"
+nano /etc/exports
+	/mnt/krb_nfs oficina-02.xuan.local(rw,sync,no_subtree_check,sec=krb5p:krb5i:krb5)
+nano /etc/hosts
+	192.168.100.1	oficina-02.xuan.local	
+	
+sudo systemctl enable --now rpc-gssd
+sudo systemctl enable --now nfs-server
+sudo systemctl enable --now rpcbind
+
+sudo exportfs -ra
+
+# en nfs cliente
+	
+
+
+
+
+
