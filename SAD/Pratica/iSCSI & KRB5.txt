@@ -2,6 +2,7 @@ servidor: targetcli-fb
 cliente: open-iscsi
 
 # servidor: formatear disco
+apt install lvm2
 pvcreate /dev/vdb
 vgcreate vg_vm /dev/vdb
 lvcreate -n lv_vm1 -L 20G vg_vm
@@ -15,7 +16,7 @@ targetcli
 	cd /iscsi
 		create iqn.2025-12.local.xuan:server.target1
 		# crear LUN
-		cd iqn.2025-12.local.xuan:server.target1/tpg1
+		cd iqn.2025-12.local.xuan:server.target1/tpg1/luns
 			create /backstores/block/lxc_conf
 			create /backstores/block/lxc_disk
 			cd ..
@@ -120,10 +121,11 @@ configura
 	xuan.local
 	kervero-server
 	kervero-server.xuan.local
-# ahora está creado /etc/krb5kdc/krb.conf
-# en krb.conf solo importante parte xuan.local en mi caso.
-# entonces remove todo resto hasta [domain_realm]
-# añadir en domain_realm] .xuan.local = xuan.local y xuan.local = xuan.local
+nano /etc/krb5.conf
+   # ahora está creado /etc/krb5kdc/krb.conf
+   # en krb.conf solo importante parte xuan.local en mi caso.
+   # entonces remove todo resto hasta [domain_realm]
+   # añadir en domain_realm] .xuan.local = xuan.local y xuan.local = xuan.local
 krb5_newrealm
 	master key: abc123.
 	repetir: abc123.
@@ -131,6 +133,9 @@ kadmin.local #no puede hacelo si esta remoto
 	exit # vamos a configurar para que podemos administrar remotamente
 nano /etc/krbkdc/kadm5.acl
 	descomenta ultima liña.
+/etc/init.d/krb5-kdc restart
+/etc/init.d/krb5-admin-server restart
+
 nano /etc/krb5.conf
 	[libdefaults]
         	default_realm = xuan.local
